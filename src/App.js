@@ -1,11 +1,12 @@
-import './App.css';
+import "./App.css";
+import Login from "./components/Login";
 
 function App() {
   return (
-    <div className="App">
-      <h1 className="text-3xl text-red-400 font-bold underline">
-        Hello world!
-      </h1>
+    <div className="App min-h-screen bg-goodFoodBeige-500">
+      <div className="flex justify-center items-center h-screen">
+        <Login />
+      </div>
     </div>
   );
 }
