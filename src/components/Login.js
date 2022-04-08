@@ -1,7 +1,9 @@
 import React from 'react';
-// import logo from '../../public/logo_corporate.png';
+import { useTranslation } from 'react-i18next';
 
 function Login() {
+  const { t } = useTranslation();
+
   return (
     <div className="flex flex-col bg-white p-10 w-2/5 rounded-md shadow-md">
       <div className="self-center">
@@ -12,27 +14,29 @@ function Login() {
           height="206px"
         />
       </div>
-      <div className="self-center my-3 font-bold text-3xl">Connectez-vous</div>
+      <div className="self-center my-3 font-bold text-3xl">
+        {t('loginPage.login')}
+      </div>
       <form action="" method="get">
         <div className="flex flex-col mt-6">
           <label className="mb-2 font-semibold" htmlFor="mail">
-            Adresse email
+            {t('loginPage.email')}
           </label>
           <input
             className="border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500"
             type="text"
             name="mail"
             id="mail"
-            placeholder="Entrez votre adresse email"
+            placeholder={t('loginPage.emailPlaceHolder')}
           />
         </div>
         <div className="flex flex-col mt-6">
           <div className="flex justify-between">
             <label className="mb-2 font-semibold" htmlFor="password">
-              Mot de passe
+              {t('loginPage.password')}
             </label>
             <a href="#" className="font-bold text-red-600">
-              Mot de passe oublié?
+              {t('loginPage.passwordForget')}
             </a>
           </div>
           <input
@@ -40,7 +44,7 @@ function Login() {
             type="text"
             name="password"
             id="password"
-            placeholder="Mot de passe"
+            placeholder={t('passwordPlaceHolder')}
           />
         </div>
         <button
@@ -49,7 +53,7 @@ function Login() {
           name="submit"
           id="submit"
         >
-          Connexion
+          {t('loginPage.connection')}
         </button>
       </form>
     </div>
