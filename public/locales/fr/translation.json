@@ -1,0 +1,11 @@
+{
+  "loginPage": {
+    "login": "Connectez-vous",
+    "email": "Adresse Email",
+    "emailPlaceHolder": "Entrez votre adresse email",
+    "password": "Mot de passe",
+    "passwordForget": "Mot de passe oublié ?",
+    "passwordPlaceHolder": "Entrez votre mot de passe",
+    "connection": "Connexion"
+  }
+}

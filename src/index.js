@@ -1,12 +1,16 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./fonts/Source_Code_Pro/SourceCodePro-VariableFont_wght.ttf";
-import "./index.css";
-import App from "./App";
+import React, { Suspense } from 'react';
+import ReactDOM from 'react-dom';
+import './fonts/Source_Code_Pro/SourceCodePro-VariableFont_wght.ttf';
+import './index.css';
+import App from './App';
+import './i18n';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    {/* Suspense API prevent the app form rendering before the translation is loaded */}
+    <Suspense fallback={<div>Loading...</div>}>
+      <App />
+    </Suspense>
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById('root')
 );
