@@ -1,4 +1,15 @@
 {
+  "languages": {
+    "french": "français",
+    "english": "anglais"
+  },
+  "navigation": {
+    "suppliers": "Fournisseurs",
+    "orders": "Commandes",
+    "products": "Produits",
+    "management": "Gestion des stocks",
+    "parameters": "Paramètres"
+  },
   "loginPage": {
     "login": "Connectez-vous",
     "email": "Adresse Email",
@@ -7,5 +18,20 @@
     "passwordForget": "Mot de passe oublié ?",
     "passwordPlaceHolder": "Entrez votre mot de passe",
     "connection": "Connexion"
+  },
+  "suppliersPage": {
+    "title": "Fournisseurs"
+  },
+  "ordersPage": {
+    "title": "Commandes"
+  },
+  "productsPage": {
+    "title": "Produits"
+  },
+  "managementPage": {
+    "title": "Gestion des stocks"
+  },
+  "parametersPage": {
+    "title": "Paramètres"
   }
 }

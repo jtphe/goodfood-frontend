@@ -17,8 +17,8 @@ i18n
     debug: true,
     fallbackLng: 'fr',
     detection: {
-      order: ['queryString', 'navigator', 'cookie'],
-      cache: ['cookie'],
+      order: ['queryString', 'localStorage', 'navigator'],
+      cache: ['localStorage'],
     },
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
