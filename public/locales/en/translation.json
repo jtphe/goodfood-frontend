@@ -1,4 +1,15 @@
 {
+  "languages": {
+    "french": "french",
+    "english": "english"
+  },
+  "navigation": {
+    "suppliers": "Suppliers",
+    "orders": "Orders",
+    "products": "Products",
+    "management": "Stock management",
+    "parameters": "Parameters"
+  },
   "loginPage": {
     "login": "Sign In",
     "email": "Email",
@@ -7,5 +18,20 @@
     "passwordForget": "Forgot your password ?",
     "passwordPlaceHolder": "Please enter your password",
     "connection": "Sign In"
+  },
+  "suppliersPage": {
+    "title": "Suppliers"
+  },
+  "ordersPage": {
+    "title": "Orders"
+  },
+  "productsPage": {
+    "title": "Products"
+  },
+  "managementPage": {
+    "title": "Stock management"
+  },
+  "parametersPage": {
+    "title": "Parameters"
   }
 }
