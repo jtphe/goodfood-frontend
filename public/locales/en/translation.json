@@ -29,7 +29,13 @@
     "title": "Suppliers"
   },
   "ordersPage": {
-    "title": "Orders"
+    "title": "Orders",
+    "description": "You will find in this page all the current and complete order. You can see their detail, edit them or delete them.",
+    "orderNumber": "Order number",
+    "adress": "Adress",
+    "order": "Order",
+    "price": "Price",
+    "status": "Status"
   },
   "productsPage": {
     "title": "Products"

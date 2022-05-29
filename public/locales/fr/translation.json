@@ -29,7 +29,13 @@
     "title": "Fournisseurs"
   },
   "ordersPage": {
-    "title": "Commandes"
+    "title": "Commandes",
+    "description": "Vous retrouverez dans cette section toutes les commandes qui sont actuellement en cours ou terminé. Vous pouvez voir les détails, les éditer et les supprimer.",
+    "orderNumber": "Numéro de commande",
+    "adress": "Adresse",
+    "order": "Commandes",
+    "price": "Prix",
+    "status": "Statut"
   },
   "productsPage": {
     "title": "Produits"
