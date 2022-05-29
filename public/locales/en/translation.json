@@ -6,6 +6,13 @@
   "error": {
     "pageNotFound": "Page not found..."
   },
+  "utilities": {
+    "button": {
+      "processing": "processing",
+      "delivering": "on its way",
+      "delivered": "delivered"
+    }
+  },
   "navigation": {
     "suppliers": "Suppliers",
     "orders": "Orders",

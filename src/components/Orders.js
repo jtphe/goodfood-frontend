@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from './utilities/Button';
 import { useTranslation } from 'react-i18next';
 
 function Orders() {
@@ -30,21 +31,27 @@ function Orders() {
               <td className="py-2 px-4">12 rue du puit 67000, Strasbourg</td>
               <td className="py-2 px-4">Menu Burger</td>
               <td className="py-2 px-4 text-center">12$</td>
-              <td className="py-2 px-4 text-center">Livraison</td>
+              <td className="py-2 px-4 text-center">
+                <Button type="processing" />
+              </td>
             </tr>
             <tr className="text-left">
               <td className="py-2 px-4">#1</td>
               <td className="py-2 px-4">12 rue du puit 67000, Strasbourg</td>
               <td className="py-2 px-4">Menu Burger</td>
               <td className="py-2 px-4 text-center">12$</td>
-              <td className="py-2 px-4 text-center">Livraison</td>
+              <td className="py-2 px-4 text-center">
+                <Button type="delivering" />
+              </td>
             </tr>
             <tr className="text-left">
               <td className="py-2 px-4">#1</td>
               <td className="py-2 px-4">12 rue du puit 67000, Strasbourg</td>
               <td className="py-2 px-4">Menu Burger</td>
               <td className="py-2 px-4 text-center">12$</td>
-              <td className="py-2 px-4 text-center">Livraison</td>
+              <td className="py-2 px-4 text-center">
+                <Button type="delivered" />
+              </td>
             </tr>
           </tbody>
         </table>

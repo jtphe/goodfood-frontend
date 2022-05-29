@@ -6,6 +6,13 @@
   "error": {
     "pageNotFound": "Page introuvable..."
   },
+  "utilities": {
+    "button": {
+      "processing": "en cours",
+      "delivering": "livraison",
+      "delivered": "livré"
+    }
+  },
   "navigation": {
     "suppliers": "Fournisseurs",
     "orders": "Commandes",
