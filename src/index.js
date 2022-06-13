@@ -16,7 +16,7 @@ ReactDOM.render(
     {/* Suspense API prevent the app form rendering before the translation is loaded */}
     <Suspense fallback={<div>Loading...</div>}>
       <BrowserRouter>
-      <Provider>
+      <Provider store={store}>
        <PersistGate loading={null} persistor={persistor}>
         <App />
        </PersistGate>

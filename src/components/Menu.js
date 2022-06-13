@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 
-function Navigation() {
+function Menu() {
   const { t } = useTranslation();
 
   return (
@@ -96,4 +96,4 @@ function Navigation() {
   );
 }
 
-export default Navigation;
+export default Menu;

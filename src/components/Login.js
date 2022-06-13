@@ -1,8 +1,26 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
+import { createSelector } from 'reselect';
+import { useNavigate } from "react-router-dom";
+import { getToken } from '../store/modules/user/selectors';
+import PropTypes from 'prop-types';
 
-function Login() {
+const mapStateToProps = createSelector([getToken], (token) => {
+  return {
+    isLoggedIn: token !== null
+  };
+});
+
+function Login({ isLoggedIn }) {
   const { t } = useTranslation();
+  let navigate = useNavigate();
+  console.log('isLoggedIn =>', isLoggedIn)
+
+  if(isLoggedIn){
+    navigate("/", { replace: true });
+  } 
+
 
   return (
     <div className="flex justify-center items-center h-screen">
@@ -62,4 +80,8 @@ function Login() {
   );
 }
 
-export default Login;
+Login.propTypes = {
+  isLoggedIn: PropTypes.bool
+}
+
+export default connect(mapStateToProps)(Login);
