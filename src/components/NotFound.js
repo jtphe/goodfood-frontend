@@ -3,7 +3,7 @@ import React from 'react';
 function NotFound(){
     return (
         <div>
-            <h1>Pas introuvable...</h1>
+            <h1>Page introuvable...</h1>
         </div>
     )
 }
