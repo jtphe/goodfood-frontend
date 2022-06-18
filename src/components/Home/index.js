@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
-import Menu from './Menu';
-import CurrentScreen from './CurrentScreen';
-import PropTypes from 'prop-types';
 import { useNavigate } from "react-router-dom";
 import { getToken } from '../../store/modules/user/selectors';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import { getCurrentScreen } from '../../store/modules/app/selectors';
+import Menu from './Menu';
+import CurrentScreen from './CurrentScreen';
+import PropTypes from 'prop-types';
+
 
 const mapStateToProps = createSelector([getCurrentScreen, getToken], (currentScreen, token) => {
     return {

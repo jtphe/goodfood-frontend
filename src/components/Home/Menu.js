@@ -38,7 +38,6 @@ function Menu({ currentScreen }) {
                   ? ' text-gray-900 hover:bg-red-400 hover:rounded-md hover:text-white'
                   : ' bg-red-400 rounded-md text-white')
               }
-              // className="flex items-center px-4 py-2 text-gray-900 hover:bg-red-400 hover:rounded-md hover:text-white"
               to="suppliers"
             >
               <span className="mx-4 font-medium">
