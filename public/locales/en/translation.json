@@ -3,6 +3,9 @@
     "french": "french",
     "english": "english"
   },
+  "error": {
+    "pageNotFound": "Page not found..."
+  },
   "navigation": {
     "suppliers": "Suppliers",
     "orders": "Orders",

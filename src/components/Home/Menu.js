@@ -1,9 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { updateCurrentScreen } from '../../store/modules/app/actions';
 
-function Navigation() {
+function Menu({ currentScreen }) {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+
+  const _updateCurrentScreen = (screen) => {
+   if(currentScreen !== screen){
+    const payload = {
+      screen
+    }
+    dispatch(updateCurrentScreen({payload}))
+   }
+  }
 
   return (
     <div className="flex flex-col w-64 h-screen px-4 py-8 overflow-y-auto border-r bg-goodFoodGrey-500">
@@ -18,13 +31,13 @@ function Navigation() {
         <ul>
           <li>
             <NavLink
-              className={({ isActive }) =>
+              onClick={() => _updateCurrentScreen('suppliers')}
+              className={() =>
                 'flex items-center px-4 py-2' +
-                (!isActive
+                (currentScreen !== "suppliers"
                   ? ' text-gray-900 hover:bg-red-400 hover:rounded-md hover:text-white'
                   : ' bg-red-400 rounded-md text-white')
               }
-              // className="flex items-center px-4 py-2 text-gray-900 hover:bg-red-400 hover:rounded-md hover:text-white"
               to="suppliers"
             >
               <span className="mx-4 font-medium">
@@ -34,9 +47,10 @@ function Navigation() {
           </li>
           <li>
             <NavLink
-              className={({ isActive }) =>
+              onClick={() => _updateCurrentScreen('orders')}
+              className={() =>
                 'flex items-center px-4 py-2' +
-                (!isActive
+                (currentScreen !== "orders"
                   ? ' text-gray-900 hover:bg-red-400 hover:rounded-md hover:text-white'
                   : ' bg-red-400 rounded-md text-white')
               }
@@ -47,9 +61,10 @@ function Navigation() {
           </li>
           <li>
             <NavLink
-              className={({ isActive }) =>
+              onClick={() => _updateCurrentScreen('products')}
+              className={() =>
                 'flex items-center px-4 py-2' +
-                (!isActive
+                (currentScreen !== "products"
                   ? ' text-gray-900 hover:bg-red-400 hover:rounded-md hover:text-white'
                   : ' bg-red-400 rounded-md text-white')
               }
@@ -62,9 +77,10 @@ function Navigation() {
           </li>
           <li>
             <NavLink
-              className={({ isActive }) =>
+              onClick={() => _updateCurrentScreen('management')}
+              className={() =>
                 'flex items-center px-4 py-2' +
-                (!isActive
+                (currentScreen !== "management"
                   ? ' text-gray-900 hover:bg-red-400 hover:rounded-md hover:text-white'
                   : ' bg-red-400 rounded-md text-white')
               }
@@ -77,13 +93,16 @@ function Navigation() {
           </li>
           <li>
             <NavLink
-              className={({ isActive }) =>
+              onClick={() => _updateCurrentScreen('parameters')}
+              className={() =>
                 'flex items-center px-4 py-2' +
-                (!isActive
+                (currentScreen !== "parameters"
                   ? ' text-gray-900 hover:bg-red-400 hover:rounded-md hover:text-white'
                   : ' bg-red-400 rounded-md text-white')
               }
               to="parameters"
+              
+
             >
               <span className="mx-4 font-medium">
                 {t('navigation.parameters')}
@@ -96,4 +115,8 @@ function Navigation() {
   );
 }
 
-export default Navigation;
+Menu.propTypes = {
+  currentScreen: PropTypes.string
+}
+
+export default Menu;

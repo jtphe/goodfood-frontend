@@ -3,6 +3,9 @@
     "french": "français",
     "english": "anglais"
   },
+  "error": {
+    "pageNotFound": "Page introuvable..."
+  },
   "navigation": {
     "suppliers": "Fournisseurs",
     "orders": "Commandes",
@@ -12,7 +15,7 @@
   },
   "loginPage": {
     "login": "Connectez-vous",
-    "email": "Adresse Email",
+    "email": "Adresse email",
     "emailPlaceHolder": "Entrez votre adresse email",
     "password": "Mot de passe",
     "passwordForget": "Mot de passe oublié ?",

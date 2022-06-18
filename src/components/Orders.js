@@ -3,9 +3,9 @@ import { useTranslation } from 'react-i18next';
 
 function Orders() {
   const { t } = useTranslation();
-
+  
   return (
-    <div>
+    <div className="flex">
       <h1>{t('ordersPage.title')}</h1>
     </div>
   );
