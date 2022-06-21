@@ -7,7 +7,7 @@ export const M_UPDATE_CURRENT_SCREEN = 'M_UPDATE_CURRENT_SCREEN';
 export const updateCurrentScreen = ({ payload }) => ({
   type: M_UPDATE_CURRENT_SCREEN,
   payload
-})
+});
 
 export const updateNetworkState = (payload) => ({
   type: M_UPDATE_NETWORK_STATE,

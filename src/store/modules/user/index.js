@@ -1,11 +1,9 @@
 /* eslint-disable default-param-last */
-import {
-  M_RESET_USER_STORE
-} from './actions';
+import { M_RESET_USER_STORE } from './actions';
 
 const initialState = {
-    user: null,
-    token: null
+  user: null,
+  token: null
 };
 
 export default function reducer(state = initialState, action) {

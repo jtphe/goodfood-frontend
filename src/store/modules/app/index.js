@@ -25,7 +25,7 @@ export default function reducer(state = initialState, action) {
         currentScreen: {
           $set: action.payload.screen
         }
-      })
+      });
     case M_RESET_APP_STORE:
       return initialState;
     default:
