@@ -3,11 +3,10 @@ import { reactotronRedux } from 'reactotron-redux';
 import { persistStore } from 'redux-persist';
 import rootReducer from '../store/modules';
 import rootSagas from '../store/sagas';
-import Reactotron from 'reactotron-react-js'
+import Reactotron from 'reactotron-react-js';
 import createSagaMiddleware from 'redux-saga';
 
-Reactotron.configure({ name: 'goodfood-frontend' })
-  .use(reactotronRedux())
+Reactotron.configure({ name: 'goodfood-frontend' }).use(reactotronRedux());
 
 Reactotron.connect();
 

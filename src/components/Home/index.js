@@ -1,42 +1,42 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from "react-router-dom";
-import { getToken } from '../../store/modules/user/selectors';
+import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
-import { getCurrentScreen } from '../../store/modules/app/selectors';
-import Menu from './Menu';
-import CurrentScreen from './CurrentScreen';
+import { getToken } from 'store/modules/user/selectors';
+import { getCurrentScreen } from 'store/modules/app/selectors';
 import PropTypes from 'prop-types';
+import Menu from 'components/Home/Menu';
+import CurrentScreen from 'components/Home/CurrentScreen';
 
+const mapStateToProps = createSelector(
+  [getCurrentScreen, getToken],
+  (currentScreen, token) => ({
+    currentScreen,
+    isLoggedIn: token !== null
+  })
+);
 
-const mapStateToProps = createSelector([getCurrentScreen, getToken], (currentScreen, token) => {
-    return {
-        currentScreen,
-        isLoggedIn: token !== null
+function Home({ currentScreen, isLoggedIn }) {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate('/login', { replace: true });
     }
-})
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoggedIn]);
 
-function Home({ currentScreen, isLoggedIn }){
-    let navigate = useNavigate();
-
-    useEffect(() => {
-        if(!isLoggedIn){
-            navigate("/login", {replace: true});
-        } 
-    }, [isLoggedIn]);   
-
-    return (
-        <div className="flex flex-row">
-            <Menu currentScreen={currentScreen}/>
-            <CurrentScreen currentScreen={currentScreen}/>
-        </div>
-    )
-
+  return (
+    <div className="flex flex-row">
+      <Menu currentScreen={currentScreen} />
+      <CurrentScreen currentScreen={currentScreen} />
+    </div>
+  );
 }
 
 Home.propTypes = {
-    currentScreen: PropTypes.string,
-    isLoggedIn: PropTypes.bool
-}
+  currentScreen: PropTypes.string,
+  isLoggedIn: PropTypes.bool
+};
 
 export default connect(mapStateToProps)(Home);

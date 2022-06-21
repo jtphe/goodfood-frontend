@@ -18,11 +18,11 @@ i18n
     fallbackLng: 'fr',
     detection: {
       order: ['queryString', 'localStorage', 'navigator'],
-      cache: ['localStorage'],
+      cache: ['localStorage']
     },
     interpolation: {
-      escapeValue: false, // not needed for react as it escapes by default
-    },
+      escapeValue: false // not needed for react as it escapes by default
+    }
   });
 
 export default i18n;

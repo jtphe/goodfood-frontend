@@ -7,7 +7,6 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PropTypes from 'prop-types';
 
-
 function Login() {
   const { t } = useTranslation();
   // const dispatch = useDispatch();
@@ -15,19 +14,17 @@ function Login() {
   const [password, setPassword] = useState('');
 
   const _handleEmailChange = (event) => {
-    console.log('event.target.value', event.target.value)
-    setEmail(event.target.value)
-
-  }
+    setEmail(event.target.value);
+  };
 
   const _handlePasswordChange = (event) => {
-    setPassword(event.target.value)
-  }
+    setPassword(event.target.value);
+  };
 
   const _login = (event) => {
     event.preventDefault();
-    console.log('email', email)
-    console.log('password', password)
+    console.log('email', email);
+    console.log('password', password);
     // if (_checkCredentials()) {
     //   const payload = {
     //     email,
@@ -36,11 +33,11 @@ function Login() {
     //   console.log('payload', payload);
     //   dispatch(signIn({ payload }));
     // }
-  }
-  
+  };
+
   return (
     <div className="flex justify-center items-center h-screen">
-      <ToastContainer/>
+      <ToastContainer />
       <div className="flex flex-col bg-white p-10 w-2/5 rounded-md shadow-md">
         <div className="self-center">
           <img
@@ -56,9 +53,9 @@ function Login() {
         <form onSubmit={_login} method="get">
           <div className="flex flex-col mt-6">
             <label className="mb-2" htmlFor="mail">
-                <span className="after:content-['*'] after:ml-0.5  after:text-red-500 font-semibold">
+              <span className="after:content-['*'] after:ml-0.5  after:text-red-500 font-semibold">
                 {t('loginPage.email')}
-                </span>
+              </span>
             </label>
             <input
               className="peer border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500"
@@ -68,14 +65,16 @@ function Login() {
               placeholder={t('loginPage.emailPlaceHolder')}
               onChange={_handleEmailChange}
             />
-            <p className="mt-2 invisible peer-invalid:visible text-pink-600 text-sm">Please provide a valid email adrress</p>
+            <p className="mt-2 invisible peer-invalid:visible text-pink-600 text-sm">
+              Please provide a valid email adrress
+            </p>
           </div>
           <div className="flex flex-col mt-6">
             <div className="flex justify-between">
               <label className="mb-2" htmlFor="password">
-              <span className="after:content-['*']  after:ml-0.5 after:text-red-500 font-semibold">
-                {t('loginPage.password')}
-              </span>
+                <span className="after:content-['*']  after:ml-0.5 after:text-red-500 font-semibold">
+                  {t('loginPage.password')}
+                </span>
               </label>
               <a href="#" className="font-bold text-red-600">
                 {t('loginPage.passwordForget')}
@@ -106,6 +105,6 @@ function Login() {
 
 Login.propTypes = {
   isLoggedIn: PropTypes.bool
-}
+};
 
 export default connect()(Login);
