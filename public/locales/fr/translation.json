@@ -20,7 +20,9 @@
     "password": "Mot de passe",
     "passwordForget": "Mot de passe oublié ?",
     "passwordPlaceHolder": "Entrez votre mot de passe",
-    "connection": "Connexion"
+    "connection": "Connexion",
+    "emailError": "Votre email semble invalide",
+    "passwordError": "Votre mot de passe semble invalide"
   },
   "suppliersPage": {
     "title": "Fournisseurs"

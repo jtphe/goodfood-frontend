@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-// import { emailChecker } from '../helpers/emailChecker';
-// import { checkPasswordLength } from '../helpers/passwordManager';
+import { emailChecker } from '../helpers/emailChecker';
+import { checkPasswordLength } from '../helpers/passwordManager';
 import { connect } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -12,6 +12,10 @@ function Login() {
   // const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  // eslint-disable-next-line no-unused-vars
+  const [errorMail, setErrorMail] = useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [errorPassword, setErrorPassword] = useState(false);
 
   const _handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -21,18 +25,37 @@ function Login() {
     setPassword(event.target.value);
   };
 
+  const _checkCredentials = () => {
+    if (!emailChecker(email) && !checkPasswordLength(password)) {
+      setErrorMail(true);
+      setErrorPassword(true);
+    } else if (!emailChecker(email)) {
+      setErrorMail(true);
+      setErrorPassword(false);
+    } else if (!checkPasswordLength(password)) {
+      setErrorPassword(true);
+      setErrorMail(false);
+    }
+    if (emailChecker(email) && checkPasswordLength(password)) {
+      setErrorPassword(false);
+      setErrorMail(false);
+      return true;
+    }
+  };
+
   const _login = (event) => {
     event.preventDefault();
     console.log('email', email);
     console.log('password', password);
-    // if (_checkCredentials()) {
-    //   const payload = {
-    //     email,
-    //     password
-    //   };
-    //   console.log('payload', payload);
-    //   dispatch(signIn({ payload }));
-    // }
+    if (_checkCredentials()) {
+      const payload = {
+        email,
+        password
+      };
+      console.log('payload', payload);
+      // To do later
+      // dispatch(signIn({ payload }));
+    }
   };
 
   return (
@@ -65,9 +88,11 @@ function Login() {
               placeholder={t('loginPage.emailPlaceHolder')}
               onChange={_handleEmailChange}
             />
-            <p className="mt-2 invisible peer-invalid:visible text-pink-600 text-sm">
-              Please provide a valid email adrress
-            </p>
+            {errorMail && (
+              <p className="mt-2 text-pink-600 text-sm">
+                {t('loginPage.emailError')}
+              </p>
+            )}
           </div>
           <div className="flex flex-col mt-6">
             <div className="flex justify-between">
@@ -88,6 +113,11 @@ function Login() {
               placeholder={t('loginPage.passwordPlaceHolder')}
               onChange={_handlePasswordChange}
             />
+            {errorPassword === true && (
+              <p className="mt-2 text-pink-600 text-sm">
+                {t('loginPage.passwordError')}
+              </p>
+            )}
           </div>
           <button
             className="bg-goodfoodRed-500 py-2 px-5 rounded-md w-full mt-8 text-white"
