@@ -2,12 +2,17 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { emailChecker } from '../helpers/emailChecker';
 import { checkPasswordLength } from '../helpers/passwordManager';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
+import { userLogIn } from 'store/modules/user/actions';
 import 'react-toastify/dist/ReactToastify.css';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
+  const dispatch = useDispatch();
+  let navigate = useNavigate();
+
   const { t } = useTranslation();
   // const dispatch = useDispatch();
   const [email, setEmail] = useState('');
@@ -45,16 +50,13 @@ function Login() {
 
   const _login = (event) => {
     event.preventDefault();
-    console.log('email', email);
-    console.log('password', password);
     if (_checkCredentials()) {
       const payload = {
         email,
-        password
+        password,
+        navigate
       };
-      console.log('payload', payload);
-      // To do later
-      // dispatch(signIn({ payload }));
+      dispatch(userLogIn({ payload }));
     }
   };
 
