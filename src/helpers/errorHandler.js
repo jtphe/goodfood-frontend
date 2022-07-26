@@ -1,10 +1,10 @@
 export const errorHandler = (error) => {
   switch (error) {
     case 'Bad ID':
-      break;
+      return error;
     case 'Bad Password':
       return error;
     default:
-      console.log(error.default);
+      return 'Undefined Error';
   }
 };

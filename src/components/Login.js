@@ -10,6 +10,7 @@ import { createSelector } from 'reselect';
 import { getError } from 'store/modules/error/selectors';
 import 'react-toastify/dist/ReactToastify.css';
 import PropTypes from 'prop-types';
+import { resetErrorState } from 'store/modules/error/actions';
 
 const mapStateToProps = createSelector([getError], (error) => ({ error }));
 
@@ -20,21 +21,24 @@ function Login({ error }) {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // eslint-disable-next-line no-unused-vars
   const [errorMail, setErrorMail] = useState(false);
-  // eslint-disable-next-line no-unused-vars
   const [errorPassword, setErrorPassword] = useState(false);
 
   useEffect(() => {
+    console.log('enter the useEffect');
     if (error === 'Bad Password') {
+      setErrorMail(false);
       setErrorPassword(true);
     } else if (error === 'Bad ID') {
+      setErrorPassword(false);
       setErrorMail(true);
     }
+
+    // when changing component
     return function cleanup() {
-      console.log('clean');
+      dispatch(resetErrorState());
     };
-  }, [error]);
+  }, [dispatch, error, errorMail, errorPassword]);
 
   const _handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -96,7 +100,6 @@ function Login({ error }) {
                 {t('loginPage.email')}
               </span>
             </label>
-            <span className="inline"></span>
             <input
               className="peer border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500"
               type="text"
