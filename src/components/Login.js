@@ -8,8 +8,16 @@ import { userLogIn } from 'store/modules/user/actions';
 import 'react-toastify/dist/ReactToastify.css';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
+import { createSelector } from 'reselect';
+import { getError } from 'store/modules/error/selectors';
+import { useEffect } from 'react';
 
-function Login() {
+const mapStateToProps = createSelector([getError], (error) => ({
+  error: error
+}));
+
+function Login({ error }) {
+  console.log(`Error base login ${error}`);
   const dispatch = useDispatch();
   let navigate = useNavigate();
 
@@ -60,6 +68,14 @@ function Login() {
     }
   };
 
+  useEffect(() => {
+    if (error === 'Bad Password') {
+      setErrorPassword(true);
+    } else if (error === 'Bad ID') {
+      setErrorMail(true);
+    }
+  }, [error]);
+
   return (
     <div className="flex justify-center items-center h-screen">
       <ToastContainer />
@@ -82,6 +98,7 @@ function Login() {
                 {t('loginPage.email')}
               </span>
             </label>
+            <span className="inline"></span>
             <input
               className="peer border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500"
               type="text"
@@ -136,7 +153,7 @@ function Login() {
 }
 
 Login.propTypes = {
-  isLoggedIn: PropTypes.bool
+  error: PropTypes.string
 };
 
-export default connect()(Login);
+export default connect(mapStateToProps)(Login);
