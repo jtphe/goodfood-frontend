@@ -25,7 +25,6 @@ function Login({ error }) {
   const [errorPassword, setErrorPassword] = useState(false);
 
   useEffect(() => {
-    console.log('enter the useEffect');
     if (error === 'Bad Password') {
       setErrorMail(false);
       setErrorPassword(true);
@@ -101,7 +100,10 @@ function Login({ error }) {
               </span>
             </label>
             <input
-              className="peer border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500"
+              className={
+                'peer border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500' +
+                (errorMail ? ' border-goodfoodRed-500' : '')
+              }
               type="text"
               name="mail"
               id="mail"
@@ -109,7 +111,7 @@ function Login({ error }) {
               onChange={_handleEmailChange}
             />
             {errorMail && (
-              <p className="mt-2 text-pink-600 text-sm">
+              <p className="mt-2 text-goodfoodRed-500 text-sm">
                 {t('loginPage.emailError')}
               </p>
             )}
@@ -126,15 +128,18 @@ function Login({ error }) {
               </a>
             </div>
             <input
-              className="border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500"
+              className={
+                'border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500' +
+                (errorPassword ? ' border-goodfoodRed-500' : '')
+              }
               type="password"
               name="password"
               id="password"
               placeholder={t('loginPage.passwordPlaceHolder')}
               onChange={_handlePasswordChange}
             />
-            {errorPassword === true && (
-              <p className="mt-2 text-pink-600 text-sm">
+            {errorPassword && (
+              <p className="mt-2 text-goodfoodRed-500 text-sm">
                 {t('loginPage.passwordError')}
               </p>
             )}
@@ -154,7 +159,7 @@ function Login({ error }) {
 }
 
 Login.propTypes = {
-  error: PropTypes.string
+  error: PropTypes.object
 };
 
 export default connect(mapStateToProps)(Login);

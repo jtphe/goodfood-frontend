@@ -20,7 +20,6 @@ function Menu({ currentScreen }) {
   };
 
   const _logout = () => {
-    console.log('logout in menu');
     dispatch(logout());
   };
 

@@ -22,7 +22,6 @@ function* signIn({ payload }) {
     if (e.response) {
       const error = errorHandler(e.response?.data.message);
       yield put({ type: M_SET_ERROR, error });
-      console.log('Error while signing up => ', e.response?.data.message);
     }
   }
 }
