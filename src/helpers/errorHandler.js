@@ -4,8 +4,7 @@ export const errorHandler = (error) => {
       console.log(error);
       break;
     case 'Bad Password':
-      console.log(error);
-      break;
+      return error;
     default:
       console.log(error.default);
   }

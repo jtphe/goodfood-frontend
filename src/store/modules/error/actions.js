@@ -1,7 +1,6 @@
-export const M_ERROR_LOGIN = 'M_ERROR_LOGIN';
-export const M_ERROR_PASSWORD = 'M_ERROR_PASSWORD';
+export const M_SET_ERROR = 'M_SET_ERROR';
 
 export const loginError = ({ payload }) => ({
-  type: M_ERROR_LOGIN,
+  type: M_SET_ERROR,
   payload
 });
