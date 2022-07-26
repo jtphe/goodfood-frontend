@@ -1,26 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { emailChecker } from '../helpers/emailChecker';
 import { checkPasswordLength } from '../helpers/passwordManager';
 import { connect, useDispatch } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import { userLogIn } from 'store/modules/user/actions';
-import 'react-toastify/dist/ReactToastify.css';
-import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import { createSelector } from 'reselect';
 import { getError } from 'store/modules/error/selectors';
-import { useEffect } from 'react';
+import 'react-toastify/dist/ReactToastify.css';
+import PropTypes from 'prop-types';
 
-const mapStateToProps = createSelector([getError], (error) => ({
-  error: error
-}));
+const mapStateToProps = createSelector([getError], (error) => ({ error }));
 
 function Login({ error }) {
-  console.log(`Error base login ${error}`);
   const dispatch = useDispatch();
   let navigate = useNavigate();
-
   const { t } = useTranslation();
 
   const [email, setEmail] = useState('');
@@ -29,6 +24,17 @@ function Login({ error }) {
   const [errorMail, setErrorMail] = useState(false);
   // eslint-disable-next-line no-unused-vars
   const [errorPassword, setErrorPassword] = useState(false);
+
+  useEffect(() => {
+    if (error === 'Bad Password') {
+      setErrorPassword(true);
+    } else if (error === 'Bad ID') {
+      setErrorMail(true);
+    }
+    return function cleanup() {
+      console.log('clean');
+    };
+  }, [error]);
 
   const _handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -67,14 +73,6 @@ function Login({ error }) {
       dispatch(userLogIn({ payload }));
     }
   };
-
-  useEffect(() => {
-    if (error === 'Bad Password') {
-      setErrorPassword(true);
-    } else if (error === 'Bad ID') {
-      setErrorMail(true);
-    }
-  }, [error]);
 
   return (
     <div className="flex justify-center items-center h-screen">
