@@ -9,17 +9,17 @@
       "jsx": true
     },
     "extends": [
-        "plugin:react/recommended",
-        "airbnb",
-        "prettier",
-        "prettier-react"
+      "plugin:react/recommended",
+      "airbnb",
+      "prettier",
+      "prettier-react"
     ],
     "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 12,
-        "sourceType": "module"
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "ecmaVersion": 12,
+      "sourceType": "module"
     },
     "parser": "babel-eslint",
     "ecmaVersion": "latest",
@@ -29,23 +29,26 @@
   "rules": {
     "react/react-in-jsx-scope": "off",
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
-      "no-underscore-dangle": "off",
-      "no-use-before-define": "off",
-      "react/forbid-prop-types": "off",
-      "react/require-default-props": "off",
-      "comma-dangle": "off",
-      "import/no-unresolved": "off",
-      "react/jsx-filename-extension": ["off", { "extensions": [".js", ".jsx"] }],
-      "prettier/prettier": ["error", { "singleQuote": true, "trailingComma": "none" }],
-      "import/order": "off",
-      "import/no-extraneous-dependencies": "off",
-      "react-hooks/rules-of-hooks": "error",
-      "react-hooks/exhaustive-deps": "warn",
-      "react/function-component-definition": [
-        2,
-        {
-          "namedComponents": "function-declaration"
-        }
-      ]
+    "no-underscore-dangle": "off",
+    "no-use-before-define": "off",
+    "react/forbid-prop-types": "off",
+    "react/require-default-props": "off",
+    "comma-dangle": "off",
+    "import/no-unresolved": "off",
+    "react/jsx-filename-extension": ["off", { "extensions": [".js", ".jsx"] }],
+    "prettier/prettier": [
+      "error",
+      { "singleQuote": true, "trailingComma": "none" }
+    ],
+    "import/order": "off",
+    "import/no-extraneous-dependencies": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "function-declaration"
+      }
+    ]
   }
 }

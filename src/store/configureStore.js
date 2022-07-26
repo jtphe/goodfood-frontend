@@ -16,7 +16,12 @@ export default () => {
   // mount it on the Store
   const store = createStore(
     rootReducer,
-    compose(Reactotron.createEnhancer(), applyMiddleware(sagaMiddleware))
+    compose(
+      Reactotron.createEnhancer(),
+      applyMiddleware(sagaMiddleware),
+      window.__REDUX_DEVTOOLS_EXTENSION__ &&
+        window.__REDUX_DEVTOOLS_EXTENSION__()
+    )
   );
   // then run the saga
   sagaMiddleware.run(rootSagas);
