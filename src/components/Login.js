@@ -1,17 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-// import { emailChecker } from '../helpers/emailChecker';
-// import { checkPasswordLength } from '../helpers/passwordManager';
-import { connect } from 'react-redux';
+import { emailChecker } from '../helpers/emailChecker';
+import { checkPasswordLength } from '../helpers/passwordManager';
+import { connect, useDispatch } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
+import { userLogIn } from 'store/modules/user/actions';
+import { useNavigate } from 'react-router-dom';
+import { createSelector } from 'reselect';
+import { getError } from 'store/modules/error/selectors';
 import 'react-toastify/dist/ReactToastify.css';
 import PropTypes from 'prop-types';
+import { resetErrorState } from 'store/modules/error/actions';
 
-function Login() {
+const mapStateToProps = createSelector([getError], (error) => ({ error }));
+
+function Login({ error }) {
+  const dispatch = useDispatch();
+  let navigate = useNavigate();
   const { t } = useTranslation();
-  // const dispatch = useDispatch();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMail, setErrorMail] = useState(false);
+  const [errorPassword, setErrorPassword] = useState(false);
+
+  useEffect(() => {
+    if (error === 'Bad Password') {
+      setErrorMail(false);
+      setErrorPassword(true);
+    } else if (error === 'Bad ID') {
+      setErrorPassword(false);
+      setErrorMail(true);
+    }
+
+    // when changing component
+    return function cleanup() {
+      dispatch(resetErrorState());
+    };
+  }, [dispatch, error, errorMail, errorPassword]);
 
   const _handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -21,18 +47,34 @@ function Login() {
     setPassword(event.target.value);
   };
 
+  const _checkCredentials = () => {
+    if (!emailChecker(email) && !checkPasswordLength(password)) {
+      setErrorMail(true);
+      setErrorPassword(true);
+    } else if (!emailChecker(email)) {
+      setErrorMail(true);
+      setErrorPassword(false);
+    } else if (!checkPasswordLength(password)) {
+      setErrorPassword(true);
+      setErrorMail(false);
+    }
+    if (emailChecker(email) && checkPasswordLength(password)) {
+      setErrorPassword(false);
+      setErrorMail(false);
+      return true;
+    }
+  };
+
   const _login = (event) => {
     event.preventDefault();
-    console.log('email', email);
-    console.log('password', password);
-    // if (_checkCredentials()) {
-    //   const payload = {
-    //     email,
-    //     password
-    //   };
-    //   console.log('payload', payload);
-    //   dispatch(signIn({ payload }));
-    // }
+    if (_checkCredentials()) {
+      const payload = {
+        email,
+        password,
+        navigate
+      };
+      dispatch(userLogIn({ payload }));
+    }
   };
 
   return (
@@ -58,16 +100,21 @@ function Login() {
               </span>
             </label>
             <input
-              className="peer border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500"
+              className={
+                'peer border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500' +
+                (errorMail ? ' border-goodfoodRed-500' : '')
+              }
               type="text"
               name="mail"
               id="mail"
               placeholder={t('loginPage.emailPlaceHolder')}
               onChange={_handleEmailChange}
             />
-            <p className="mt-2 invisible peer-invalid:visible text-pink-600 text-sm">
-              Please provide a valid email adrress
-            </p>
+            {errorMail && (
+              <p className="mt-2 text-goodfoodRed-500 text-sm">
+                {t('loginPage.emailError')}
+              </p>
+            )}
           </div>
           <div className="flex flex-col mt-6">
             <div className="flex justify-between">
@@ -81,13 +128,21 @@ function Login() {
               </a>
             </div>
             <input
-              className="border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500"
+              className={
+                'border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500' +
+                (errorPassword ? ' border-goodfoodRed-500' : '')
+              }
               type="password"
               name="password"
               id="password"
               placeholder={t('loginPage.passwordPlaceHolder')}
               onChange={_handlePasswordChange}
             />
+            {errorPassword && (
+              <p className="mt-2 text-goodfoodRed-500 text-sm">
+                {t('loginPage.passwordError')}
+              </p>
+            )}
           </div>
           <button
             className="bg-goodfoodRed-500 py-2 px-5 rounded-md w-full mt-8 text-white"
@@ -104,7 +159,7 @@ function Login() {
 }
 
 Login.propTypes = {
-  isLoggedIn: PropTypes.bool
+  error: PropTypes.string
 };
 
-export default connect()(Login);
+export default connect(mapStateToProps)(Login);

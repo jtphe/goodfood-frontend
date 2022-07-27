@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { updateCurrentScreen } from 'store/modules/app/actions';
+import { logout } from 'store/modules/app/actions';
 
 function Menu({ currentScreen }) {
   const { t } = useTranslation();
@@ -16,6 +17,10 @@ function Menu({ currentScreen }) {
       };
       dispatch(updateCurrentScreen({ payload }));
     }
+  };
+
+  const _logout = () => {
+    dispatch(logout());
   };
 
   return (
@@ -105,6 +110,18 @@ function Menu({ currentScreen }) {
               <span className="mx-4 font-medium">
                 {t('navigation.parameters')}
               </span>
+            </NavLink>
+          </li>
+          <li className="pt-5">
+            <NavLink
+              onClick={() => _logout()}
+              className={() =>
+                'flex items-center px-4 py-2 bg-red-500 rounded-md text-white justify-between transition ease-in-out delay-100 hover:opacity-80'
+              }
+              to="login"
+            >
+              <span className="mx-4 font-medium">{t('navigation.logout')}</span>
+              <img src="./logout_door_icon.svg" alt="logout" className="w-5" />
             </NavLink>
           </li>
         </ul>

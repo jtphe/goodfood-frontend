@@ -9,7 +9,7 @@ import {
 const initialState = {
   name: 'goodfood-frontend',
   networkState: 'connected',
-  currentScreen: 'orders'
+  currentScreen: 'home'
 };
 
 export default function reducer(state = initialState, action) {

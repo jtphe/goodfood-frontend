@@ -1,6 +1,7 @@
 import { persistCombineReducers } from 'redux-persist';
 import app from './app/index';
 import user from './user/index';
+import error from './error/index';
 import storage from 'redux-persist/lib/storage';
 
 const config = {
@@ -11,5 +12,6 @@ const config = {
 
 export default persistCombineReducers(config, {
   app,
-  user
+  user,
+  error
 });

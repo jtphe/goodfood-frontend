@@ -11,7 +11,8 @@
     "orders": "Orders",
     "products": "Products",
     "management": "Stock management",
-    "parameters": "Parameters"
+    "parameters": "Parameters",
+    "logout": "Logout"
   },
   "loginPage": {
     "login": "Sign In",
@@ -20,7 +21,9 @@
     "password": "Password",
     "passwordForget": "Forgot your password ?",
     "passwordPlaceHolder": "Please enter your password",
-    "connection": "Sign In"
+    "connection": "Sign In",
+    "emailError": "Your email seems to be invalid",
+    "passwordError": "Your password is invalid"
   },
   "suppliersPage": {
     "title": "Suppliers"
