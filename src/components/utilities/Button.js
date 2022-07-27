@@ -9,29 +9,27 @@ function Button({ type }) {
 
   const { t } = useTranslation();
 
-  if (type === 'processing') {
-    return (
-      <button
-        className={
-          'bg-cyan-500 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded-full w-40'
-        }
-      >
-        {capitalizeFirstLetter(t('utilities.button.processing'))}
-      </button>
-    );
-  } else if (type === 'delivering') {
-    return (
-      <button className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-full w-40">
-        {capitalizeFirstLetter(t('utilities.button.delivering'))}
-      </button>
-    );
-  } else if (type === 'delivered') {
-    return (
-      <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full w-40">
-        {capitalizeFirstLetter(t('utilities.button.delivered'))}
-      </button>
-    );
-  }
+  const setBtnColor = (type) => {
+    if (type === 'processing') {
+      return 'bg-cyan-500 hover:bg-cyan-700 text-white';
+    } else if (type === 'delivering') {
+      return 'bg-yellow-500 hover:bg-yellow-700 text-white';
+    } else if (type === 'delivered') {
+      return 'bg-green-500 hover:bg-green-700 text-white';
+    }
+  };
+
+  const setBtnText = (type) => {
+    return capitalizeFirstLetter(t(`utilities.button.${type}`));
+  };
+
+  return (
+    <button
+      className={`${setBtnColor(type)} font-bold py-2 px-4 rounded-full w-40`}
+    >
+      {setBtnText(type)}
+    </button>
+  );
 }
 
 Button.propTypes = {
