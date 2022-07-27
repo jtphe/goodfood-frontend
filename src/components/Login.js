@@ -159,7 +159,7 @@ function Login({ error }) {
 }
 
 Login.propTypes = {
-  error: PropTypes.object
+  error: PropTypes.string
 };
 
 export default connect(mapStateToProps)(Login);
