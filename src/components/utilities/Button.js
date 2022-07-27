@@ -9,7 +9,7 @@ function Button({ type }) {
 
   const { t } = useTranslation();
 
-  const setBtnColor = (type) => {
+  const setBtnColor = () => {
     if (type === 'processing') {
       return 'bg-cyan-500 hover:bg-cyan-700 text-white';
     } else if (type === 'delivering') {
@@ -19,15 +19,15 @@ function Button({ type }) {
     }
   };
 
-  const setBtnText = (type) => {
+  const setBtnText = () => {
     return capitalizeFirstLetter(t(`utilities.button.${type}`));
   };
 
   return (
     <button
-      className={`${setBtnColor(type)} font-bold py-2 px-4 rounded-full w-40`}
+      className={`${setBtnColor()} font-bold py-2 px-4 rounded-full w-40`}
     >
-      {setBtnText(type)}
+      {setBtnText()}
     </button>
   );
 }
