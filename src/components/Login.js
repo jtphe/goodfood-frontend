@@ -145,7 +145,7 @@ function Login({ error }) {
             )}
           </div>
           <button
-            className="bg-goodfoodRed-500 py-2 px-5 rounded-md w-full mt-8 text-white"
+            className="bg-goodFoodRed-500 py-2 px-5 rounded-md w-full mt-8 text-white"
             type="submit"
             name="submit"
             id="submit"

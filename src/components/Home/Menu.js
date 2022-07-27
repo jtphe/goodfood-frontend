@@ -32,24 +32,8 @@ function Menu({ currentScreen }) {
           width="150px"
         />
       </div>
-      <aside>
+      <aside className="mt-10">
         <ul>
-          <li>
-            <NavLink
-              onClick={() => _updateCurrentScreen('suppliers')}
-              className={() =>
-                'flex items-center px-4 py-2' +
-                (currentScreen !== 'suppliers'
-                  ? ' text-gray-900 hover:bg-red-400 hover:rounded-md hover:text-white'
-                  : ' bg-red-400 rounded-md text-white')
-              }
-              to="suppliers"
-            >
-              <span className="mx-4 font-medium">
-                {t('navigation.suppliers')}
-              </span>
-            </NavLink>
-          </li>
           <li>
             <NavLink
               onClick={() => _updateCurrentScreen('orders')}
@@ -77,6 +61,22 @@ function Menu({ currentScreen }) {
             >
               <span className="mx-4 font-medium">
                 {t('navigation.products')}
+              </span>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              onClick={() => _updateCurrentScreen('suppliers')}
+              className={() =>
+                'flex items-center px-4 py-2' +
+                (currentScreen !== 'suppliers'
+                  ? ' text-gray-900 hover:bg-red-400 hover:rounded-md hover:text-white'
+                  : ' bg-red-400 rounded-md text-white')
+              }
+              to="suppliers"
+            >
+              <span className="mx-4 font-medium">
+                {t('navigation.suppliers')}
               </span>
             </NavLink>
           </li>

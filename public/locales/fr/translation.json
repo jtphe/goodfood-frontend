@@ -33,7 +33,8 @@
     "passwordError": "Votre mot de passe semble invalide"
   },
   "suppliersPage": {
-    "title": "Fournisseurs"
+    "title": "Fournisseurs",
+    "description": "Dans cette section vous avez la possibilité d’accéder à la fiche descriptive de vos fournisseurs."
   },
   "ordersPage": {
     "title": "Commandes",

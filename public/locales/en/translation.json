@@ -33,7 +33,8 @@
     "passwordError": "Your password is invalid"
   },
   "suppliersPage": {
-    "title": "Suppliers"
+    "title": "Suppliers",
+    "description": "In this section you can access the description of your suppliers."
   },
   "ordersPage": {
     "title": "Orders",

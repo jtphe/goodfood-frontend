@@ -30,7 +30,7 @@ function Home({ currentScreen, isLoggedIn }) {
   }, [isLoggedIn]);
 
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-row bg-goodFoodBeige-500">
       <Menu currentScreen={currentScreen} />
       <CurrentScreen currentScreen={currentScreen} />
     </div>
