@@ -11,7 +11,8 @@
     "orders": "Commandes",
     "products": "Produits",
     "management": "Gestion des stocks",
-    "parameters": "Paramètres"
+    "parameters": "Paramètres",
+    "logout": "Déconnexion"
   },
   "loginPage": {
     "login": "Connectez-vous",

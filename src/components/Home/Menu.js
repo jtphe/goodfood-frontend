@@ -112,18 +112,16 @@ function Menu({ currentScreen }) {
               </span>
             </NavLink>
           </li>
-          <li>
+          <li className="pt-5">
             <NavLink
               onClick={() => _logout()}
               className={() =>
-                'flex items-center px-4 py-2' +
-                (currentScreen !== 'login'
-                  ? ' text-gray-900 hover:bg-red-400 hover:rounded-md hover:text-white'
-                  : ' bg-red-400 rounded-md text-white')
+                'flex items-center px-4 py-2 bg-red-500 rounded-md text-white justify-between transition ease-in-out delay-100 hover:opacity-80'
               }
               to="login"
             >
-              <span className="mx-4 font-medium">logout</span>
+              <span className="mx-4 font-medium">{t('navigation.logout')}</span>
+              <img src="./logout_door_icon.svg" alt="logout" className="w-5" />
             </NavLink>
           </li>
         </ul>

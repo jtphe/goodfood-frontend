@@ -11,7 +11,8 @@
     "orders": "Orders",
     "products": "Products",
     "management": "Stock management",
-    "parameters": "Parameters"
+    "parameters": "Parameters",
+    "logout": "Logout"
   },
   "loginPage": {
     "login": "Sign In",
