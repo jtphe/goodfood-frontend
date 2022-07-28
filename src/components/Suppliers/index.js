@@ -1,10 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Outlet, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { useDispatch, connect } from 'react-redux';
+import { getSuppliers } from 'store/modules/supplier/actions';
+import { createSelector } from 'reselect';
 
-function Suppliers() {
+const mapStateToProps = createSelector(getSuppliers, (suppliers) => {
+  return suppliers;
+});
+
+function Suppliers({ suppliers }) {
+  const dispatch = useDispatch();
+  // const navigate = useNavigate();
   const { t } = useTranslation();
+
+  useEffect(() => {
+    dispatch(getSuppliers());
+    console.log(suppliers);
+  }, [dispatch, suppliers]);
 
   const tmpData = [
     { id: 1, supplierType: 'FOURNISSEUR VIANDE', supplierName: 'GFAIM' },
@@ -54,8 +68,12 @@ function SuppliersList(props) {
   return <div className="flex flex-row mt-8">{supplierItems}</div>;
 }
 
+Suppliers.propTypes = {
+  suppliers: PropTypes.array
+};
+
 SuppliersList.propTypes = {
   suppliers: PropTypes.array
 };
 
-export default Suppliers;
+export default connect(mapStateToProps)(Suppliers);
