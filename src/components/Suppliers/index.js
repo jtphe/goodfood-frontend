@@ -1,30 +1,24 @@
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, connect } from 'react-redux';
-import { getSuppliers } from 'store/modules/supplier/actions';
+import { getSuppliers } from 'store/modules/supplier/selectors';
 import { createSelector } from 'reselect';
 import PropTypes from 'prop-types';
+import { loadSuppliers } from 'store/modules/supplier/actions';
 
-const mapStateToProps = createSelector(getSuppliers, (suppliers) => {
-  return suppliers;
+const mapStateToProps = createSelector([getSuppliers], (suppliers) => {
+  return { suppliers };
 });
 
-function Suppliers({ suppliers }) {
+function Suppliers({ suppliers, currentScreen }) {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
   useEffect(() => {
-    dispatch(getSuppliers());
+    dispatch(loadSuppliers());
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [suppliers]);
-
-  const tmpData = [
-    { id: 1, supplierType: 'FOURNISSEUR VIANDE', supplierName: 'GFAIM' },
-    { id: 2, supplierType: 'FOURNISSEUR VIANDE', supplierName: 'GFAIM' },
-    { id: 3, supplierType: 'FOURNISSEUR VIANDE', supplierName: 'GFAIM' },
-    { id: 4, supplierType: 'FOURNISSEUR VIANDE', supplierName: 'GFAIM' }
-  ];
+  }, []);
 
   return (
     <div className="ml-12">
@@ -34,33 +28,31 @@ function Suppliers({ suppliers }) {
       <p className="text-goodFoodMustard-500 font-semibold mt-6">
         {t('suppliersPage.description')}
       </p>
-      <SuppliersList suppliers={tmpData} />
-      <Outlet />
+      <SuppliersList suppliers={suppliers} currentScreen={currentScreen} />
     </div>
   );
 }
 
-function SuppliersList(props) {
+function SuppliersList({ suppliers }) {
   const navigate = useNavigate();
-
-  const _openSupplierDetails = (supplier) => {
-    console.log('supplier', supplier);
-    // Open the supplier details screen
-    navigate('/suppliers/' + supplier.id, { replace: true });
-  };
-
-  const supplierItems = props.suppliers.map((supplier, index) => (
+  const supplierItems = suppliers.map((supplier, index) => (
     <div
       key={index}
       className="bg-white p-6 first:ml-0 m-4 w-40 justify-items-center text-center rounded-xl drop-shadow-xl"
-      onClick={() => _openSupplierDetails(supplier)}
     >
       <h3 className="font-black text-goodFoodMustard-500 select-none">
-        {supplier.supplierType}
+        {supplier.type}
       </h3>
       <h3 className="mt-2 font-black text-goodFoodRed-500 select-none">
-        {supplier.supplierName}
+        {supplier.name}
       </h3>
+      <button
+        onClick={() => navigate(`/suppliers/${supplier.id}`)}
+        to={`${supplier.id}`}
+      >
+        <span>Click</span>
+      </button>
+      ;
     </div>
   ));
 
@@ -68,11 +60,13 @@ function SuppliersList(props) {
 }
 
 Suppliers.propTypes = {
-  suppliers: PropTypes.array
+  suppliers: PropTypes.array,
+  currentScreen: PropTypes.string
 };
 
 SuppliersList.propTypes = {
-  suppliers: PropTypes.array
+  suppliers: PropTypes.array,
+  currentScreen: PropTypes.string
 };
 
 export default connect(mapStateToProps)(Suppliers);

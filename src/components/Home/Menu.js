@@ -3,20 +3,11 @@ import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { updateCurrentScreen, logout } from 'store/modules/app/actions';
+import { logout } from 'store/modules/app/actions';
 
 function Menu({ currentScreen }) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-
-  const _updateCurrentScreen = (screen) => {
-    if (currentScreen !== screen) {
-      const payload = {
-        screen
-      };
-      dispatch(updateCurrentScreen({ payload }));
-    }
-  };
 
   const _logout = () => {
     dispatch(logout());
@@ -35,7 +26,6 @@ function Menu({ currentScreen }) {
         <ul>
           <li>
             <NavLink
-              onClick={() => _updateCurrentScreen('orders')}
               className={() =>
                 'flex items-center px-4 py-2' +
                 (currentScreen !== 'orders'
@@ -49,7 +39,6 @@ function Menu({ currentScreen }) {
           </li>
           <li>
             <NavLink
-              onClick={() => _updateCurrentScreen('products')}
               className={() =>
                 'flex items-center px-4 py-2' +
                 (currentScreen !== 'products'
@@ -65,7 +54,6 @@ function Menu({ currentScreen }) {
           </li>
           <li>
             <NavLink
-              onClick={() => _updateCurrentScreen('suppliers')}
               className={() =>
                 'flex items-center px-4 py-2' +
                 (currentScreen !== 'suppliers'
@@ -81,7 +69,6 @@ function Menu({ currentScreen }) {
           </li>
           <li>
             <NavLink
-              onClick={() => _updateCurrentScreen('management')}
               className={() =>
                 'flex items-center px-4 py-2' +
                 (currentScreen !== 'management'
@@ -97,7 +84,6 @@ function Menu({ currentScreen }) {
           </li>
           <li>
             <NavLink
-              onClick={() => _updateCurrentScreen('parameters')}
               className={() =>
                 'flex items-center px-4 py-2' +
                 (currentScreen !== 'parameters'

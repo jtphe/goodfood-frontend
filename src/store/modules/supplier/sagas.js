@@ -3,7 +3,7 @@ import { GET_SUPPLIERS, M_SET_SUPPLIERS } from './actions';
 import { getToken } from 'store/modules/user/selectors';
 import fetchService from 'api/fetchService';
 
-function* getSuppliers() {
+function* loadSuppliers() {
   try {
     const token = yield select(getToken);
     const query = {
@@ -20,5 +20,5 @@ function* getSuppliers() {
 }
 
 export default function* watchSuppliers() {
-  yield takeLatest(GET_SUPPLIERS, getSuppliers);
+  yield takeLatest(GET_SUPPLIERS, loadSuppliers);
 }
