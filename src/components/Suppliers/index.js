@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Outlet, useNavigate } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { useDispatch, connect } from 'react-redux';
 import { getSuppliers } from 'store/modules/supplier/actions';
 import { createSelector } from 'reselect';
+import PropTypes from 'prop-types';
 
 const mapStateToProps = createSelector(getSuppliers, (suppliers) => {
   return suppliers;
@@ -12,13 +12,12 @@ const mapStateToProps = createSelector(getSuppliers, (suppliers) => {
 
 function Suppliers({ suppliers }) {
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
   const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(getSuppliers());
-    console.log(suppliers);
-  }, [dispatch, suppliers]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [suppliers]);
 
   const tmpData = [
     { id: 1, supplierType: 'FOURNISSEUR VIANDE', supplierName: 'GFAIM' },
