@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { getSuppliers } from 'store/modules/supplier/selectors';
@@ -13,6 +13,7 @@ const mapStateToProps = createSelector([getSuppliers], (suppliers) => {
 function SupplierDetail({ suppliers }) {
   const { t } = useTranslation();
   const { id } = useParams();
+  const navigate = useNavigate();
   const idNumber = parseInt(id);
   const supplierDetails = suppliers.find(
     (supplier) => supplier.id === idNumber
@@ -20,11 +21,17 @@ function SupplierDetail({ suppliers }) {
 
   return (
     <>
-      <h1 className="text-4xl text-goodFoodRed-500 font-bold">
+      <button
+        className="text-goodFoodRed-500 font-bold"
+        onClick={() => navigate(-1)}
+      >
+        {'<'} {capitalizeFirstLetter(t('utilities.return'))}
+      </button>
+      <h1 className="text-4xl mt-4 text-goodFoodRed-500 font-bold">
         {supplierDetails.name}
       </h1>
       <h2 className="text-3xl mt-3 text-goodFoodMustard-500 font-bold">
-        {capitalizeFirstLetter(t('suppliersPage.supplierDetail.supplier'))}:
+        {capitalizeFirstLetter(t('suppliersPage.supplierDetail.supplier'))}:{' '}
         {supplierDetails.type}
       </h2>
       <p className="text-xl mt-5 text-neutral-800">

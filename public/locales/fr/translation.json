@@ -11,7 +11,8 @@
       "processing": "en cours",
       "delivering": "livraison",
       "delivered": "livré"
-    }
+    },
+    "return": "Retour"
   },
   "navigation": {
     "suppliers": "Fournisseurs",

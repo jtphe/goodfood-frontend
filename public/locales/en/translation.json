@@ -11,7 +11,8 @@
       "processing": "processing",
       "delivering": "on its way",
       "delivered": "delivered"
-    }
+    },
+    "return": "go back"
   },
   "navigation": {
     "suppliers": "Suppliers",
