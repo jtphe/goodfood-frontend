@@ -22,8 +22,8 @@ function Suppliers({ suppliers }) {
   }, []);
 
   return (
-    <div className="ml-12">
-      <h1 className="text-3xl mt-16 text-goodFoodRed-500 font-bold">
+    <>
+      <h1 className="text-4xl text-goodFoodRed-500 font-bold">
         {t('suppliersPage.title')}
       </h1>
       <p className="text-goodFoodMustard-500 font-semibold mt-6">
@@ -50,7 +50,7 @@ function Suppliers({ suppliers }) {
           );
         })}
       </div>
-    </div>
+    </>
   );
 }
 

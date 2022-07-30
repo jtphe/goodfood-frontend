@@ -22,7 +22,9 @@ function Home({ isLoggedIn }) {
   return (
     <div className="flex flex-row bg-goodFoodBeige-500">
       <Menu />
-      <Outlet />
+      <div className="ml-12 mt-16">
+        <Outlet />
+      </div>
     </div>
   );
 }

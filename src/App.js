@@ -3,7 +3,7 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Login from './components/Login';
 import Suppliers from './components/Suppliers';
-import SupplierDetails from 'components/Suppliers/SupplierDetails';
+import SupplierDetail from 'components/Suppliers/SupplierDetail';
 import Orders from './components/Orders';
 import Products from './components/Products';
 import Management from './components/Management';
@@ -19,7 +19,7 @@ function App() {
         <Route path="orders" element={<Orders />} />
         <Route path="products" element={<Products />} />
         <Route path="suppliers" element={<Suppliers />} />
-        <Route path="suppliers/:id" element={<SupplierDetails />} />
+        <Route path="suppliers/:id" element={<SupplierDetail />} />
         <Route path="management" element={<Management />} />
         <Route path="parameters" element={<Parameters />} />
         <Route path="*" element={<NotFound />} />

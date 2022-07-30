@@ -1,12 +1,9 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
+import { capitalizeFirstLetter } from './utilitaryFunctions';
 
 function Button({ type }) {
-  const capitalizeFirstLetter = (string) => {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  };
-
   const { t } = useTranslation();
 
   const setBtnColor = () => {
