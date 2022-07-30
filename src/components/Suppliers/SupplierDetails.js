@@ -1,15 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
+import { createSelector } from 'reselect';
+import { connect } from 'react-redux';
+import { getSuppliers } from 'store/modules/supplier/selectors';
 
-function SupplierDetails() {
+const mapStateToProps = createSelector([getSuppliers], (suppliers) => {
+  return { suppliers };
+});
+function SupplierDetails({ suppliers }) {
   const { id } = useParams();
-  console.log(id);
+  const idNumber = parseInt(id);
+  const supplierDetails = suppliers.find(
+    (supplier) => supplier.id === idNumber
+  );
+
+  console.log(`id: ${id}`);
+  console.log(typeof id);
+  console.log(`suppliers`);
+  console.log(supplierDetails);
+
   return <h1>Details</h1>;
 }
 
 SupplierDetails.propTypes = {
-  supplierDetails: PropTypes.object
+  suppliers: PropTypes.array
 };
 
-export default SupplierDetails;
+export default connect(mapStateToProps)(SupplierDetails);
