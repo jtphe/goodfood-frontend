@@ -11,8 +11,9 @@ const mapStateToProps = createSelector([getSuppliers], (suppliers) => {
   return { suppliers };
 });
 
-function Suppliers({ suppliers, currentScreen }) {
+function Suppliers({ suppliers }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -28,43 +29,32 @@ function Suppliers({ suppliers, currentScreen }) {
       <p className="text-goodFoodMustard-500 font-semibold mt-6">
         {t('suppliersPage.description')}
       </p>
-      <SuppliersList suppliers={suppliers} currentScreen={currentScreen} />
+      <div className="flex flex-row mt-8">
+        {/* map here */}
+        {suppliers.map((supplier) => {
+          return (
+            <div
+              key={supplier.id}
+              className="bg-white p-6 first:ml-0 m-4 w-40 justify-items-center text-center rounded-xl drop-shadow-xl"
+              onClick={() => {
+                navigate(`/suppliers/${supplier.id}`);
+              }}
+            >
+              <h3 className="font-black text-goodFoodMustard-500 select-none">
+                {supplier.type}
+              </h3>
+              <h3 className="mt-2 font-black text-goodFoodRed-500 select-none">
+                {supplier.name}
+              </h3>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
 
-function SuppliersList({ suppliers }) {
-  const navigate = useNavigate();
-  const supplierItems = suppliers.map((supplier, index) => (
-    <div
-      key={index}
-      className="bg-white p-6 first:ml-0 m-4 w-40 justify-items-center text-center rounded-xl drop-shadow-xl"
-    >
-      <h3 className="font-black text-goodFoodMustard-500 select-none">
-        {supplier.type}
-      </h3>
-      <h3 className="mt-2 font-black text-goodFoodRed-500 select-none">
-        {supplier.name}
-      </h3>
-      <button
-        onClick={() => navigate(`/suppliers/${supplier.id}`)}
-        to={`${supplier.id}`}
-      >
-        <span>Click</span>
-      </button>
-      ;
-    </div>
-  ));
-
-  return <div className="flex flex-row mt-8">{supplierItems}</div>;
-}
-
 Suppliers.propTypes = {
-  suppliers: PropTypes.array,
-  currentScreen: PropTypes.string
-};
-
-SuppliersList.propTypes = {
   suppliers: PropTypes.array,
   currentScreen: PropTypes.string
 };
