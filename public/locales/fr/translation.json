@@ -11,7 +11,8 @@
       "processing": "en cours",
       "delivering": "livraison",
       "delivered": "livré"
-    }
+    },
+    "return": "Retour"
   },
   "navigation": {
     "suppliers": "Fournisseurs",
@@ -33,7 +34,14 @@
     "passwordError": "Votre mot de passe semble invalide"
   },
   "suppliersPage": {
-    "title": "Fournisseurs"
+    "title": "Fournisseurs",
+    "description": "Dans cette section vous avez la possibilité d’accéder à la fiche descriptive de vos fournisseurs.",
+    "supplierDetail": {
+      "supplier": "fournisseur",
+      "deliveryAddress": "adresse",
+      "phoneNumber": "numéro téléphone",
+      "manager": "responsable"
+    }
   },
   "ordersPage": {
     "title": "Commandes",

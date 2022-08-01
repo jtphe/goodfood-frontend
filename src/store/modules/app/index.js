@@ -1,10 +1,6 @@
 /* eslint-disable default-param-last */
 import update from 'immutability-helper';
-import {
-  M_UPDATE_NETWORK_STATE,
-  M_RESET_APP_STORE,
-  M_UPDATE_CURRENT_SCREEN
-} from './actions';
+import { M_UPDATE_NETWORK_STATE, M_RESET_APP_STORE } from './actions';
 
 const initialState = {
   name: 'goodfood-frontend',
@@ -18,12 +14,6 @@ export default function reducer(state = initialState, action) {
       return update(state, {
         networkState: {
           $set: action.payload.connectionState
-        }
-      });
-    case M_UPDATE_CURRENT_SCREEN:
-      return update(state, {
-        currentScreen: {
-          $set: action.payload.screen
         }
       });
     case M_RESET_APP_STORE:
