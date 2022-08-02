@@ -1,11 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logout } from 'store/modules/app/actions';
 
-function Menu({ currentScreen }) {
+function Menu() {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
@@ -26,9 +25,9 @@ function Menu({ currentScreen }) {
         <ul>
           <li>
             <NavLink
-              className={() =>
+              className={({ isActive }) =>
                 'flex items-center px-4 py-2' +
-                (currentScreen !== 'orders'
+                (!isActive
                   ? ' text-gray-900 hover:bg-red-400 hover:rounded-md hover:text-white'
                   : ' bg-red-400 rounded-md text-white')
               }
@@ -39,9 +38,9 @@ function Menu({ currentScreen }) {
           </li>
           <li>
             <NavLink
-              className={() =>
+              className={({ isActive }) =>
                 'flex items-center px-4 py-2' +
-                (currentScreen !== 'products'
+                (!isActive
                   ? ' text-gray-900 hover:bg-red-400 hover:rounded-md hover:text-white'
                   : ' bg-red-400 rounded-md text-white')
               }
@@ -54,9 +53,9 @@ function Menu({ currentScreen }) {
           </li>
           <li>
             <NavLink
-              className={() =>
+              className={({ isActive }) =>
                 'flex items-center px-4 py-2' +
-                (currentScreen !== 'suppliers'
+                (!isActive
                   ? ' text-gray-900 hover:bg-red-400 hover:rounded-md hover:text-white'
                   : ' bg-red-400 rounded-md text-white')
               }
@@ -69,9 +68,9 @@ function Menu({ currentScreen }) {
           </li>
           <li>
             <NavLink
-              className={() =>
+              className={({ isActive }) =>
                 'flex items-center px-4 py-2' +
-                (currentScreen !== 'management'
+                (!isActive
                   ? ' text-gray-900 hover:bg-red-400 hover:rounded-md hover:text-white'
                   : ' bg-red-400 rounded-md text-white')
               }
@@ -84,9 +83,9 @@ function Menu({ currentScreen }) {
           </li>
           <li>
             <NavLink
-              className={() =>
+              className={({ isActive }) =>
                 'flex items-center px-4 py-2' +
-                (currentScreen !== 'parameters'
+                (!isActive
                   ? ' text-gray-900 hover:bg-red-400 hover:rounded-md hover:text-white'
                   : ' bg-red-400 rounded-md text-white')
               }
@@ -114,9 +113,5 @@ function Menu({ currentScreen }) {
     </div>
   );
 }
-
-Menu.propTypes = {
-  currentScreen: PropTypes.string
-};
 
 export default Menu;
