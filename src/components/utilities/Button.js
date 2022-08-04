@@ -13,6 +13,8 @@ function Button({ type }) {
       return 'bg-yellow-500 hover:bg-yellow-700 text-white';
     } else if (type === 'delivered') {
       return 'bg-green-500 hover:bg-green-700 text-white';
+    } else if (type === 'edit') {
+      return 'bg-yellow-500 hover:bg-yellow-700 text-white';
     }
   };
 

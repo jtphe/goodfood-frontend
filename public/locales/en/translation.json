@@ -10,7 +10,8 @@
     "button": {
       "processing": "processing",
       "delivering": "on its way",
-      "delivered": "delivered"
+      "delivered": "delivered",
+      "edit": "edit"
     },
     "return": "go back"
   },
@@ -53,7 +54,8 @@
     "status": "Status"
   },
   "productsPage": {
-    "title": "Products"
+    "title": "Products",
+    "description": "In this section you can find all products. You can add, edit or delete a product."
   },
   "managementPage": {
     "title": "Stock management"

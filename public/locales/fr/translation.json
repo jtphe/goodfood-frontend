@@ -10,7 +10,8 @@
     "button": {
       "processing": "en cours",
       "delivering": "livraison",
-      "delivered": "livré"
+      "delivered": "livré",
+      "edit": "éditer"
     },
     "return": "Retour"
   },
@@ -53,7 +54,8 @@
     "status": "Statut"
   },
   "productsPage": {
-    "title": "Produits"
+    "title": "Produits",
+    "description": "Cette section est dédiée aux différents produits proposées. Vous pouvez en ajouter, éditer ou supprimer."
   },
   "managementPage": {
     "title": "Gestion des stocks"
