@@ -11,7 +11,8 @@
       "processing": "processing",
       "delivering": "on its way",
       "delivered": "delivered",
-      "edit": "edit"
+      "edit": "edit",
+      "addProduct": "add a new product"
     },
     "return": "go back"
   },
@@ -55,7 +56,15 @@
   },
   "productsPage": {
     "title": "Products",
-    "description": "In this section you can find all products. You can add, edit or delete a product."
+    "description": "In this section you can find all products. You can add, edit or delete a product.",
+    "editPage": {
+      "title": "Edit of",
+      "editName": "Edit the product's name",
+      "editDescription": "Description",
+      "editPrice": "Price",
+      "editDiscount": "Discount",
+      "editImage": "Image"
+    }
   },
   "managementPage": {
     "title": "Stock management"

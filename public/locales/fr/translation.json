@@ -11,7 +11,8 @@
       "processing": "en cours",
       "delivering": "livraison",
       "delivered": "livré",
-      "edit": "éditer"
+      "edit": "éditer",
+      "addProduct": "ajouter un produit"
     },
     "return": "Retour"
   },
@@ -55,7 +56,15 @@
   },
   "productsPage": {
     "title": "Produits",
-    "description": "Cette section est dédiée aux différents produits proposées. Vous pouvez en ajouter, éditer ou supprimer."
+    "description": "Cette section est dédiée aux différents produits proposées. Vous pouvez en ajouter, éditer ou supprimer.",
+    "editPage": {
+      "title": "Édition de",
+      "editName": "Éditer le nom de votre produit",
+      "editDescription": "Description",
+      "editPrice": "Prix",
+      "editDiscount": "Réduction",
+      "editImage": "Image"
+    }
   },
   "managementPage": {
     "title": "Gestion des stocks"

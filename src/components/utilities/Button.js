@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { capitalizeFirstLetter } from './utilitaryFunctions';
 
-function Button({ type }) {
+function Button({ type, onClick, className }) {
   const { t } = useTranslation();
 
   const setBtnColor = () => {
@@ -15,6 +15,8 @@ function Button({ type }) {
       return 'bg-green-500 hover:bg-green-700 text-white';
     } else if (type === 'edit') {
       return 'bg-yellow-500 hover:bg-yellow-700 text-white';
+    } else if (type === 'addProduct') {
+      return 'bg-cyan-500 hover:bg-cyan-700 text-white';
     }
   };
 
@@ -24,7 +26,8 @@ function Button({ type }) {
 
   return (
     <button
-      className={`${setBtnColor()} font-bold py-2 px-4 rounded-full w-40`}
+      className={`${setBtnColor()} font-bold py-2 px-4 rounded-full w-40 ${className}`}
+      onClick={onClick}
     >
       {setBtnText()}
     </button>
@@ -32,7 +35,9 @@ function Button({ type }) {
 }
 
 Button.propTypes = {
-  type: propTypes.string.isRequired
+  type: propTypes.string.isRequired,
+  onClick: propTypes.func,
+  className: propTypes.string
 };
 
 export default Button;

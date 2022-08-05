@@ -1,9 +1,11 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import Button from '../utilities/Button';
 
 function Products() {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const tmpData = [
     {
@@ -49,13 +51,20 @@ function Products() {
                 src="./burger_placeholder.jpg"
                 alt="burger"
               />
-              <div className="mt-4">
-                <Button type="edit"></Button>
+              <div>
+                <Button
+                  className={'mt-4'}
+                  onClick={() => {
+                    navigate(`/products/edit/${product.id}`);
+                  }}
+                  type="edit"
+                ></Button>
               </div>
             </div>
           );
         })}
       </div>
+      <Button className={'mt-6'} type="addProduct"></Button>
     </div>
   );
 }
