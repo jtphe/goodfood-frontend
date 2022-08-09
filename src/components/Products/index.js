@@ -54,17 +54,23 @@ function Products() {
               <div>
                 <Button
                   className={'mt-4'}
+                  type="edit"
                   onClick={() => {
                     navigate(`/products/edit/${product.id}`);
                   }}
-                  type="edit"
                 ></Button>
               </div>
             </div>
           );
         })}
       </div>
-      <Button className={'mt-6'} type="addProduct"></Button>
+      <Button
+        className={'mt-6'}
+        type="addProduct"
+        onClick={() => {
+          navigate(`/products/add`);
+        }}
+      ></Button>
     </div>
   );
 }

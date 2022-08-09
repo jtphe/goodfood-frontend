@@ -17,6 +17,8 @@ function Button({ type, onClick, className }) {
       return 'bg-yellow-500 hover:bg-yellow-700 text-white';
     } else if (type === 'addProduct') {
       return 'bg-cyan-500 hover:bg-cyan-700 text-white';
+    } else if (type === 'add') {
+      return 'bg-cyan-500 hover:bg-cyan-700 text-white';
     }
   };
 

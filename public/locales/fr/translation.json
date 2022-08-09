@@ -12,7 +12,8 @@
       "delivering": "livraison",
       "delivered": "livré",
       "edit": "éditer",
-      "addProduct": "ajouter un produit"
+      "addProduct": "ajouter un produit",
+      "add": "ajouter"
     },
     "return": "Retour"
   },
@@ -57,6 +58,15 @@
   "productsPage": {
     "title": "Produits",
     "description": "Cette section est dédiée aux différents produits proposées. Vous pouvez en ajouter, éditer ou supprimer.",
+    "addPage": {
+      "title": "Créer un nouveau produit",
+      "productName": "Nom du nouveau produit",
+      "productDescription": "Descrition du nouveau produit",
+      "productType": "Type de produit",
+      "productPrice": "Prix",
+      "productImage": "Image",
+      "productImagePlaceholder": "Importer une image depuis cet ordinateur"
+    },
     "editPage": {
       "title": "Édition de",
       "editName": "Éditer le nom de votre produit",
