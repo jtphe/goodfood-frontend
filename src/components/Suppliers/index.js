@@ -54,8 +54,7 @@ function Suppliers({ suppliers }) {
 }
 
 Suppliers.propTypes = {
-  suppliers: PropTypes.array,
-  currentScreen: PropTypes.string
+  suppliers: PropTypes.array
 };
 
 export default connect(mapStateToProps)(Suppliers);

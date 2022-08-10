@@ -1,35 +1,30 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, connect } from 'react-redux';
+import { getProducts } from 'store/modules/product/selectors';
+import { createSelector } from 'reselect';
+import { loadProducts } from 'store/modules/product/actions';
+import PropTypes from 'prop-types';
 import Button from '../utilities/Button';
 
-function Products() {
-  const { t } = useTranslation();
-  const navigate = useNavigate();
+const mapStateToProps = createSelector([getProducts], (products) => {
+  return { products };
+});
 
-  const tmpData = [
-    {
-      id: 1,
-      name: 'Super Burger',
-      description: 'Un délicieux burger',
-      image: '',
-      productType: 0,
-      discount: 0,
-      price: 5.99
-    },
-    {
-      id: 2,
-      name: 'Mega Burger',
-      description: 'Un Mega délicieux burger',
-      image: '',
-      productType: 0,
-      discount: 0,
-      price: 6.99
-    }
-  ];
+function Products({ products }) {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    dispatch(loadProducts());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
-    <div>
+    <>
       <h1 className="text-4xl text-goodFoodRed-500 font-bold">
         {t('productsPage.title')}
       </h1>
@@ -37,7 +32,7 @@ function Products() {
         {t('productsPage.description')}
       </p>
       <div className="flex flex-row mt-8">
-        {tmpData.map((product) => {
+        {products.map((product) => {
           return (
             <div
               key={product.id}
@@ -71,8 +66,12 @@ function Products() {
           navigate(`/products/add`);
         }}
       ></Button>
-    </div>
+    </>
   );
 }
 
-export default Products;
+Products.propTypes = {
+  products: PropTypes.array
+};
+
+export default connect(mapStateToProps)(Products);
