@@ -18,7 +18,26 @@ function Products({ products }) {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  // console.log(state);
+  const tmpData = [
+    {
+      id: 1,
+      name: 'Super Burger',
+      description: 'Un délicieux burger',
+      image: '',
+      productType: 0,
+      discount: 0,
+      price: 5.99
+    },
+    {
+      id: 2,
+      name: 'Mega Burger',
+      description: 'Un Mega délicieux burger',
+      image: '',
+      productType: 0,
+      discount: 0,
+      price: 6.99
+    }
+  ];
 
   useEffect(() => {
     dispatch(loadProducts());
