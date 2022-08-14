@@ -6,8 +6,18 @@ import { useDispatch, connect } from 'react-redux';
 import { createProduct } from 'store/modules/product/actions';
 import PropTypes from 'prop-types';
 import Button from '../utilities/Button';
+import { useDispatch, connect } from 'react-redux';
+import { createProduct } from 'store/modules/product/actions';
+import { createSelector } from 'reselect';
+import { getUser } from 'store/modules/user/selectors';
+import PropTypes from 'prop-types';
 
-function ProductAdd() {
+const mapStateToProps = createSelector([getUser], (user) => {
+  return { user };
+});
+
+function ProductAdd({ user }) {
+  console.log(user);
   const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
