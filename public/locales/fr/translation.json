@@ -64,6 +64,8 @@
       "productDescription": "Descrition du nouveau produit",
       "productType": "Type de produit",
       "productPrice": "Prix",
+      "productDiscount": "Réduction",
+      "productStock": "Stock",
       "productImage": "Image",
       "productImagePlaceholder": "Importer une image depuis cet ordinateur"
     },

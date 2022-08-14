@@ -13,7 +13,7 @@ function Menu() {
   };
 
   return (
-    <div className="flex flex-col w-64 h-screen px-4 py-8 overflow-y-auto border-r bg-goodFoodGrey-500">
+    <div className="flex flex-col w-1/6 h-screen px-4 py-8 overflow-y-auto border-r bg-goodFoodGrey-500">
       <div className="flex items-center justify-center">
         <img
           src="/logo_corporate.png"

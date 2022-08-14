@@ -20,9 +20,9 @@ function Home({ isLoggedIn }) {
   }, [isLoggedIn]);
 
   return (
-    <div className="flex flex-row w-fit bg-goodFoodBeige-500">
+    <div className="flex flex-row bg-goodFoodBeige-500">
       <Menu />
-      <div className="ml-12 mt-16">
+      <div className="flex flex-col ml-12 mt-16">
         <Outlet />
       </div>
     </div>

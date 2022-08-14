@@ -64,6 +64,8 @@
       "productDescription": "New product description",
       "productType": "You product is",
       "productPrice": "Price",
+      "productDiscount": "Discount",
+      "productStock": "Stock",
       "productImage": "Image",
       "productImagePlaceholder": "Import an image from this computer"
     },

@@ -31,12 +31,12 @@ function Products({ products }) {
       <p className="text-goodFoodMustard-500 font-semibold mt-6">
         {t('productsPage.description')}
       </p>
-      <div className="flex flex-row mt-8">
+      <div className="flex flex-wrap">
         {products.map((product) => {
           return (
             <div
               key={product.id}
-              className="bg-white p-4 first:ml-0 m-4 w-60 flex flex-col justify-between text-center rounded-xl drop-shadow-xl"
+              className="bg-white p-4 m-5 justify-between text-center rounded-xl drop-shadow-xl grow-1 shrink basis-2"
             >
               <h3 className="font-black text-goodFoodMustard-500 mb-4 select-none">
                 {product.name}

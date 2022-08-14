@@ -1,6 +1,8 @@
 import { call, takeLatest, select, put } from 'redux-saga/effects';
-import { GET_PRODUCTS, M_SET_PRODUCTS } from './actions';
+import { GET_PRODUCTS, M_SET_PRODUCTS, CREATE_PRODUCT } from './actions';
+import { M_SET_ERROR } from '../error/actions';
 import { getToken } from 'store/modules/user/selectors';
+import { errorHandler } from 'helpers/errorHandler';
 import fetchService from 'api/fetchService';
 
 function* loadProducts() {
@@ -19,6 +21,39 @@ function* loadProducts() {
   }
 }
 
+function* createProduct({ payload }) {
+  console.log(payload);
+  try {
+    const token = yield select(getToken);
+    const query = {
+      method: 'post',
+      url: `http://localhost:8000/products/`,
+      data: {
+        name: payload.name,
+        description: payload.description,
+        productType: payload.productType,
+        price: payload.price,
+        discount: payload.discount,
+        stocl: payload.stock,
+        image: payload.image,
+        restaurant_id: payload.restaurant_id
+      },
+      headers: { token }
+    };
+
+    const res = yield call(fetchService.request, query);
+
+    yield put({ type: CREATE_PRODUCT, res });
+    payload.navigate('/');
+  } catch (e) {
+    if (e.response) {
+      const error = errorHandler(e.response?.data.message);
+      yield put({ type: M_SET_ERROR, error });
+    }
+  }
+}
+
 export default function* watchProducts() {
   yield takeLatest(GET_PRODUCTS, loadProducts);
+  yield takeLatest(CREATE_PRODUCT, createProduct);
 }
