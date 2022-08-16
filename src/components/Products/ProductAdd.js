@@ -1,38 +1,63 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { capitalizeFirstLetter } from 'components/utilities/utilitaryFunctions';
-import Button from '../utilities/Button';
 import { useDispatch, connect } from 'react-redux';
 import { createProduct } from 'store/modules/product/actions';
-import { createSelector } from 'reselect';
-import { getUser } from 'store/modules/user/selectors';
 import PropTypes from 'prop-types';
+import Button from '../utilities/Button';
 
-const mapStateToProps = createSelector([getUser], (user) => {
-  return { user };
-});
-
-function ProductAdd({ user }) {
-  console.log(user);
+function ProductAdd() {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [productName, setProductName] = useState('');
+  const [productDescription, setProductDescription] = useState('');
+  const [productType, setProductType] = useState(1);
+  const [productPrice, setProductPrice] = useState('');
+  const [productDiscount, setProductDiscount] = useState('');
+  const [productStock, setProductStock] = useState('');
 
   const _createProduct = (event) => {
     event.preventDefault();
     const payload = {
-      name: document.getElementById('name').value,
-      description: document.getElementById('description').value,
-      productType: parseInt(document.getElementById('productType').value),
-      price: parseFloat(document.getElementById('price').value),
-      discount: parseFloat(document.getElementById('discount').value),
-      stock: parseInt(document.getElementById('stock').value),
-      image: document.getElementById('image').value,
-      restaurant_id: user.restaurant.id
+      name: productName,
+      description: productDescription,
+      productType: parseInt(productType, 10),
+      price: parseFloat(productPrice),
+      discount: productDiscount.length > 0 ? parseFloat(productDiscount) : null,
+      stock: parseInt(productStock),
+      image: document.getElementById('image').value
+      // restaurant_id: user.restaurant.id
     };
     dispatch(createProduct({ payload }));
   };
+
+  function _handleInputChange(inputName, event) {
+    const inputValue = event.target.value;
+    switch (inputName) {
+      case 'productName':
+        setProductName(inputValue);
+        break;
+      case 'productDescription':
+        setProductDescription(inputValue);
+        break;
+      case 'productPrice':
+        setProductPrice(inputValue);
+        break;
+      case 'productDiscount':
+        setProductDiscount(inputValue);
+        break;
+      case 'productStock':
+        setProductStock(inputValue);
+        break;
+      case 'productType':
+        setProductType(inputValue);
+        break;
+      default:
+        return null;
+    }
+  }
 
   return (
     <>
@@ -57,6 +82,8 @@ function ProductAdd({ user }) {
                 type="text"
                 name="name"
                 id="name"
+                value={productName}
+                onChange={(e) => _handleInputChange('productName', e)}
               />
             </div>
             <div className="flex flex-col mt-5">
@@ -68,13 +95,21 @@ function ProductAdd({ user }) {
                 type="text"
                 name="description"
                 id="description"
+                value={productDescription}
+                onChange={(e) => _handleInputChange('productDescription', e)}
               />
             </div>
             <div className="mt-5">
               <div>
                 <label>{t('productsPage.addPage.productType')}</label>
               </div>
-              <select name="productType" id="productType" className="p-2">
+              <select
+                name="productType"
+                id="productType"
+                className="p-2"
+                value={productType}
+                onChange={(e) => _handleInputChange('productType', e)}
+              >
                 <option value="1">Burger</option>
                 <option value="2">Tacos</option>
                 <option value="3">Pizza</option>
@@ -92,6 +127,8 @@ function ProductAdd({ user }) {
                 type="text"
                 name="price"
                 id="price"
+                value={productPrice}
+                onChange={(e) => _handleInputChange('productPrice', e)}
               />
               <span>€</span>
             </div>
@@ -104,6 +141,8 @@ function ProductAdd({ user }) {
                 type="text"
                 name="discount"
                 id="discount"
+                value={productDiscount}
+                onChange={(e) => _handleInputChange('productDiscount', e)}
               />
               <span>%</span>
             </div>
@@ -116,6 +155,8 @@ function ProductAdd({ user }) {
                 type="text"
                 name="stock"
                 id="stock"
+                value={productStock}
+                onChange={(e) => _handleInputChange('productStock', e)}
               />
             </div>
             <div className="flex flex-row mt-5">
@@ -139,7 +180,7 @@ function ProductAdd({ user }) {
 }
 
 ProductAdd.propTypes = {
-  user: PropTypes.array
+  user: PropTypes.object
 };
 
-export default connect(mapStateToProps)(ProductAdd);
+export default connect()(ProductAdd);

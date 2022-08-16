@@ -22,19 +22,18 @@ function* loadProducts() {
 }
 
 function* createProduct({ payload }) {
-  console.log(payload);
   try {
     const token = yield select(getToken);
     const query = {
       method: 'post',
-      url: `http://localhost:8000/products/`,
+      url: `http://localhost:8000/products`,
       data: {
         name: payload.name,
         description: payload.description,
         productType: payload.productType,
         price: payload.price,
         discount: payload.discount,
-        stocl: payload.stock,
+        stock: payload.stock,
         image: payload.image,
         restaurant_id: payload.restaurant_id
       },
