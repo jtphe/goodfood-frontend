@@ -76,7 +76,7 @@ function ProductAdd() {
         </h1>
         <form className="mb-10" onSubmit={_createProduct} method="POST">
           <div className="flex flex-col mt-6">
-            <div className="flex flex-col">
+            <div className="flex flex-col w-3/6">
               <label htmlFor="name">
                 {t('productsPage.addPage.productName')}
               </label>
@@ -89,7 +89,7 @@ function ProductAdd() {
                 onChange={(e) => _handleInputChange('productName', e)}
               />
             </div>
-            <div className="flex flex-col mt-5">
+            <div className="flex flex-col mt-5 w-3/6">
               <label htmlFor="description">
                 {t('productsPage.addPage.productDescription')}
               </label>

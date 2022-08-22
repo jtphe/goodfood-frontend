@@ -21,9 +21,9 @@ function Home({ isLoggedIn }) {
   }, [isLoggedIn]);
 
   return (
-    <div className="flex flex-row bg-goodFoodBeige-500">
+    <div className="flex flex-row h-screen bg-goodFoodBeige-500">
       <Menu />
-      <div className="flex flex-col ml-12 mt-16">
+      <div className="flex flex-col overflow-y-auto w-5/6 ml-12 py-10">
         <ToastContainer />
         <Outlet />
       </div>
