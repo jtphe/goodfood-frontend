@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, connect } from 'react-redux';
 import { getProducts } from 'store/modules/product/selectors';
 import { createSelector } from 'reselect';
@@ -17,6 +17,7 @@ function Products({ products }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { state } = useLocation();
 
   const tmpData = [
     {
@@ -42,10 +43,11 @@ function Products({ products }) {
   useEffect(() => {
     dispatch(loadProducts());
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [state]);
 
   return (
     <>
+      {productAdded ? <ToastContainer /> : ''}
       <h1 className="text-4xl text-goodFoodRed-500 font-bold">
         {t('productsPage.title')}
       </h1>
