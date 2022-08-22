@@ -10,9 +10,16 @@
     "button": {
       "processing": "en cours",
       "delivering": "livraison",
-      "delivered": "livré"
+      "delivered": "livré",
+      "edit": "éditer",
+      "addProduct": "ajouter un produit",
+      "add": "ajouter"
     },
     "return": "Retour"
+  },
+  "toastify": {
+    "error": "Il y a eu une erreur",
+    "productAdd": "Produit ajouté"
   },
   "navigation": {
     "suppliers": "Fournisseurs",
@@ -53,7 +60,36 @@
     "status": "Statut"
   },
   "productsPage": {
-    "title": "Produits"
+    "title": "Produits",
+    "description": "Cette section est dédiée aux différents produits proposées. Vous pouvez en ajouter, éditer ou supprimer.",
+    "addPage": {
+      "title": "Créer un nouveau produit",
+      "productName": "Nom du nouveau produit",
+      "productNamePlaceholder": "Ajoutez le nom du produit",
+      "productDescription": "Descrition du nouveau produit",
+      "productDescriptionPlaceholder": "Ajoutez une description au produit",
+      "productType": "Type de produit",
+      "productPrice": "Prix",
+      "productDiscount": "Réduction",
+      "productStock": "Stock",
+      "productImage": "Image",
+      "productImagePlaceholder": "Importer une image depuis cet ordinateur",
+      "type": {
+        "burger": "Burger",
+        "tacos": "Tacos",
+        "pizza": "Pizza",
+        "drink": "Boisson",
+        "snack": "Snack"
+      }
+    },
+    "editPage": {
+      "title": "Édition de",
+      "editName": "Éditer le nom de votre produit",
+      "editDescription": "Description",
+      "editPrice": "Prix",
+      "editDiscount": "Réduction",
+      "editImage": "Image"
+    }
   },
   "managementPage": {
     "title": "Gestion des stocks"

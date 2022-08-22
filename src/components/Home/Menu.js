@@ -13,10 +13,10 @@ function Menu() {
   };
 
   return (
-    <div className="flex flex-col w-64 h-screen px-4 py-8 overflow-y-auto border-r bg-goodFoodGrey-500">
+    <div className="flex flex-col w-1/6 px-4 py-8 border-r bg-goodFoodGrey-500">
       <div className="flex items-center justify-center">
         <img
-          src="./logo_corporate.png"
+          src="/logo_corporate.png"
           alt="good food logo corporate"
           width="150px"
         />
@@ -105,7 +105,7 @@ function Menu() {
               to="login"
             >
               <span className="mx-4 font-medium">{t('navigation.logout')}</span>
-              <img src="./logout_door_icon.svg" alt="logout" className="w-5" />
+              <img src="/logout_door_icon.svg" alt="logout" className="w-5" />
             </NavLink>
           </li>
         </ul>

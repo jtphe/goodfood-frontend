@@ -30,12 +30,11 @@ function Suppliers({ suppliers }) {
         {t('suppliersPage.description')}
       </p>
       <div className="flex flex-row mt-8">
-        {/* map here */}
         {suppliers.map((supplier) => {
           return (
             <div
               key={supplier.id}
-              className="bg-white p-6 first:ml-0 m-4 w-40 justify-items-center text-center rounded-xl drop-shadow-xl"
+              className="bg-white p-6 first:ml-0 m-4 w-40 flex flex-col justify-items-center text-center rounded-xl drop-shadow-xl"
               onClick={() => {
                 navigate(`/suppliers/${supplier.id}`);
               }}
@@ -55,8 +54,7 @@ function Suppliers({ suppliers }) {
 }
 
 Suppliers.propTypes = {
-  suppliers: PropTypes.array,
-  currentScreen: PropTypes.string
+  suppliers: PropTypes.array
 };
 
 export default connect(mapStateToProps)(Suppliers);
