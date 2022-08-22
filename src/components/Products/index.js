@@ -17,9 +17,6 @@ function Products({ products }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { t } = useTranslation();
-  // const { state } = useLocation();
-
-  // console.log(state);
 
   useEffect(() => {
     dispatch(loadProducts());

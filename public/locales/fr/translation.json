@@ -92,7 +92,9 @@
     }
   },
   "managementPage": {
-    "title": "Gestion des stocks"
+    "title": "Gestion des stocks",
+    "description": "Dans cette section vous avez accès à tout le stock journalier disponible.",
+    "unavailable": "Indisponible"
   },
   "parametersPage": {
     "title": "Paramètres"

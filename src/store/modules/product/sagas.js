@@ -7,7 +7,7 @@ import {
   M_CREATE_PRODUCT
 } from './actions';
 import { M_SET_ERROR } from '../error/actions';
-import { getToken } from 'store/modules/user/selectors';
+import { getToken, getUserRestaurant } from 'store/modules/user/selectors';
 import { errorHandler } from 'helpers/errorHandler';
 import fetchService from 'api/fetchService';
 import { toast } from 'react-toastify';
@@ -15,9 +15,11 @@ import { toast } from 'react-toastify';
 function* loadProducts() {
   try {
     const token = yield select(getToken);
+    const restaurant = yield select(getUserRestaurant);
+
     const query = {
       method: 'get',
-      url: `http://localhost:8000/restaurants/5/products`,
+      url: `http://localhost:8000/restaurants/${restaurant.id}/products`,
       headers: { token }
     };
     const res = yield call(fetchService.request, query);

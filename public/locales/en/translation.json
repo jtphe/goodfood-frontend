@@ -92,7 +92,9 @@
     }
   },
   "managementPage": {
-    "title": "Stock management"
+    "title": "Stock management",
+    "description": "In this section you have access to all available daily stock.",
+    "unavailable": "Unavailable"
   },
   "parametersPage": {
     "title": "Parameters"
