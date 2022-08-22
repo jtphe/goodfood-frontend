@@ -65,7 +65,7 @@ function ProductAdd() {
   return (
     <>
       <button
-        className="text-goodFoodRed-500 font-bold mb-16 text-left"
+        className="text-goodFoodRed-500 font-bold mb-8 text-left text-xl"
         onClick={() => navigate(-1)}
       >
         {'<'} {capitalizeFirstLetter(t('utilities.return'))}
@@ -77,12 +77,12 @@ function ProductAdd() {
         <form className="mb-10" onSubmit={_createProduct} method="POST">
           <div className="flex flex-col mt-6">
             <div className="flex flex-col w-3/6">
-              <label htmlFor="name">
+              <label htmlFor="name" className="mb-1">
                 {t('productsPage.addPage.productName')}
               </label>
               <input
                 className="border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500"
-                placeholder={t('productsPage.addPage.productName')}
+                placeholder={t('productsPage.addPage.productNamePlaceholder')}
                 required="required"
                 type="text"
                 name="name"
@@ -92,12 +92,14 @@ function ProductAdd() {
               />
             </div>
             <div className="flex flex-col mt-5 w-3/6">
-              <label htmlFor="description">
+              <label htmlFor="description" className="mb-1">
                 {t('productsPage.addPage.productDescription')}
               </label>
               <input
                 className="border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500"
-                placeholder={t('productsPage.addPage.productDescription')}
+                placeholder={t(
+                  'productsPage.addPage.productDescriptionPlaceholder'
+                )}
                 required="required"
                 type="text"
                 name="description"
@@ -113,7 +115,7 @@ function ProductAdd() {
               <select
                 name="productType"
                 id="productType"
-                className="mt-2 py-2 px-3 rounded-md"
+                className="mt-2 py-2 px-3 rounded-md border"
                 value={productType}
                 onChange={(e) => _handleInputChange('productType', e)}
               >
@@ -140,7 +142,7 @@ function ProductAdd() {
                 {t('productsPage.addPage.productPrice')}
               </label>
               <input
-                className="border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500 w-28"
+                className="border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500 w-28 mr-2"
                 placeholder="9.99"
                 required="required"
                 type="number"
@@ -156,7 +158,7 @@ function ProductAdd() {
                 {t('productsPage.addPage.productDiscount')}
               </label>
               <input
-                className="border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500 w-28"
+                className="border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500 w-28 mr-2"
                 placeholder="50"
                 type="number"
                 name="discount"
