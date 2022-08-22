@@ -6,10 +6,6 @@ import { useDispatch, connect } from 'react-redux';
 import { createProduct } from 'store/modules/product/actions';
 import PropTypes from 'prop-types';
 import Button from '../utilities/Button';
-import { useDispatch, connect } from 'react-redux';
-import { createProduct } from 'store/modules/product/actions';
-import PropTypes from 'prop-types';
-import Button from '../utilities/Button';
 
 function ProductAdd() {
   const { t } = useTranslation();

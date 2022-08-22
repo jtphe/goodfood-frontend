@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, connect } from 'react-redux';
 import { getProducts } from 'store/modules/product/selectors';
 import { createSelector } from 'reselect';
@@ -17,37 +17,14 @@ function Products({ products }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const { state } = useLocation();
-
-  const tmpData = [
-    {
-      id: 1,
-      name: 'Super Burger',
-      description: 'Un délicieux burger',
-      image: '',
-      productType: 0,
-      discount: 0,
-      price: 5.99
-    },
-    {
-      id: 2,
-      name: 'Mega Burger',
-      description: 'Un Mega délicieux burger',
-      image: '',
-      productType: 0,
-      discount: 0,
-      price: 6.99
-    }
-  ];
 
   useEffect(() => {
     dispatch(loadProducts());
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state]);
+  }, []);
 
   return (
     <>
-      {productAdded ? <ToastContainer /> : ''}
       <h1 className="text-4xl text-goodFoodRed-500 font-bold">
         {t('productsPage.title')}
       </h1>
