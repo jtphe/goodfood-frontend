@@ -82,6 +82,8 @@ function ProductAdd() {
               </label>
               <input
                 className="border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500"
+                placeholder={t('productsPage.addPage.productName')}
+                required="required"
                 type="text"
                 name="name"
                 id="name"
@@ -95,6 +97,8 @@ function ProductAdd() {
               </label>
               <input
                 className="border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500"
+                placeholder={t('productsPage.addPage.productDescription')}
+                required="required"
                 type="text"
                 name="description"
                 id="description"
@@ -109,15 +113,25 @@ function ProductAdd() {
               <select
                 name="productType"
                 id="productType"
-                className="p-2"
+                className="mt-2 py-2 px-3 rounded-md"
                 value={productType}
                 onChange={(e) => _handleInputChange('productType', e)}
               >
-                <option value="1">Burger</option>
-                <option value="2">Tacos</option>
-                <option value="3">Pizza</option>
-                <option value="4">Drink</option>
-                <option value="5">Snack</option>
+                <option value="1">
+                  {t('productsPage.addPage.type.burger')}
+                </option>
+                <option value="2">
+                  {t('productsPage.addPage.type.tacos')}
+                </option>
+                <option value="3">
+                  {t('productsPage.addPage.type.pizza')}
+                </option>
+                <option value="4">
+                  {t('productsPage.addPage.type.drink')}
+                </option>
+                <option value="5">
+                  {t('productsPage.addPage.type.snack')}
+                </option>
               </select>
               <br />
             </div>
@@ -127,7 +141,9 @@ function ProductAdd() {
               </label>
               <input
                 className="border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500 w-28"
-                type="text"
+                placeholder="9.99"
+                required="required"
+                type="number"
                 name="price"
                 id="price"
                 value={productPrice}
@@ -141,7 +157,8 @@ function ProductAdd() {
               </label>
               <input
                 className="border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500 w-28"
-                type="text"
+                placeholder="50"
+                type="number"
                 name="discount"
                 id="discount"
                 value={productDiscount}
@@ -155,7 +172,9 @@ function ProductAdd() {
               </label>
               <input
                 className="border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500 w-28"
-                type="text"
+                placeholder="12"
+                required="required"
+                type="number"
                 name="stock"
                 id="stock"
                 value={productStock}
