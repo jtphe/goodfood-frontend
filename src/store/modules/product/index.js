@@ -1,4 +1,4 @@
-import { M_SET_PRODUCTS } from './actions';
+import { M_CREATE_PRODUCT, M_SET_PRODUCTS } from './actions';
 import update from 'immutability-helper';
 
 const initialState = {
@@ -11,6 +11,12 @@ export default function reducer(state = initialState, action) {
       return update(state, {
         products: {
           $set: action.res
+        }
+      });
+    case M_CREATE_PRODUCT:
+      return update(state, {
+        products: {
+          $push: [action.res]
         }
       });
     default:

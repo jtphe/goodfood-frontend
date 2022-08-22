@@ -27,7 +27,8 @@ function ProductAdd() {
       price: parseFloat(productPrice),
       discount: productDiscount.length > 0 ? parseFloat(productDiscount) : null,
       stock: parseInt(productStock),
-      image: document.getElementById('image').value
+      image: document.getElementById('image').value,
+      navigate: navigate
       // restaurant_id: user.restaurant.id
     };
     dispatch(createProduct({ payload }));

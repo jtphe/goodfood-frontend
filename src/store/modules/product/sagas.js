@@ -1,5 +1,10 @@
 import { call, takeLatest, select, put } from 'redux-saga/effects';
-import { GET_PRODUCTS, M_SET_PRODUCTS, CREATE_PRODUCT } from './actions';
+import {
+  GET_PRODUCTS,
+  M_SET_PRODUCTS,
+  CREATE_PRODUCT,
+  M_CREATE_PRODUCT
+} from './actions';
 import { M_SET_ERROR } from '../error/actions';
 import { getToken } from 'store/modules/user/selectors';
 import { errorHandler } from 'helpers/errorHandler';
@@ -42,8 +47,8 @@ function* createProduct({ payload }) {
 
     const res = yield call(fetchService.request, query);
 
-    yield put({ type: CREATE_PRODUCT, res });
-    payload.navigate('/');
+    yield put({ type: M_CREATE_PRODUCT, res });
+    payload.navigate('/products', { state: { productAdded: true } });
   } catch (e) {
     if (e.response) {
       const error = errorHandler(e.response?.data.message);
