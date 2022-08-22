@@ -65,7 +65,7 @@ function ProductAdd() {
   return (
     <>
       <button
-        className="text-goodFoodRed-500 font-bold mb-16 text-left"
+        className="text-goodFoodRed-500 font-bold mb-16 text-left text-xl"
         onClick={() => navigate(-1)}
       >
         {'<'} {capitalizeFirstLetter(t('utilities.return'))}
@@ -126,7 +126,7 @@ function ProductAdd() {
                 {t('productsPage.addPage.productPrice')}
               </label>
               <input
-                className="border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500 w-28"
+                className="border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500 w-28 mr-2"
                 type="text"
                 name="price"
                 id="price"
@@ -140,7 +140,7 @@ function ProductAdd() {
                 {t('productsPage.addPage.productDiscount')}
               </label>
               <input
-                className="border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500 w-28"
+                className="border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500 w-28 mr-2"
                 type="text"
                 name="discount"
                 id="discount"

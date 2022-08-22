@@ -14,11 +14,11 @@ function Button({ type, onClick, className }) {
     } else if (type === 'delivered') {
       return 'bg-green-500 hover:bg-green-700 text-white';
     } else if (type === 'edit') {
-      return 'bg-yellow-500 hover:bg-yellow-700 text-white';
+      return 'bg-goodFoodMustard-500 text-white';
     } else if (type === 'addProduct') {
-      return 'bg-cyan-500 hover:bg-cyan-700 text-white';
+      return 'bg-goodFoodGreen-100 hover:bg-goodFoodGreen-500 text-white';
     } else if (type === 'add') {
-      return 'bg-cyan-500 hover:bg-cyan-700 text-white';
+      return 'bg-goodFoodGreen-100 hover:bg-goodFoodGreen-500 text-white';
     }
   };
 
@@ -28,7 +28,7 @@ function Button({ type, onClick, className }) {
 
   return (
     <button
-      className={`${setBtnColor()} font-bold py-2 px-4 rounded-full w-40 ${className}`}
+      className={`${setBtnColor()} font-bold py-2 px-4 rounded-lg w-40 ${className}`}
       onClick={onClick}
     >
       {setBtnText()}
