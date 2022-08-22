@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { call, takeLatest, select, put } from 'redux-saga/effects';
 import {
   GET_PRODUCTS,
@@ -9,6 +10,7 @@ import { M_SET_ERROR } from '../error/actions';
 import { getToken } from 'store/modules/user/selectors';
 import { errorHandler } from 'helpers/errorHandler';
 import fetchService from 'api/fetchService';
+import { toast } from 'react-toastify';
 
 function* loadProducts() {
   try {
@@ -48,12 +50,15 @@ function* createProduct({ payload }) {
     const res = yield call(fetchService.request, query);
 
     yield put({ type: M_CREATE_PRODUCT, res });
-    payload.navigate('/products', { state: { productAdded: true } });
+
+    toast.success(payload.messageSuccess);
+    payload.navigate('/products');
   } catch (e) {
     if (e.response) {
       const error = errorHandler(e.response?.data.message);
       yield put({ type: M_SET_ERROR, error });
     }
+    toast.error(payload.messageError);
   }
 }
 

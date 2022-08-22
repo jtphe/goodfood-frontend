@@ -3,6 +3,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import { getToken } from 'store/modules/user/selectors';
+import { ToastContainer } from 'react-toastify';
 import PropTypes from 'prop-types';
 import Menu from 'components/Home/Menu';
 
@@ -23,6 +24,7 @@ function Home({ isLoggedIn }) {
     <div className="flex flex-row bg-goodFoodBeige-500">
       <Menu />
       <div className="flex flex-col ml-12 mt-16">
+        <ToastContainer />
         <Outlet />
       </div>
     </div>

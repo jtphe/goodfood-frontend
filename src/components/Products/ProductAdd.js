@@ -28,8 +28,10 @@ function ProductAdd() {
       discount: productDiscount.length > 0 ? parseFloat(productDiscount) : null,
       stock: parseInt(productStock),
       image: document.getElementById('image').value,
-      navigate: navigate
+      navigate: navigate,
       // restaurant_id: user.restaurant.id
+      messageSuccess: t('toastify.productAdd'),
+      messageError: t('toastify.error')
     };
     dispatch(createProduct({ payload }));
   };

@@ -1,12 +1,11 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, connect } from 'react-redux';
 import { getProducts } from 'store/modules/product/selectors';
 import { createSelector } from 'reselect';
 import { loadProducts } from 'store/modules/product/actions';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PropTypes from 'prop-types';
 import Button from '../utilities/Button';
@@ -19,23 +18,17 @@ function Products({ products }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const { state } = useLocation();
+  // const { state } = useLocation();
 
-  console.log(state);
-
-  const productAdded = state;
-  if (productAdded !== null) {
-    toast('Le produit a été ajouté');
-  }
+  // console.log(state);
 
   useEffect(() => {
     dispatch(loadProducts());
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state]);
+  }, []);
 
   return (
     <>
-      {productAdded ? <ToastContainer /> : ''}
       <h1 className="text-4xl text-goodFoodRed-500 font-bold">
         {t('productsPage.title')}
       </h1>

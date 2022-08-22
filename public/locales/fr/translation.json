@@ -17,6 +17,10 @@
     },
     "return": "Retour"
   },
+  "toastify": {
+    "error": "Il y a eu une erreur",
+    "productAdd": "Produit ajouté"
+  },
   "navigation": {
     "suppliers": "Fournisseurs",
     "orders": "Commandes",
