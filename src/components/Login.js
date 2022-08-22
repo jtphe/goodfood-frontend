@@ -130,7 +130,7 @@ function Login({ error }) {
             <input
               className={
                 'border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500' +
-                (errorPassword ? ' border-goodfoodRed-500' : '')
+                (errorPassword ? ' border-goodFoodRed-500' : '')
               }
               type="password"
               name="password"
@@ -139,7 +139,7 @@ function Login({ error }) {
               onChange={_handlePasswordChange}
             />
             {errorPassword && (
-              <p className="mt-2 text-goodfoodRed-500 text-sm">
+              <p className="mt-2 text-goodFoodRed-500 text-sm">
                 {t('loginPage.passwordError')}
               </p>
             )}

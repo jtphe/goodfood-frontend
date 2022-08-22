@@ -4,7 +4,8 @@ module.exports = {
     extend: {
       colors: {
         goodFoodRed: {
-          500: '#D73427'
+          500: '#D73427',
+          100: '#F1D0C5'
         },
         goodFoodBeige: {
           500: '#F8f7ED'
