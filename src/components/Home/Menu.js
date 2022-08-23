@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -9,9 +9,12 @@ import { FaUsers, FaDoorOpen } from 'react-icons/fa';
 import { ImSpoonKnife } from 'react-icons/im';
 import { IoMdSettings } from 'react-icons/io';
 
-function Menu() {
+function Menu({ role }) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const isManager = useMemo(() => {
+    return role === 'manager';
+  }, [role]);
 
   const _logout = () => {
     dispatch(logout());
@@ -42,34 +45,38 @@ function Menu() {
               </span>
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              className={({ isActive }) =>
-                'flex items-center px-4 py-2 text-xl' +
-                (!isActive ? ' opacity-50' : ' text-goodFoodRed-500')
-              }
-              to="products"
-            >
-              <ImSpoonKnife size={20} />
-              <span className="mx-4 font-medium">
-                {t('navigation.products')}
-              </span>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              className={({ isActive }) =>
-                'flex items-center px-4 py-2 text-xl' +
-                (!isActive ? ' opacity-50' : ' text-goodFoodRed-500')
-              }
-              to="suppliers"
-            >
-              <FaUsers size={22} />
-              <span className="mx-4 font-medium">
-                {t('navigation.suppliers')}
-              </span>
-            </NavLink>
-          </li>
+          {isManager ? (
+            <>
+              <li>
+                <NavLink
+                  className={({ isActive }) =>
+                    'flex items-center px-4 py-2 text-xl' +
+                    (!isActive ? ' opacity-50' : ' text-goodFoodRed-500')
+                  }
+                  to="products"
+                >
+                  <ImSpoonKnife size={20} />
+                  <span className="mx-4 font-medium">
+                    {t('navigation.products')}
+                  </span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className={({ isActive }) =>
+                    'flex items-center px-4 py-2 text-xl' +
+                    (!isActive ? ' opacity-50' : ' text-goodFoodRed-500')
+                  }
+                  to="suppliers"
+                >
+                  <FaUsers size={22} />
+                  <span className="mx-4 font-medium">
+                    {t('navigation.suppliers')}
+                  </span>
+                </NavLink>
+              </li>
+            </>
+          ) : null}
           <li>
             <NavLink
               className={({ isActive }) =>
