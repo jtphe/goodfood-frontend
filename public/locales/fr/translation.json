@@ -11,8 +11,8 @@
     "passwordTooShort": "Le mot de passe doivent faire au minimum 8 charactères"
   },
   "languages": {
-    "french": "français",
-    "english": "anglais"
+    "french": "Français",
+    "english": "Anglais"
   },
   "error": {
     "pageNotFound": "Page introuvable..."
@@ -125,6 +125,12 @@
     "unavailable": "Indisponible"
   },
   "parametersPage": {
-    "title": "Paramètres"
+    "title": "Paramètres",
+    "description": "Dans cette section vous pourrez paramétrer votre interface ainsi que gérer les membres de la franchise.",
+    "languages": "Langues",
+    "membersList": "Liste des membres",
+    "name": "Nom",
+    "firstname": "Prénom",
+    "mail": "Mail"
   }
 }

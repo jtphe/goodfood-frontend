@@ -146,7 +146,6 @@ function ProductAdd() {
                   {t('productsPage.addPage.type.snack')}
                 </option>
               </select>
-              <br />
             </div>
             <div className="flex flex-row mt-6 items-baseline text-right">
               <label htmlFor="price" className="mr-3">

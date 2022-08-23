@@ -11,8 +11,8 @@
     "passwordTooShort": "Password must be at least 8 characters long"
   },
   "languages": {
-    "french": "french",
-    "english": "english"
+    "french": "French",
+    "english": "English"
   },
   "error": {
     "pageNotFound": "Page not found..."
@@ -125,6 +125,12 @@
     "unavailable": "Unavailable"
   },
   "parametersPage": {
-    "title": "Parameters"
+    "title": "Parameters",
+    "description": "In this section you will be able to set up your interface and manage the members of the franchise.",
+    "languages": "Languages",
+    "membersList": "Members list",
+    "name": "Name",
+    "firstname": "Firstname",
+    "mail": "Email"
   }
 }
