@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from './utilities/Button';
+import Button from '../utilities/Button';
 import { useTranslation } from 'react-i18next';
 
 function Orders() {
