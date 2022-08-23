@@ -3,6 +3,11 @@ import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logout } from 'store/modules/app/actions';
+import { HiOutlineClipboardList } from 'react-icons/hi';
+import { TbBuildingWarehouse } from 'react-icons/tb';
+import { FaUsers, FaDoorOpen } from 'react-icons/fa';
+import { ImSpoonKnife } from 'react-icons/im';
+import { IoMdSettings } from 'react-icons/io';
 
 function Menu() {
   const { t } = useTranslation();
@@ -13,7 +18,7 @@ function Menu() {
   };
 
   return (
-    <div className="flex flex-col w-1/6 px-4 py-8 border-r bg-goodFoodGrey-500">
+    <div className="flex flex-col w-1/4 px-4 py-8 border-r bg-goodFoodGrey-500">
       <div className="flex items-center justify-center">
         <img
           src="/logo_corporate.png"
@@ -26,26 +31,26 @@ function Menu() {
           <li>
             <NavLink
               className={({ isActive }) =>
-                'flex items-center px-4 py-2' +
-                (!isActive
-                  ? ' text-gray-900 hover:bg-red-400 hover:rounded-md hover:text-white'
-                  : ' bg-red-400 rounded-md text-white')
+                'flex items-center pl-3 pr-4 py-2 text-xl' +
+                (!isActive ? ' opacity-50' : ' text-goodFoodRed-500')
               }
               to="orders"
             >
-              <span className="mx-4 font-medium">{t('navigation.orders')}</span>
+              <HiOutlineClipboardList size={26} />
+              <span className=" ml-3.5 font-medium">
+                {t('navigation.orders')}
+              </span>
             </NavLink>
           </li>
           <li>
             <NavLink
               className={({ isActive }) =>
-                'flex items-center px-4 py-2' +
-                (!isActive
-                  ? ' text-gray-900 hover:bg-red-400 hover:rounded-md hover:text-white'
-                  : ' bg-red-400 rounded-md text-white')
+                'flex items-center px-4 py-2 text-xl' +
+                (!isActive ? ' opacity-50' : ' text-goodFoodRed-500')
               }
               to="products"
             >
+              <ImSpoonKnife size={20} />
               <span className="mx-4 font-medium">
                 {t('navigation.products')}
               </span>
@@ -54,13 +59,12 @@ function Menu() {
           <li>
             <NavLink
               className={({ isActive }) =>
-                'flex items-center px-4 py-2' +
-                (!isActive
-                  ? ' text-gray-900 hover:bg-red-400 hover:rounded-md hover:text-white'
-                  : ' bg-red-400 rounded-md text-white')
+                'flex items-center px-4 py-2 text-xl' +
+                (!isActive ? ' opacity-50' : ' text-goodFoodRed-500')
               }
               to="suppliers"
             >
+              <FaUsers size={22} />
               <span className="mx-4 font-medium">
                 {t('navigation.suppliers')}
               </span>
@@ -69,13 +73,12 @@ function Menu() {
           <li>
             <NavLink
               className={({ isActive }) =>
-                'flex items-center px-4 py-2' +
-                (!isActive
-                  ? ' text-gray-900 hover:bg-red-400 hover:rounded-md hover:text-white'
-                  : ' bg-red-400 rounded-md text-white')
+                'flex items-center px-4 py-2 text-xl' +
+                (!isActive ? ' opacity-50' : ' text-goodFoodRed-500')
               }
               to="management"
             >
+              <TbBuildingWarehouse size={22} />
               <span className="mx-4 font-medium">
                 {t('navigation.management')}
               </span>
@@ -84,30 +87,33 @@ function Menu() {
           <li>
             <NavLink
               className={({ isActive }) =>
-                'flex items-center px-4 py-2' +
-                (!isActive
-                  ? ' text-gray-900 hover:bg-red-400 hover:rounded-md hover:text-white'
-                  : ' bg-red-400 rounded-md text-white')
+                'flex items-center px-4 py-2 text-xl' +
+                (!isActive ? ' opacity-50' : ' text-goodFoodRed-500')
               }
               to="parameters"
             >
+              <IoMdSettings size={22} />
               <span className="mx-4 font-medium">
                 {t('navigation.parameters')}
               </span>
             </NavLink>
           </li>
-          <li className="pt-5">
-            <NavLink
-              onClick={() => _logout()}
-              className={() =>
-                'flex items-center px-4 py-2 bg-red-500 rounded-md text-white justify-between transition ease-in-out delay-100 hover:opacity-80'
-              }
-              to="login"
-            >
-              <span className="mx-4 font-medium">{t('navigation.logout')}</span>
-              <img src="/logout_door_icon.svg" alt="logout" className="w-5" />
-            </NavLink>
-          </li>
+          <div>
+            <li className="absolute bottom-10">
+              <NavLink
+                onClick={() => _logout()}
+                className={() =>
+                  'flex items-center px-4 py-4 bg-goodFoodRed-500 rounded-md text-white justify-between transition ease-in-out delay-100 hover:opacity-80 ml-12'
+                }
+                to="login"
+              >
+                <span className="mx-4 font-medium">
+                  {t('navigation.logout')}
+                </span>
+                <FaDoorOpen size={22} />
+              </NavLink>
+            </li>
+          </div>
         </ul>
       </aside>
     </div>
