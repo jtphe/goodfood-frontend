@@ -1,39 +1,54 @@
+/* eslint-disable no-undef */
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { capitalizeFirstLetter } from 'components/utilities/utilitaryFunctions';
-import { useDispatch, connect } from 'react-redux';
-import { createProduct } from 'store/modules/product/actions';
+import { connect } from 'react-redux';
+// import { useDispatch, connect } from 'react-redux';
+// import { createProduct } from 'store/modules/product/actions';
+import { awsConfig } from '../../config';
+import S3FileUpload from 'react-s3';
 import PropTypes from 'prop-types';
 import Button from '../utilities/Button';
+
+window.Buffer = window.Buffer || require('buffer').Buffer;
 
 function ProductAdd() {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [productName, setProductName] = useState('');
   const [productDescription, setProductDescription] = useState('');
   const [productType, setProductType] = useState(1);
   const [productPrice, setProductPrice] = useState('');
   const [productDiscount, setProductDiscount] = useState('');
   const [productStock, setProductStock] = useState('');
+  const [productImage, setProductImage] = useState(null);
 
-  const _createProduct = (event) => {
+  const _createProduct = async (event) => {
     event.preventDefault();
-    const payload = {
-      name: productName,
-      description: productDescription,
-      productType: parseInt(productType, 10),
-      price: parseFloat(productPrice),
-      discount: productDiscount.length > 0 ? parseFloat(productDiscount) : null,
-      stock: parseInt(productStock),
-      image: document.getElementById('image').value,
-      navigate: navigate,
-      // restaurant_id: user.restaurant.id
-      messageSuccess: t('toastify.productAdd'),
-      messageError: t('toastify.error')
-    };
-    dispatch(createProduct({ payload }));
+    if (productImage) {
+      S3FileUpload.uploadFile(productImage, awsConfig)
+        .then((data) => {
+          console.log(data);
+          return data;
+        })
+        .catch((err) => console.error(err));
+    }
+    // const payload = {
+    //   name: productName,
+    //   description: productDescription,
+    //   productType: parseInt(productType, 10),
+    //   price: parseFloat(productPrice),
+    //   discount: productDiscount.length > 0 ? parseFloat(productDiscount) : null,
+    //   stock: parseInt(productStock),
+    //   image: document.getElementById('image').value,
+    //   navigate: navigate,
+    //   // restaurant_id: user.restaurant.id
+    //   messageSuccess: t('toastify.productAdd'),
+    //   messageError: t('toastify.error')
+    // };
+    // dispatch(createProduct({ payload }));
   };
 
   function _handleInputChange(inputName, event) {
@@ -187,14 +202,38 @@ function ProductAdd() {
               <label htmlFor="image" className="mr-3">
                 {t('productsPage.addPage.productImage')}
               </label>
-              <input
-                type="file"
-                name="image"
-                id="image"
-                accept=".png, .jpg"
-                multiple={false}
-              />
+              {!productImage && (
+                <input
+                  type="file"
+                  name="image"
+                  id="image"
+                  accept=".png, .jpg"
+                  multiple={false}
+                  onChange={(event) => {
+                    console.log(event.target.files[0]);
+                    setProductImage(event.target.files[0]);
+                  }}
+                />
+              )}
             </div>
+            {productImage && (
+              <div className="flex flex-row mt-4">
+                <img
+                  alt="not fount"
+                  width={'200px'}
+                  src={URL.createObjectURL(productImage)}
+                  className="border rounded-md border-2 border-goodFoodMustard-500 p-6"
+                />
+                <div
+                  className="flex ml-12 justify-center align-center bg-goodFoodRed-500 my-16 px-12 rounded-md"
+                  onClick={() => setProductImage(null)}
+                >
+                  <button className="text-xl text-white">
+                    {t('productsPage.addPage.removeImage')}
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
           <Button className={'mt-12'} type="add"></Button>
         </form>
