@@ -3,9 +3,8 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { capitalizeFirstLetter } from 'components/utilities/utilitaryFunctions';
-import { connect } from 'react-redux';
-// import { useDispatch, connect } from 'react-redux';
-// import { createProduct } from 'store/modules/product/actions';
+import { connect, useDispatch } from 'react-redux';
+import { createProduct } from 'store/modules/product/actions';
 import { awsConfig } from '../../config';
 import S3FileUpload from 'react-s3';
 import PropTypes from 'prop-types';
@@ -16,7 +15,7 @@ window.Buffer = window.Buffer || require('buffer').Buffer;
 function ProductAdd() {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [productName, setProductName] = useState('');
   const [productDescription, setProductDescription] = useState('');
   const [productType, setProductType] = useState(1);
@@ -27,28 +26,26 @@ function ProductAdd() {
 
   const _createProduct = async (event) => {
     event.preventDefault();
+    let payload = {
+      name: productName,
+      description: productDescription,
+      productType: parseInt(productType, 10),
+      price: parseFloat(productPrice),
+      discount: productDiscount.length > 0 ? parseFloat(productDiscount) : null,
+      stock: parseInt(productStock),
+      navigate: navigate,
+      messageSuccess: t('toastify.productAdd'),
+      messageError: t('toastify.error')
+    };
     if (productImage) {
-      S3FileUpload.uploadFile(productImage, awsConfig)
+      await S3FileUpload.uploadFile(productImage, awsConfig)
         .then((data) => {
-          console.log(data);
-          return data;
+          payload.image = data.location;
         })
         .catch((err) => console.error(err));
     }
-    // const payload = {
-    //   name: productName,
-    //   description: productDescription,
-    //   productType: parseInt(productType, 10),
-    //   price: parseFloat(productPrice),
-    //   discount: productDiscount.length > 0 ? parseFloat(productDiscount) : null,
-    //   stock: parseInt(productStock),
-    //   image: document.getElementById('image').value,
-    //   navigate: navigate,
-    //   // restaurant_id: user.restaurant.id
-    //   messageSuccess: t('toastify.productAdd'),
-    //   messageError: t('toastify.error')
-    // };
-    // dispatch(createProduct({ payload }));
+
+    dispatch(createProduct({ payload }));
   };
 
   function _handleInputChange(inputName, event) {
@@ -210,7 +207,6 @@ function ProductAdd() {
                   accept=".png, .jpg"
                   multiple={false}
                   onChange={(event) => {
-                    console.log(event.target.files[0]);
                     setProductImage(event.target.files[0]);
                   }}
                 />

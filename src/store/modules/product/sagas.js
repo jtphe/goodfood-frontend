@@ -33,24 +33,25 @@ function* loadProducts() {
 function* createProduct({ payload }) {
   try {
     const token = yield select(getToken);
+    const { name, description, productType, price, discount, stock, image } =
+      payload;
+
     const query = {
       method: 'post',
       url: `http://localhost:8000/products`,
       data: {
-        name: payload.name,
-        description: payload.description,
-        productType: payload.productType,
-        price: payload.price,
-        discount: payload.discount,
-        stock: payload.stock,
-        image: payload.image,
-        restaurant_id: payload.restaurant_id
+        name,
+        description,
+        productType,
+        price,
+        discount,
+        stock,
+        image
       },
       headers: { token }
     };
 
     const res = yield call(fetchService.request, query);
-
     yield put({ type: M_CREATE_PRODUCT, res });
 
     toast.success(payload.messageSuccess);
