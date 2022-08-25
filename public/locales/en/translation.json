@@ -80,7 +80,8 @@
         "pizza": "Pizza",
         "drink": "Drink",
         "snack": "Snack"
-      }
+      },
+      "removeImage": "Delete"
     },
     "editPage": {
       "title": "Edit of",

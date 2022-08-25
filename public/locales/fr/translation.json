@@ -80,7 +80,8 @@
         "pizza": "Pizza",
         "drink": "Boisson",
         "snack": "Snack"
-      }
+      },
+      "removeImage": "Supprimer"
     },
     "editPage": {
       "title": "Édition de",
