@@ -57,7 +57,19 @@
     "adress": "Adresse",
     "order": "Commandes",
     "price": "Prix",
-    "status": "Statut"
+    "status": "Statut",
+    "orderDetails": {
+      "title": "Détails de la commande",
+      "order": "commande",
+      "address": "Adresse de livraison",
+      "date": "Date",
+      "status1": "En cours de préparation",
+      "status2": "En cours de livraison",
+      "status3": "Livrée",
+      "nextStep": "Passer à l'étape suivante",
+      "orderSumUp": "Récapitulatif de la commande",
+      "total": "Total"
+    }
   },
   "productsPage": {
     "title": "Produits",

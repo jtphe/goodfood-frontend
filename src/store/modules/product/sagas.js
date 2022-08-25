@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import { call, takeLatest, select, put } from 'redux-saga/effects';
 import {
   GET_PRODUCTS,
