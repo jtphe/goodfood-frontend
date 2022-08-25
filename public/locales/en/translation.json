@@ -13,7 +13,8 @@
       "delivered": "delivered",
       "edit": "edit",
       "addProduct": "add a new product",
-      "add": "ajouter"
+      "add": "ajouter",
+      "next": "go to the next step"
     },
     "return": "go back"
   },

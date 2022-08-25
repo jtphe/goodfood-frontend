@@ -55,7 +55,9 @@ function Orders({ orders }) {
                     <Button
                       type="processing"
                       onClick={() => {
-                        navigate(`/orders/details/${order.id}`);
+                        navigate(`/orders/details/${order.id}`, {
+                          state: order
+                        });
                       }}
                     />
                   </td>

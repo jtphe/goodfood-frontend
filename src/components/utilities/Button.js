@@ -19,6 +19,8 @@ function Button({ type, onClick, className }) {
       return 'bg-goodFoodGreen-100 hover:bg-goodFoodGreen-500 text-white';
     } else if (type === 'add') {
       return 'bg-goodFoodGreen-100 hover:bg-goodFoodGreen-500 text-white';
+    } else if (type === 'next') {
+      return 'bg-goodFoodGreen-100 hover:bg-goodFoodGreen-500 text-white';
     }
   };
 
