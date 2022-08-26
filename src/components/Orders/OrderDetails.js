@@ -11,15 +11,17 @@ import Button from 'components/utilities/Button';
 import ProgressBar from '@ramonak/react-progress-bar';
 import i18n from 'i18next';
 import { useState } from 'react';
+import { changeStatutOrder } from 'store/modules/order/actions';
 
 function OrderDetails() {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   // using navigate to get the order's details
   const order = useLocation();
-  console.log(order);
   // eslint-disable-next-line no-unused-vars
   const [statut, setStatut] = useState(order.state.statut);
+
   const options = {
     weekday: 'long',
     year: 'numeric',
@@ -64,6 +66,16 @@ function OrderDetails() {
         return 'error';
     }
   };
+  const changeStatus = () => {
+    const payload = {
+      orderId: order.state.id,
+      statut: order.state.statut + 1
+    };
+    dispatch(changeStatutOrder({ payload }));
+    setStatut(order.state.statut);
+  };
+
+  console.log(order);
 
   return (
     <>
@@ -96,7 +108,11 @@ function OrderDetails() {
         </div>
         <div className="mt-5">{renderProgressBar()}</div>
         <div className="mt-8">
-          <Button type="next" />
+          {order.state.status !== 2 ? (
+            <Button type="next" onClick={changeStatus} />
+          ) : (
+            ''
+          )}
         </div>
         <div className="mt-5">
           <h2 className="text-2xl">
@@ -109,15 +125,13 @@ function OrderDetails() {
             <tbody>
               {order.state.products.map((product) => {
                 return (
-                  <>
-                    <tr key={product.id}>
-                      <td className="pr-40">{product.name}</td>
-                      <td className="text-right text-goodFoodMustard-500 font-bold">
-                        {product.price}
-                      </td>
-                      <td className="text-goodFoodMustard-500 font-bold">€</td>
-                    </tr>
-                  </>
+                  <tr key={product.id}>
+                    <td className="pr-40">{product.name}</td>
+                    <td className="text-right text-goodFoodMustard-500 font-bold">
+                      {product.price}
+                    </td>
+                    <td className="text-goodFoodMustard-500 font-bold">€</td>
+                  </tr>
                 );
               })}
             </tbody>
