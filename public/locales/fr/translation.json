@@ -64,7 +64,7 @@
       "order": "commande",
       "address": "Adresse de livraison",
       "date": "Date",
-      "status1": "En cours de préparation",
+      "status1": "Préparation",
       "status2": "En cours de livraison",
       "status3": "Livrée",
       "nextStep": "Passer à l'étape suivante",
