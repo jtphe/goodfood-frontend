@@ -1,11 +1,10 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useEffect } from 'react';
 import Button from '../utilities/Button';
 import { useTranslation } from 'react-i18next';
 import { connect, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
-import { loadOrders } from 'store/modules/order/actions';
+import { loadOrders, setCurrentOrder } from 'store/modules/order/actions';
 import { createSelector } from 'reselect';
 import { getOrders } from 'store/modules/order/selectors';
 
@@ -24,7 +23,21 @@ function Orders({ orders }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log(orders);
+  const _openOrderDetails = ({ order }) => {
+    const payload = { order };
+    dispatch(setCurrentOrder({ payload }));
+    navigate(`/orders/details/${order.id}`);
+  };
+
+  const _renderButtonType = ({ order }) => {
+    if (order.statut === 0) {
+      return 'processing';
+    } else if (order.statut === 1) {
+      return 'delivering';
+    } else {
+      return 'delivered';
+    }
+  };
 
   return (
     <div>
@@ -54,12 +67,11 @@ function Orders({ orders }) {
                   <td className="py-2 px-4 text-center">{order.price}€</td>
                   <td className="py-2 px-4 text-center">
                     <Button
-                      type="processing"
+                      type={_renderButtonType({ order })}
                       onClick={() => {
-                        navigate(`/orders/details/${order.id}`, {
-                          state: order
-                        });
+                        _openOrderDetails({ order });
                       }}
+                      className="rounded-3xl"
                     />
                   </td>
                 </tr>

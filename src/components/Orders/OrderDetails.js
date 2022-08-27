@@ -1,35 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { capitalizeFirstLetter } from 'components/utilities/utilitaryFunctions';
-// eslint-disable-next-line no-unused-vars
+import { changeStatutOrder } from 'store/modules/order/actions';
 import { useDispatch, connect } from 'react-redux';
+import { createSelector } from 'reselect';
+import {
+  getCurrentOrder,
+  getCurrentOrderIsLoading
+} from 'store/modules/order/selectors';
 import PropTypes from 'prop-types';
 import Button from 'components/utilities/Button';
 // import { GoArrowRight } from 'react-icons/go';
 // import Button from '../utilities/Button';
+import moment from 'moment';
 import ProgressBar from '@ramonak/react-progress-bar';
 import i18n from 'i18next';
-import { useState } from 'react';
-import { changeStatutOrder } from 'store/modules/order/actions';
 
-function OrderDetails() {
+const mapStateToProps = createSelector(
+  [getCurrentOrder, getCurrentOrderIsLoading],
+  (currentOrder, currentOrderIsLoading) => ({
+    currentOrder,
+    currentOrderIsLoading
+  })
+);
+
+function OrderDetails({ currentOrder, currentOrderIsLoading }) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // using navigate to get the order's details
   const order = useLocation();
-  // eslint-disable-next-line no-unused-vars
-  const [statut, setStatut] = useState(order.state.statut);
+  const [statut, setStatut] = useState(currentOrder.statut);
 
-  const options = {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric'
+  const orderDateParser = () => {
+    console.log('i18n.language', i18n.language);
+    return moment(order.createdAt).locale(i18n.language).format('D MMMM YYYY');
   };
-  const currentDate = new Date(order.state.date);
-  const orderDate = currentDate.toLocaleDateString(i18n.language, options);
+
   const renderProgressBar = () => {
     switch (statut) {
       case 0:
@@ -39,6 +46,8 @@ function OrderDetails() {
             height="40px"
             completed={25}
             customLabel={t('ordersPage.orderDetails.status1')}
+            barContainerClassName="rounded-2xl"
+            labelClassName="pr-6 text-white"
             bgColor="#DCB265"
           />
         );
@@ -49,6 +58,8 @@ function OrderDetails() {
             height="40px"
             completed={55}
             customLabel={t('ordersPage.orderDetails.status2')}
+            barContainerClassName="rounded-2xl"
+            labelClassName="pr-6 text-white"
             bgColor="#85AEA0"
           />
         );
@@ -59,6 +70,8 @@ function OrderDetails() {
             height="40px"
             completed={100}
             customLabel={t('ordersPage.orderDetails.status3')}
+            barContainerClassName="rounded-2xl"
+            labelClassName="pr-6 text-white"
             bgColor="#126454"
           />
         );
@@ -66,16 +79,23 @@ function OrderDetails() {
         return 'error';
     }
   };
-  const changeStatus = () => {
+
+  const _changeStatus = () => {
     const payload = {
-      orderId: order.state.id,
-      statut: order.state.statut + 1
+      orderId: currentOrder.id,
+      statut: currentOrder.statut + 1
     };
+    setStatut(currentOrder.statut + 1);
     dispatch(changeStatutOrder({ payload }));
-    setStatut(order.state.statut);
   };
 
-  console.log(order);
+  if (currentOrderIsLoading) {
+    return (
+      <div>
+        <h1>Is Loading</h1>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -90,29 +110,27 @@ function OrderDetails() {
           {t('ordersPage.orderDetails.title')}
         </h1>
         <h2 className="text-3xl text-gray-600">
-          {t('ordersPage.orderDetails.order')}: #{order.state.id}
+          {t('ordersPage.orderDetails.order', { orderId: currentOrder.id })}
         </h2>
         <div className="mt-8">
           <p className="text-xl text-gray-600">
             <span className="font-bold">
-              {t('ordersPage.orderDetails.address')}:
-            </span>{' '}
-            {order.state.address}
+              {t('ordersPage.orderDetails.address', {
+                address: `${currentOrder.address}, ${currentOrder.postalCode} ${currentOrder.city}`
+              })}
+            </span>
           </p>
           <p className="text-xl text-gray-600">
             <span className="font-bold">
-              {t('ordersPage.orderDetails.date')}:
-            </span>{' '}
-            {orderDate}
+              {t('ordersPage.orderDetails.date', { date: orderDateParser() })}
+            </span>
           </p>
         </div>
         <div className="mt-5">{renderProgressBar()}</div>
-        <div className="mt-8">
-          {order.state.status !== 2 ? (
-            <Button type="next" onClick={changeStatus} />
-          ) : (
-            ''
-          )}
+        <div className="mt-8 mb-20">
+          {currentOrder.statut < 2 ? (
+            <Button type="next" onClick={_changeStatus} className="w-auto" />
+          ) : null}
         </div>
         <div className="mt-5">
           <h2 className="text-2xl">
@@ -123,7 +141,7 @@ function OrderDetails() {
         <div className="mt-5">
           <table>
             <tbody>
-              {order.state.products.map((product) => {
+              {currentOrder.products.map((product) => {
                 return (
                   <tr key={product.id}>
                     <td className="pr-40">{product.name}</td>
@@ -139,8 +157,8 @@ function OrderDetails() {
         </div>
         <div className="border-t-2 border-slate-500 mt-5"></div>
         <div className="mt-5">
-          <p className="text-2xl font-bold text-goodFoodMustard-500">
-            {t('ordersPage.orderDetails.total')}: {order.state.price}€
+          <p className="text-3xl font-bla text-goodFoodMustard-500">
+            {t('ordersPage.orderDetails.total')}: {currentOrder.price}€
           </p>
         </div>
       </div>
@@ -152,4 +170,4 @@ OrderDetails.prototype = {
   order: PropTypes.object
 };
 
-export default connect()(OrderDetails);
+export default connect(mapStateToProps)(OrderDetails);

@@ -61,9 +61,9 @@
     "status": "Statut",
     "orderDetails": {
       "title": "Détails de la commande",
-      "order": "commande",
-      "address": "Adresse de livraison",
-      "date": "Date",
+      "order": "Commande numéro #{{orderId}}",
+      "address": "Adresse de livraison: {{address}}",
+      "date": "Date: {{date}}",
       "status1": "Préparation",
       "status2": "En cours de livraison",
       "status3": "Livrée",

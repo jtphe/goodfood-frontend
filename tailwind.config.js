@@ -19,6 +19,9 @@ module.exports = {
         goodFoodGreen: {
           500: '#126454',
           100: '#85AEA0'
+        },
+        goodFoodBlue: {
+          500: '#124B64'
         }
       }
     }
