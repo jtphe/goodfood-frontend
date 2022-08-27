@@ -45,10 +45,10 @@
     "title": "Fournisseurs",
     "description": "Dans cette section vous avez la possibilité d’accéder à la fiche descriptive de vos fournisseurs.",
     "supplierDetail": {
-      "supplier": "fournisseur",
-      "deliveryAddress": "adresse",
-      "phoneNumber": "numéro téléphone",
-      "manager": "responsable"
+      "supplier": "Fournisseur: {{type}}",
+      "deliveryAddress": "Adresse: {{address}}",
+      "phoneNumber": "Numéro téléphone: {{phone}}",
+      "manager": "Responsable: {{contact}}"
     }
   },
   "ordersPage": {

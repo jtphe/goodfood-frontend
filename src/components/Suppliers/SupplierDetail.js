@@ -22,7 +22,7 @@ function SupplierDetail({ suppliers }) {
   return (
     <>
       <button
-        className="text-goodFoodRed-500 font-bold"
+        className="text-goodFoodRed-500 font-bold mb-8 text-left text-xl"
         onClick={() => navigate(-1)}
       >
         {'<'} {capitalizeFirstLetter(t('utilities.return'))}
@@ -31,23 +31,25 @@ function SupplierDetail({ suppliers }) {
         {supplierDetails.name}
       </h1>
       <h2 className="text-3xl mt-3 text-goodFoodMustard-500 font-bold">
-        {capitalizeFirstLetter(t('suppliersPage.supplierDetail.supplier'))}:{' '}
-        {supplierDetails.type}
+        {t('suppliersPage.supplierDetail.supplier', {
+          type: supplierDetails.type
+        })}
       </h2>
       <p className="text-xl mt-5 text-neutral-800">
-        {capitalizeFirstLetter(
-          t('suppliersPage.supplierDetail.deliveryAddress')
-        )}
-        :{supplierDetails.address}
+        {t('suppliersPage.supplierDetail.deliveryAddress', {
+          address: supplierDetails.address
+        })}
       </p>
       <div className="border-b-2 mt-3 border-neutral-800"></div>
       <p className="text-xl mt-3 text-neutral-800">
-        {capitalizeFirstLetter(t('suppliersPage.supplierDetail.phoneNumber'))}:{' '}
-        {supplierDetails.phone}
+        {t('suppliersPage.supplierDetail.phoneNumber', {
+          phone: supplierDetails.phone
+        })}
       </p>
       <p className="text-xl text-neutral-800">
-        {capitalizeFirstLetter(t('suppliersPage.supplierDetail.manager'))}:{' '}
-        {supplierDetails.manager}
+        {t('suppliersPage.supplierDetail.manager', {
+          contact: supplierDetails.contact
+        })}
       </p>
     </>
   );

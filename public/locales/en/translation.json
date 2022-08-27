@@ -45,10 +45,10 @@
     "title": "Suppliers",
     "description": "In this section you can access the description of your suppliers.",
     "supplierDetail": {
-      "supplier": "supplier",
-      "deliveryAddress": "address",
-      "phoneNumber": "phone number",
-      "manager": "manager"
+      "supplier": "Supplier: {{type}}",
+      "deliveryAddress": "Address: {{address}}",
+      "phoneNumber": "Phone number: {{phone}}",
+      "manager": "Manager: {{contact}}"
     }
   },
   "ordersPage": {
