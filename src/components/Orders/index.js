@@ -44,7 +44,7 @@ function Orders({ orders }) {
       <h1 className="text-4xl text-goodFoodRed-500 font-bold">
         {t('ordersPage.title')}
       </h1>
-      <p className="py-6 text-goodFoodMustard-500">
+      <p className="py-6 text-goodFoodMustard-500 mr-12">
         {t('ordersPage.description')}
       </p>
 
