@@ -1,12 +1,23 @@
-import { M_CREATE_PRODUCT, M_SET_PRODUCTS } from './actions';
+import {
+  M_CREATE_PRODUCT,
+  M_SET_PRODUCTS,
+  M_SET_PRODUCTS_IS_LOADING
+} from './actions';
 import update from 'immutability-helper';
 
 const initialState = {
-  products: []
+  products: [],
+  productsIsLoading: false
 };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
+    case M_SET_PRODUCTS_IS_LOADING:
+      return update(state, {
+        productsIsLoading: {
+          $set: action.value
+        }
+      });
     case M_SET_PRODUCTS:
       return update(state, {
         products: {

@@ -1,18 +1,26 @@
 import {
   M_CHANGE_STATUT_ORDER,
   M_SET_ORDERS,
-  M_SET_CURRENT_ORDER
+  M_SET_CURRENT_ORDER,
+  M_SET_ORDERS_IS_LOADING
 } from './actions';
 import update from 'immutability-helper';
 
 const initialState = {
   orders: [],
   currentOrder: null,
-  currentOrderIsLoading: true
+  currentOrderIsLoading: true,
+  ordersIsLoading: false
 };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
+    case M_SET_ORDERS_IS_LOADING:
+      return update(state, {
+        ordersIsLoading: {
+          $set: action.value
+        }
+      });
     case M_SET_CURRENT_ORDER:
       return update(state, {
         currentOrder: {

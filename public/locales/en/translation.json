@@ -14,7 +14,8 @@
       "edit": "edit",
       "addProduct": "add a new product",
       "add": "ajouter",
-      "next": "go to the next step"
+      "next": "go to the next step",
+      "refresh": "Refresh the list"
     },
     "return": "go back"
   },
@@ -52,7 +53,7 @@
     }
   },
   "ordersPage": {
-    "title": "Orders",
+    "title": "Orders ({{orders}})",
     "description": "You will find in this page all the current and complete order. You can see their detail, edit them or delete them.",
     "orderNumber": "Order number",
     "adress": "Adress",

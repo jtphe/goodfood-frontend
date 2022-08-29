@@ -8,11 +8,11 @@ function Button({ type, onClick, className }) {
 
   const setBtnColor = () => {
     if (type === 'processing') {
-      return 'bg-goodFoodMustard-500 text-white';
+      return 'bg-goodFoodMustard-500 text-white shadow-md shadow-goodFoodMustard-500/50';
     } else if (type === 'delivering') {
-      return 'bg-goodFoodGreen-100 text-white';
+      return 'bg-goodFoodGreen-100 text-white shadow-md shadow-goodFoodGreen-100/50';
     } else if (type === 'delivered') {
-      return 'bg-goodFoodGreen-500 text-white';
+      return 'bg-goodFoodGreen-500 text-white shadow-md shadow-goodFoodGreen-500/50';
     } else if (type === 'edit') {
       return 'bg-goodFoodMustard-500 text-white';
     } else if (type === 'addProduct') {

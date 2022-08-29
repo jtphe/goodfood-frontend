@@ -5,13 +5,17 @@ import {
   GET_ORDERS,
   CHANGE_STATUT_ORDER,
   M_CHANGE_STATUT_ORDER,
-  M_SET_ORDERS
+  M_SET_ORDERS,
+  M_SET_ORDERS_IS_LOADING
 } from './actions';
 
-function* loadOrders() {
+function* loadOrders({ payload }) {
   try {
     const token = yield select(getToken);
     const restaurant = yield select(getUserRestaurant);
+    if (payload) {
+      yield put({ type: M_SET_ORDERS_IS_LOADING, value: payload.refresh });
+    }
 
     const query = {
       method: 'get',
@@ -21,6 +25,9 @@ function* loadOrders() {
     const res = yield call(fetchService.request, query);
 
     yield put({ type: M_SET_ORDERS, res });
+    if (payload) {
+      yield put({ type: M_SET_ORDERS_IS_LOADING, value: false });
+    }
   } catch (e) {
     console.log('Error while getting products => ', e);
   }

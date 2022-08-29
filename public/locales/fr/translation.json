@@ -14,7 +14,8 @@
       "edit": "éditer",
       "addProduct": "ajouter un produit",
       "add": "ajouter",
-      "next": "passer a l'étape suivante"
+      "next": "passer a l'étape suivante",
+      "refresh": "Rafraichir la liste"
     },
     "return": "Retour"
   },
@@ -52,7 +53,7 @@
     }
   },
   "ordersPage": {
-    "title": "Commandes",
+    "title": "Commandes ({{orders}})",
     "description": "Vous retrouverez dans cette section toutes les commandes qui sont actuellement en cours ou terminé. Vous pouvez voir les détails, les éditer et les supprimer.",
     "orderNumber": "Numéro de commande",
     "adress": "Adresse",
