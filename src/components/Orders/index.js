@@ -75,20 +75,28 @@ function Orders({ orders, ordersIsLoading }) {
           <table className="border-collapse text-gray-600 table-fixed md:table-auto">
             <thead>
               <tr className="border-b-2 mb-2">
-                <th className="w-1/6 p-2">{t('ordersPage.orderNumber')}</th>
-                <th className="w-2/6 p-2">{t('ordersPage.adress')}</th>
-                <th className="w-1/6 p-2">{t('ordersPage.price')}</th>
-                <th className="w-1/6 p-2">{t('ordersPage.status')}</th>
+                <th className="w-4/12 p-2 text-left">
+                  {t('ordersPage.orderNumber')}
+                </th>
+                <th className="w-4/12 p-2 text-left">
+                  {t('ordersPage.adress')}
+                </th>
+                <th className="w-2/12 p-2 text-left">
+                  {t('ordersPage.price')}
+                </th>
+                <th className="w-2/12 p-2 text-left">
+                  {t('ordersPage.status')}
+                </th>
               </tr>
             </thead>
             <tbody>
               {orders.map((order) => {
                 return (
                   <tr key={order.id} className="text-left border-b-2">
-                    <td className="py-6 px-4">#{order.id}</td>
-                    <td className="py-6 px-4">{order.address}</td>
-                    <td className="py-6 px-4 text-center">{order.price}€</td>
-                    <td className="py-6 px-4 text-center">
+                    <td className="py-6 px-4 text-left">#{order.id}</td>
+                    <td className="py-6 px-4 text-left">{order.address}</td>
+                    <td className="py-6 px-4 text-left">{order.price}€</td>
+                    <td className="py-6 px-4 text-left">
                       <Button
                         type={_renderButtonType({ order })}
                         onClick={() => {
