@@ -1,8 +1,5 @@
-/* eslint-disable react/jsx-key */
-/* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import Button from '../utilities/Button';
-// import ContentLoader from 'react-content-loader';
 import { useTranslation } from 'react-i18next';
 import { connect, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -52,6 +49,9 @@ function Orders({ orders, ordersIsLoading }) {
     };
     dispatch(loadOrders({ payload }));
   };
+
+  // Used to loop through Skeleton and provide a key prop
+  const keysArrays = [1, 2, 3, 4, 5, 6, 7];
 
   return (
     <div>
@@ -104,8 +104,8 @@ function Orders({ orders, ordersIsLoading }) {
           </table>
         ) : (
           <div className="mr-12 mt-20">
-            {[...Array(7)].map(() => (
-              <Skeleton animation="wave" height={80} />
+            {keysArrays.map((key) => (
+              <Skeleton key={key} animation="wave" height={80} />
             ))}
           </div>
         )}
