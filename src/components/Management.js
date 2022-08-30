@@ -1,22 +1,31 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { connect, useDispatch } from 'react-redux';
 import { loadProducts } from '../store/modules/product/actions';
-import { getProducts } from '../store/modules/product/selectors';
+import {
+  getProducts,
+  getProductsIsLoading
+} from '../store/modules/product/selectors';
 import { createSelector } from 'reselect';
+import { IoIosRefresh } from 'react-icons/io';
 import classNames from 'classnames';
+import Skeleton from '@mui/material/Skeleton';
 
-const mapStateToProps = createSelector([getProducts], (products) => {
-  return { products };
-});
+const mapStateToProps = createSelector(
+  [getProducts, getProductsIsLoading],
+  (products, productsListLoading) => {
+    return { products, productsListLoading };
+  }
+);
 
-function Management({ products }) {
+function Management({ products, productsListLoading }) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadProducts());
+    dispatch(loadProducts({}));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -55,15 +64,42 @@ function Management({ products }) {
     </li>
   ));
 
+  const _refreshQuantity = () => {
+    const payload = {
+      refresh: true
+    };
+    dispatch(loadProducts({ payload }));
+  };
+
   return (
     <div>
       <h1 className="text-4xl text-goodFoodRed-500 font-bold">
         {t('managementPage.title')}
       </h1>
-      <p className="py-6 text-goodFoodMustard-500 mb-12">
+      <p className="py-6 text-goodFoodMustard-500">
         {t('managementPage.description')}
       </p>
-      <div className="flex flex-1 flex-wrap">{productsList}</div>
+      <button
+        onClick={() => _refreshQuantity()}
+        className="flex flex-row bg-goodFoodGrey-900 w-64 px-2 py-3 rounded justify-center align-center mb-8 drop-shadow-md mb-16"
+      >
+        <IoIosRefresh size={20} className="pt-1 mr-4" color="white" />
+        <p className="text-white">{t('utilities.button.refresh')}</p>
+      </button>
+      {!productsListLoading ? (
+        <div className="flex flex-1 flex-wrap">{productsList}</div>
+      ) : (
+        <div className="flex flex-1 flex-wrap">
+          {[...Array(15)].map(() => (
+            <Skeleton
+              variant="rectangular"
+              width={192}
+              height={192}
+              className="rounded-xl mr-6 mb-6"
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

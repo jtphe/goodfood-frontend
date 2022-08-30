@@ -77,6 +77,10 @@ function Login({ error }) {
     }
   };
 
+  const _goToForgotPage = () => {
+    navigate('/forgot', { replace: true });
+  };
+
   return (
     <div className="flex justify-center items-center h-screen">
       <ToastContainer />
@@ -123,7 +127,10 @@ function Login({ error }) {
                   {t('loginPage.password')}
                 </span>
               </label>
-              <a href="#" className="font-bold text-red-600">
+              <a
+                onClick={() => _goToForgotPage()}
+                className="font-bold text-red-600"
+              >
                 {t('loginPage.passwordForget')}
               </a>
             </div>

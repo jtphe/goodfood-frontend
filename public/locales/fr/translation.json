@@ -1,4 +1,8 @@
 {
+  "forgotPage": {
+    "title": "Réinitialiser votre mot de passe",
+    "reset": "Réinitialiser"
+  },
   "languages": {
     "french": "français",
     "english": "anglais"
@@ -13,7 +17,9 @@
       "delivered": "livré",
       "edit": "éditer",
       "addProduct": "ajouter un produit",
-      "add": "ajouter"
+      "add": "ajouter",
+      "next": "passer a l'étape suivante",
+      "refresh": "Rafraichir la liste"
     },
     "return": "Retour"
   },
@@ -44,20 +50,32 @@
     "title": "Fournisseurs",
     "description": "Dans cette section vous avez la possibilité d’accéder à la fiche descriptive de vos fournisseurs.",
     "supplierDetail": {
-      "supplier": "fournisseur",
-      "deliveryAddress": "adresse",
-      "phoneNumber": "numéro téléphone",
-      "manager": "responsable"
+      "supplier": "Fournisseur: {{type}}",
+      "deliveryAddress": "Adresse: {{address}}",
+      "phoneNumber": "Numéro téléphone: {{phone}}",
+      "manager": "Responsable: {{contact}}"
     }
   },
   "ordersPage": {
-    "title": "Commandes",
+    "title": "Commandes ({{orders}})",
     "description": "Vous retrouverez dans cette section toutes les commandes qui sont actuellement en cours ou terminé. Vous pouvez voir les détails, les éditer et les supprimer.",
     "orderNumber": "Numéro de commande",
     "adress": "Adresse",
     "order": "Commandes",
     "price": "Prix",
-    "status": "Statut"
+    "status": "Statut",
+    "orderDetails": {
+      "title": "Détails de la commande",
+      "order": "Commande numéro #{{orderId}}",
+      "address": "Adresse de livraison: {{address}}",
+      "date": "Date: {{date}}",
+      "status1": "Préparation",
+      "status2": "En cours de livraison",
+      "status3": "Livrée",
+      "nextStep": "Passer à l'étape suivante",
+      "orderSumUp": "Récapitulatif de la commande",
+      "total": "Total"
+    }
   },
   "productsPage": {
     "title": "Produits",

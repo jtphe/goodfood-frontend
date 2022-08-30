@@ -14,11 +14,15 @@ module.exports = {
           500: '#DCB265'
         },
         goodFoodGrey: {
-          500: '#F7F7F7'
+          500: '#F7F7F7',
+          900: '#CDCCCC'
         },
         goodFoodGreen: {
           500: '#126454',
           100: '#85AEA0'
+        },
+        goodFoodBlue: {
+          500: '#124B64'
         }
       }
     }

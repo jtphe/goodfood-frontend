@@ -19,7 +19,7 @@ function Products({ products }) {
   const { t } = useTranslation();
 
   useEffect(() => {
-    dispatch(loadProducts());
+    dispatch(loadProducts({}));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

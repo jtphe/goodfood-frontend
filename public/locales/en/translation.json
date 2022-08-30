@@ -1,4 +1,8 @@
 {
+  "forgotPage": {
+    "title": "Reset your password",
+    "reset": "Reset"
+  },
   "languages": {
     "french": "french",
     "english": "english"
@@ -13,7 +17,9 @@
       "delivered": "delivered",
       "edit": "edit",
       "addProduct": "add a new product",
-      "add": "ajouter"
+      "add": "ajouter",
+      "next": "go to the next step",
+      "refresh": "Refresh the list"
     },
     "return": "go back"
   },
@@ -44,20 +50,32 @@
     "title": "Suppliers",
     "description": "In this section you can access the description of your suppliers.",
     "supplierDetail": {
-      "supplier": "supplier",
-      "deliveryAddress": "address",
-      "phoneNumber": "phone number",
-      "manager": "manager"
+      "supplier": "Supplier: {{type}}",
+      "deliveryAddress": "Address: {{address}}",
+      "phoneNumber": "Phone number: {{phone}}",
+      "manager": "Manager: {{contact}}"
     }
   },
   "ordersPage": {
-    "title": "Orders",
+    "title": "Orders ({{orders}})",
     "description": "You will find in this page all the current and complete order. You can see their detail, edit them or delete them.",
     "orderNumber": "Order number",
     "adress": "Adress",
     "order": "Order",
     "price": "Price",
-    "status": "Status"
+    "status": "Status",
+    "orderDetails": {
+      "title": "Order details",
+      "order": "Order number #{{orderId}}",
+      "address": "Delivery address: {{address}}",
+      "date": "Date: {{date}}",
+      "status1": "Being prepared",
+      "status2": "Being delivered",
+      "status3": "Has been delivered",
+      "nextStep": "Go to next step",
+      "orderSumUp": "Order sum up",
+      "total": "Total"
+    }
   },
   "productsPage": {
     "title": "Products",

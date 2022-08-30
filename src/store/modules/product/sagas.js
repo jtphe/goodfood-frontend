@@ -1,10 +1,10 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import { call, takeLatest, select, put } from 'redux-saga/effects';
 import {
   GET_PRODUCTS,
   M_SET_PRODUCTS,
   CREATE_PRODUCT,
-  M_CREATE_PRODUCT
+  M_CREATE_PRODUCT,
+  M_SET_PRODUCTS_IS_LOADING
 } from './actions';
 import { M_SET_ERROR } from '../error/actions';
 import { getToken, getUserRestaurant } from 'store/modules/user/selectors';
@@ -12,10 +12,13 @@ import { errorHandler } from 'helpers/errorHandler';
 import fetchService from 'api/fetchService';
 import { toast } from 'react-toastify';
 
-function* loadProducts() {
+function* loadProducts({ payload }) {
   try {
     const token = yield select(getToken);
     const restaurant = yield select(getUserRestaurant);
+    if (payload) {
+      yield put({ type: M_SET_PRODUCTS_IS_LOADING, value: payload.refresh });
+    }
 
     const query = {
       method: 'get',
@@ -23,8 +26,10 @@ function* loadProducts() {
       headers: { token }
     };
     const res = yield call(fetchService.request, query);
-
     yield put({ type: M_SET_PRODUCTS, res });
+    if (payload) {
+      yield put({ type: M_SET_PRODUCTS_IS_LOADING, value: false });
+    }
   } catch (e) {
     console.log('Error while getting products => ', e);
   }
