@@ -33,8 +33,17 @@ function OrderDetails({ currentOrder, currentOrderIsLoading }) {
   const [statut, setStatut] = useState(currentOrder.statut);
 
   const orderDateParser = () => {
-    console.log('i18n.language', i18n.language);
-    return moment(order.createdAt).locale(i18n.language).format('D MMMM YYYY');
+    if (i18n.language === 'fr') {
+      moment.locale('fr', {
+        months:
+          'janvier_février_mars_avril_mai_juin_juillet_août_septembre_octobre_novembre_décembre'.split(
+            '_'
+          )
+      });
+      return moment(order.createdAt).format('D MMMM YYYY');
+    } else {
+      return moment(order.createdAt).format('MMMM Do YYYY');
+    }
   };
 
   const renderProgressBar = () => {
