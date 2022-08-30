@@ -13,11 +13,13 @@ import Home from './components/Home';
 import NotFound from './components/NotFound';
 import ProductAdd from 'components/Products/ProductAdd';
 import OrderDetails from 'components/Orders/OrderDetails';
+import Forgot from 'components/Forgot';
 
 function App() {
   return (
     <Routes>
       <Route index path="/login" element={<Login />} />
+      <Route path="/forgot" element={<Forgot />} />
       <Route path="/" element={<Home />}>
         <Route path="orders" element={<Orders />} />
         <Route path="orders/details/:id" element={<OrderDetails />} />

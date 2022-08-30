@@ -1,4 +1,8 @@
 {
+  "forgotPage": {
+    "title": "Reset your password",
+    "reset": "Reset"
+  },
   "languages": {
     "french": "french",
     "english": "english"
