@@ -42,7 +42,8 @@ function OrderDetails({ currentOrder, currentOrderIsLoading }) {
       });
       return moment(order.createdAt).format('D MMMM YYYY');
     } else {
-      return moment(order.createdAt).format('MMMM Do YYYY');
+      moment.locale('en');
+      return moment(order.create).format('MMMM Do YYYY');
     }
   };
 
