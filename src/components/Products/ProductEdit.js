@@ -1,7 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { capitalizeFirstLetter } from 'components/utilities/utilitaryFunctions';
 import Button from '../utilities/Button';
 
 //TODO: Get product from Redux
@@ -17,7 +16,7 @@ function ProductEdit() {
         className="text-goodFoodRed-500 font-bold mb-16"
         onClick={() => navigate(-1)}
       >
-        {'<'} {capitalizeFirstLetter(t('utilities.return'))}
+        {'<'} {t('utilities.return')}
       </button>
       <div>
         <h1 className="text-4xl text-goodFoodRed-500 font-bold mb-14">

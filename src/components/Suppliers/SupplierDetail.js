@@ -5,7 +5,6 @@ import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { getSuppliers } from 'store/modules/supplier/selectors';
 import { useTranslation } from 'react-i18next';
-import { capitalizeFirstLetter } from 'components/utilities/utilitaryFunctions';
 
 const mapStateToProps = createSelector([getSuppliers], (suppliers) => {
   return { suppliers };
@@ -25,7 +24,7 @@ function SupplierDetail({ suppliers }) {
         className="text-goodFoodRed-500 font-bold mb-8 text-left text-xl"
         onClick={() => navigate(-1)}
       >
-        {'<'} {capitalizeFirstLetter(t('utilities.return'))}
+        {'<'} {t('utilities.return')}
       </button>
       <h1 className="text-4xl mt-4 text-goodFoodRed-500 font-bold">
         {supplierDetails.name}

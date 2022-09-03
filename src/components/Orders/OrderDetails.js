@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { capitalizeFirstLetter } from 'components/utilities/utilitaryFunctions';
 import { changeStatutOrder } from 'store/modules/order/actions';
 import { useDispatch, connect } from 'react-redux';
 import { createSelector } from 'reselect';
@@ -113,7 +112,7 @@ function OrderDetails({ currentOrder, currentOrderIsLoading }) {
         className="text-goodFoodRed-500 font-bold mb-8 text-left text-xl"
         onClick={() => navigate(-1)}
       >
-        {'<'} {capitalizeFirstLetter(t('utilities.return'))}
+        {'<'} {t('utilities.return')}
       </button>
       <div className="w-4/5">
         <h1 className="text-4xl text-goodFoodRed-500 font-bold mb-14">

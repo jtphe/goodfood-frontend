@@ -2,7 +2,8 @@ import {
   M_CHANGE_STATUT_ORDER,
   M_SET_ORDERS,
   M_SET_CURRENT_ORDER,
-  M_SET_ORDERS_IS_LOADING
+  M_SET_ORDERS_IS_LOADING,
+  M_RESET_ORDER_STORE
 } from './actions';
 import update from 'immutability-helper';
 
@@ -55,6 +56,8 @@ export default function reducer(state = initialState, action) {
         }
       });
     }
+    case M_RESET_ORDER_STORE:
+      return initialState;
     default:
       return state;
   }

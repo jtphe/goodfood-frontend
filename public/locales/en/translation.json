@@ -1,7 +1,14 @@
 {
   "forgotPage": {
     "title": "Reset your password",
-    "reset": "Reset"
+    "reset": "Reset",
+    "passwordUpdated": "The password has been updated",
+    "emptyEmail": "The email cannot be null",
+    "invalidEmail": "The email is invalid",
+    "emailSent": "An email to reset your password has been sent!",    
+    "emptyPassword": "Fields cannot be empty",
+    "notSamePassword": "Passwords are not the same",
+    "passwordTooShort": "Password must be at least 8 characters long"
   },
   "languages": {
     "french": "french",
@@ -21,7 +28,7 @@
       "next": "go to the next step",
       "refresh": "Refresh the list"
     },
-    "return": "go back"
+    "return": "Go back"
   },
   "toastify": {
     "error": "There has been an error",
@@ -44,7 +51,9 @@
     "passwordPlaceHolder": "Please enter your password",
     "connection": "Sign In",
     "emailError": "Your email seems to be invalid",
-    "passwordError": "Your password is invalid"
+    "passwordError": "Your password is invalid",
+    "newPassword": "New password",
+    "confirmNewPassword": "Confirm new password"
   },
   "suppliersPage": {
     "title": "Suppliers",

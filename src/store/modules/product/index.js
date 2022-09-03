@@ -1,7 +1,8 @@
 import {
   M_CREATE_PRODUCT,
   M_SET_PRODUCTS,
-  M_SET_PRODUCTS_IS_LOADING
+  M_SET_PRODUCTS_IS_LOADING,
+  M_RESET_PRODUCT_STORE
 } from './actions';
 import update from 'immutability-helper';
 
@@ -30,6 +31,8 @@ export default function reducer(state = initialState, action) {
           $push: [action.res]
         }
       });
+    case M_RESET_PRODUCT_STORE:
+      return initialState;
     default:
       return state;
   }
