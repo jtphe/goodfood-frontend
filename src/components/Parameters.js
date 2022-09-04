@@ -1,11 +1,46 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { getStaff } from 'store/modules/restaurant/selectors';
+import { createSelector } from 'reselect';
+import { connect, useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import Button from './utilities/Button';
+import { useEffect } from 'react';
+import { loadStaff } from 'store/modules/restaurant/actions';
 
-function Parameters() {
+const mapStateToProps = createSelector([getStaff], (staff) => {
+  return { staff };
+});
+
+function Parameters({ staff }) {
+  console.log(staff);
   const { t, i18n } = useTranslation();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadStaff());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const _addNewMember = () => {};
+
+  const mockDataUser = [
+    {
+      firstName: 'Bruce',
+      lastName: 'Wayne',
+      email: 'wayne@wi.com'
+    },
+    {
+      firstName: 'Dick',
+      lastName: 'Grayson',
+      email: 'grayson@wi.com'
+    },
+    {
+      firstName: 'Tim',
+      lastName: 'Drake',
+      email: 'drake@wi.com'
+    }
+  ];
 
   return (
     <div>
@@ -41,13 +76,52 @@ function Parameters() {
           onClick={() => _addNewMember()}
         />
       </div>
-      <div className="flex flex-row justify-between pb-4 border-b-2 pad mr-12 mt-8 pr-96">
-        <h3>{t('parametersPage.name')}</h3>
-        <h3>{t('parametersPage.firstname')}</h3>
-        <h3>{t('parametersPage.mail')}</h3>
+      <div className="flex flex-row justify-between pb-4 border-b-2 pad mr-12 mt-8">
+        <table className="border-collapse text-gray-600 table-fixed min-w-full">
+          <thead>
+            <tr className="border-b-2 mb-2">
+              <th className="w-1/5 p-2 text-left">
+                {t('parametersPage.firstName')}
+              </th>
+              <th className="w-1/5 p-2 text-left">
+                {t('parametersPage.lastName')}
+              </th>
+              <th className="w-1/5 p-2 text-left">
+                {t('parametersPage.email')}
+              </th>
+              <th className="w-1/5 p-2 text-left">
+                {t('parametersPage.status')}
+              </th>
+              <th className="w-1/5 p-2 text-left"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {staff.map((worker) => {
+              return (
+                <tr key={worker.id} className="text-left border-b-2">
+                  <td className="py-6 px-4 text-left">{worker.firstname}</td>
+                  <td className="py-6 px-4 text-left">{worker.lastname}</td>
+                  <td className="py-6 px-4 text-left">{worker.email}</td>
+                  <td className="py-6 px-4 text-left">{worker.roles}</td>
+                  <td className="py-6 px-4 text-left">
+                    <Button
+                      type="edit"
+                      onClick={() => {}}
+                      className="rounded-3xl"
+                    />
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
     </div>
   );
 }
 
-export default Parameters;
+Parameters.propTypes = {
+  staff: PropTypes.array
+};
+
+export default connect(mapStateToProps)(Parameters);

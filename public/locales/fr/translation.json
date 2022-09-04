@@ -129,8 +129,9 @@
     "description": "Dans cette section vous pourrez paramétrer votre interface ainsi que gérer les membres de la franchise.",
     "languages": "Langues",
     "membersList": "Liste des membres",
-    "name": "Nom",
-    "firstname": "Prénom",
-    "mail": "Mail"
+    "lastName": "Nom",
+    "firstName": "Prénom",
+    "email": "Mail",
+    "status": "statut"
   }
 }

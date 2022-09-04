@@ -129,8 +129,9 @@
     "description": "In this section you will be able to set up your interface and manage the members of the franchise.",
     "languages": "Languages",
     "membersList": "Members list",
-    "name": "Name",
-    "firstname": "Firstname",
-    "mail": "Email"
+    "lastName": "Name",
+    "firstName": "Firstname",
+    "email": "Email",
+    "status": "Status"
   }
 }
