@@ -96,7 +96,6 @@ function Forgot() {
         >
           <IoClose size={24} color="#D73427" />
         </div>
-
         <div className="self-center">
           <img
             src="./logo_corporate.png"
