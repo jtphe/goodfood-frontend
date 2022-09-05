@@ -68,9 +68,10 @@ function Forgot() {
     setEmptyPassword(false);
     if (confirmPassword === password && checkPasswordLength(password)) {
       const payload = {
-        newPassword: password,
+        password,
         token: userToken,
-        messageSuccess: t('forgotPage.passwordUpdated')
+        messageSuccess: t('forgotPage.passwordUpdated'),
+        navigate
       };
       dispatch(updateForgottenPassword({ payload }));
     } else {

@@ -3,7 +3,7 @@ import { takeLatest, call, put } from 'redux-saga/effects';
 import { M_SET_USER, USER_LOGIN, U_UPDATE_FORGOTTEN_PASSWORD } from './actions';
 import { M_SET_ERROR } from '../error/actions';
 import { errorHandler } from 'helpers/errorHandler';
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import fetchService from 'api/fetchService';
 
 function* signIn({ payload }) {
@@ -30,26 +30,26 @@ function* signIn({ payload }) {
 
 function* updateForgottenPassword({ payload }) {
   try {
-    // const { token, newPassword } = payload;
-    console.log('payload :>> ', payload);
-    // Route à changer car on ne peut pas passer le oldPassword lol
-    // const query = {
-    //   method: 'put',
-    //   url: `http://localhost:8000/changepassword`,
-    //   headers: {
-    //     token
-    //   },
-    //   data: {
-    //     newPassword
-    //   }
-    // };
+    const { token, password } = payload;
+    const query = {
+      method: 'post',
+      url: `http://localhost:8000/resetpassword`,
+      data: {
+        password,
+        passwordToken: token
+      }
+    };
 
-    // const res = yield call(fetchService.request, query);
-    // if (res.status === 200) {
-    //   toast.success(payload.messageSuccess);
-    // }
+    const res = yield call(fetchService.request, query);
+
+    if (res[1] === 200) {
+      toast.success(payload.messageSuccess, { autoClose: 2000 });
+      setTimeout(() => {
+        payload.navigate('/login');
+      }, 3000);
+    }
   } catch (e) {
-    console.log('Error while updating user password =>  :>> ', e);
+    console.log('Error while updating user forgotten password =>  :>> ', e);
   }
 }
 // watch toutes les actions qu'on lance et prend le dernier appel.
