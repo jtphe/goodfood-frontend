@@ -1,7 +1,14 @@
 {
   "forgotPage": {
     "title": "Réinitialiser votre mot de passe",
-    "reset": "Réinitialiser"
+    "reset": "Réinitialiser",
+    "passwordUpdated": "Le mot de passe a bien été modifié",
+    "emptyEmail": "L'email ne peut pas être nul",
+    "invalidEmail": "L'email est invalide",
+    "emailSent": "Un email pour réinitialiser votre mot de passe a bien été envoyé !",
+    "emptyPassword": "Les champs ne peuvent pas être vide",
+    "notSamePassword": "Les mots de passe ne sont pas les mêmes",
+    "passwordTooShort": "Le mot de passe doivent faire au minimum 8 charactères"
   },
   "languages": {
     "french": "français",
@@ -44,7 +51,9 @@
     "passwordPlaceHolder": "Entrez votre mot de passe",
     "connection": "Connexion",
     "emailError": "Votre email semble invalide",
-    "passwordError": "Votre mot de passe semble invalide"
+    "passwordError": "Votre mot de passe semble invalide",
+    "newPassword": "Nouveau mot de passe",
+    "confirmNewPassword": "Confirmer le nouveau mot de passe"
   },
   "suppliersPage": {
     "title": "Fournisseurs",

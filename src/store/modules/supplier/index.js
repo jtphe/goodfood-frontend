@@ -1,4 +1,4 @@
-import { M_SET_SUPPLIERS } from './actions';
+import { M_SET_SUPPLIERS, M_RESET_SUPPLIER_STORE } from './actions';
 import update from 'immutability-helper';
 
 const initialState = {
@@ -13,6 +13,8 @@ export default function reducer(state = initialState, action) {
           $set: action.res
         }
       });
+    case M_RESET_SUPPLIER_STORE:
+      return initialState;
     default:
       return state;
   }

@@ -129,7 +129,7 @@ function Login({ error }) {
               </label>
               <a
                 onClick={() => _goToForgotPage()}
-                className="font-bold text-red-600"
+                className="font-bold text-red-600 cursor-pointer"
               >
                 {t('loginPage.passwordForget')}
               </a>

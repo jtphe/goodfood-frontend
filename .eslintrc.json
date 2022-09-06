@@ -50,6 +50,7 @@
       {
         "namedComponents": "function-declaration"
       }
-    ]
+    ],
+    "no-unused-vars": "off"
   }
 }

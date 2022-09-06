@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { capitalizeFirstLetter } from 'components/utilities/utilitaryFunctions';
 import { connect, useDispatch } from 'react-redux';
 import { createProduct } from 'store/modules/product/actions';
 import { awsConfig } from '../../config';
@@ -80,7 +79,7 @@ function ProductAdd() {
         className="text-goodFoodRed-500 font-bold mb-8 text-left text-xl"
         onClick={() => navigate(-1)}
       >
-        {'<'} {capitalizeFirstLetter(t('utilities.return'))}
+        {'<'} {t('utilities.return')}
       </button>
       <div>
         <h1 className="text-4xl text-goodFoodRed-500 font-bold mb-14">
