@@ -94,7 +94,7 @@ function Forgot() {
           className="flex justify-end"
           onClick={() => navigate('/', { replace: true })}
         >
-          <IoClose size={24} color="#D73427" />
+          <IoClose size={24} color="#D73427" className="cursor-pointer" />
         </div>
         <div className="self-center">
           <img
