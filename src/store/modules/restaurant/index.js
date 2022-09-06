@@ -1,4 +1,4 @@
-import { M_SET_STAFF } from './actions';
+import { M_SET_STAFF, M_CREATE_WORKER, M_CREATE_MANAGER } from './actions';
 import update from 'immutability-helper';
 
 const initialState = {
@@ -11,6 +11,18 @@ export default function reducer(state = initialState, action) {
       return update(state, {
         staff: {
           $set: action.res
+        }
+      });
+    case M_CREATE_WORKER:
+      return update(state, {
+        staff: {
+          $push: [action.res]
+        }
+      });
+    case M_CREATE_MANAGER:
+      return update(state, {
+        staff: {
+          $push: [action.res]
         }
       });
     default:

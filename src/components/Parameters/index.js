@@ -4,9 +4,10 @@ import { getStaff } from 'store/modules/restaurant/selectors';
 import { createSelector } from 'reselect';
 import { connect, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import Button from './utilities/Button';
+import Button from '../utilities/Button';
 import { useEffect } from 'react';
 import { loadStaff } from 'store/modules/restaurant/actions';
+import { useNavigate } from 'react-router-dom';
 
 const mapStateToProps = createSelector([getStaff], (staff) => {
   return { staff };
@@ -16,31 +17,12 @@ function Parameters({ staff }) {
   console.log(staff);
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(loadStaff());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const _addNewMember = () => {};
-
-  const mockDataUser = [
-    {
-      firstName: 'Bruce',
-      lastName: 'Wayne',
-      email: 'wayne@wi.com'
-    },
-    {
-      firstName: 'Dick',
-      lastName: 'Grayson',
-      email: 'grayson@wi.com'
-    },
-    {
-      firstName: 'Tim',
-      lastName: 'Drake',
-      email: 'drake@wi.com'
-    }
-  ];
 
   return (
     <div>
@@ -73,7 +55,9 @@ function Parameters({ staff }) {
         <Button
           type="add"
           className={'mr-12'}
-          onClick={() => _addNewMember()}
+          onClick={() => {
+            navigate('/parameters/addStaff');
+          }}
         />
       </div>
       <div className="flex flex-row justify-between pb-4 border-b-2 pad mr-12 mt-8">

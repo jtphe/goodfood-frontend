@@ -132,6 +132,19 @@
     "lastName": "Nom",
     "firstName": "Prénom",
     "email": "Mail",
-    "status": "statut"
+    "status": "statut",
+    "addStaff": {
+      "title": "Créer un nouvel utilisateur",
+      "lastName": "Nom",
+      "firstName": "Prénom",
+      "email": "Mail",
+      "status": "Rôle",
+      "password": "Mot de Passe",
+      "passwordConfirmation": "Confirmation du mot de passe",
+      "worker": "worker",
+      "manager": "manager",
+      "errorPasswordMatch": "Les mots de passe ne correspondent pas",
+      "errorEmail": "Cette adresse mail est déjà utilisée"
+    }
   }
 }

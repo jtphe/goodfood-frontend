@@ -24,9 +24,9 @@
       "delivered": "delivered",
       "edit": "edit",
       "addProduct": "add a new product",
-      "add": "ajouter",
       "next": "go to the next step",
-      "refresh": "Refresh the list"
+      "refresh": "Refresh the list",
+      "add": "add"
     },
     "return": "Go back"
   },
@@ -132,6 +132,19 @@
     "lastName": "Name",
     "firstName": "Firstname",
     "email": "Email",
-    "status": "Status"
+    "status": "Status",
+    "addStaff": {
+      "title": "Add a new user",
+      "lastName": "Last Name",
+      "firstName": "First Name",
+      "email": "Mail",
+      "status": "Role",
+      "password": "Password",
+      "passwordConfirmation": "Password confirmation",
+      "worker": "worker",
+      "manager": "manager",
+      "errorPasswordMatch": "The passwords do not match",
+      "errorEmail": "This email is already used"
+    }
   }
 }

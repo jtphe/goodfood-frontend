@@ -14,6 +14,7 @@ import NotFound from './components/NotFound';
 import ProductAdd from 'components/Products/ProductAdd';
 import OrderDetails from 'components/Orders/OrderDetails';
 import Forgot from 'components/Forgot';
+import AddStaff from 'components/Parameters/AddStaff';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="suppliers/:id" element={<SupplierDetail />} />
         <Route path="management" element={<Management />} />
         <Route path="parameters" element={<Parameters />} />
+        <Route path="parameters/addStaff" element={<AddStaff />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
