@@ -14,7 +14,6 @@ const mapStateToProps = createSelector([getStaff], (staff) => {
 });
 
 function Parameters({ staff }) {
-  console.log(staff);
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -90,7 +89,16 @@ function Parameters({ staff }) {
                   <td className="py-6 px-4 text-left">
                     <Button
                       type="edit"
-                      onClick={() => {}}
+                      onClick={() => {
+                        navigate(`editStaff`, {
+                          state: {
+                            id: worker.id,
+                            firstname: worker.firstname,
+                            lastname: worker.lastname,
+                            email: worker.email
+                          }
+                        });
+                      }}
                       className="rounded-3xl"
                     />
                   </td>

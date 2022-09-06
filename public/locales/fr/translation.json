@@ -26,7 +26,8 @@
       "addProduct": "ajouter un produit",
       "add": "ajouter",
       "next": "passer a l'étape suivante",
-      "refresh": "Rafraichir la liste"
+      "refresh": "Rafraichir la liste",
+      "update": "mettre à jour"
     },
     "return": "Retour"
   },
@@ -145,6 +146,10 @@
       "manager": "manager",
       "errorPasswordMatch": "Les mots de passe ne correspondent pas",
       "errorEmail": "Cette adresse mail est déjà utilisée"
+    },
+    "editStaff": {
+      "toastSuccess": "Le staff a bien été modifié",
+      "toastError": "Une erreur est survenue"
     }
   }
 }

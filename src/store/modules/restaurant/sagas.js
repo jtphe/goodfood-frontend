@@ -5,7 +5,9 @@ import {
   GET_STAFF,
   M_CREATE_MANAGER,
   M_CREATE_WORKER,
-  M_SET_STAFF
+  M_SET_STAFF,
+  M_UPDATE_STAFF,
+  UPDATE_STAFF
 } from './actions';
 import { M_SET_ERROR } from '../error/actions';
 import { getToken, getUserRestaurant } from 'store/modules/user/selectors';
@@ -91,8 +93,34 @@ function* createManager({ payload }) {
   }
 }
 
+function* updateStaff({ payload }) {
+  try {
+    const token = yield select(getToken);
+    const query = {
+      method: 'put',
+      url: `http://localhost:8000/users/${payload.id}`,
+      data: {
+        firstname: payload.firstname,
+        lastname: payload.lastname,
+        email: payload.email
+      },
+      headers: { token }
+    };
+
+    const res = yield call(fetchService.request, query);
+
+    yield put({ type: M_UPDATE_STAFF, user: res });
+
+    toast.success(payload.messageSuccess);
+    payload.navigate('/parameters');
+  } catch (e) {
+    toast.error(payload.messageError);
+  }
+}
+
 export default function* watchRestaurant() {
   yield takeLatest(GET_STAFF, loadStaff);
   yield takeLatest(CREATE_WORKER, createWorker);
   yield takeLatest(CREATE_MANAGER, createManager);
+  yield takeLatest(UPDATE_STAFF, updateStaff);
 }

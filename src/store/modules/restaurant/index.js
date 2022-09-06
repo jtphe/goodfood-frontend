@@ -1,4 +1,9 @@
-import { M_SET_STAFF, M_CREATE_WORKER, M_CREATE_MANAGER } from './actions';
+import {
+  M_SET_STAFF,
+  M_CREATE_WORKER,
+  M_CREATE_MANAGER,
+  M_UPDATE_STAFF
+} from './actions';
 import update from 'immutability-helper';
 
 const initialState = {
@@ -25,6 +30,18 @@ export default function reducer(state = initialState, action) {
           $push: [action.res]
         }
       });
+    case M_UPDATE_STAFF: {
+      const userIndex = state.staff.findIndex(
+        (user) => user.id === action.user.id
+      );
+      return update(state, {
+        staff: {
+          [userIndex]: {
+            $set: action.user
+          }
+        }
+      });
+    }
     default:
       return state;
   }

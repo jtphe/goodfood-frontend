@@ -41,7 +41,9 @@ function AddStaff({ error }) {
         lastname: lastName,
         email: email,
         password: password,
-        role: 'worker'
+        role: 'worker',
+        navigate: navigate,
+        messageSuccess: 'worker has been created'
       };
       dispatch(createWorker({ payload }));
     } else if (event.target.role.value === 'manager') {
@@ -50,7 +52,8 @@ function AddStaff({ error }) {
         lastname: lastName,
         email: email,
         password: password,
-        role: 'manager'
+        role: 'manager',
+        navigate: navigate
       };
       dispatch(createManager({ payload }));
     }

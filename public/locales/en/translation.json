@@ -145,6 +145,10 @@
       "manager": "manager",
       "errorPasswordMatch": "The passwords do not match",
       "errorEmail": "This email is already used"
+    },
+    "editStaff": {
+      "toastSuccess": "The staff has been updated",
+      "toastError": "An error occured"
     }
   }
 }
