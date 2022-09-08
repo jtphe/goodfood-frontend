@@ -1,23 +1,17 @@
 export const GET_STAFF = 'GET_STAFF';
 export const M_SET_STAFF = 'M_SET_STAFF';
-export const CREATE_WORKER = 'CREATE_WORKER';
-export const M_CREATE_WORKER = 'M_CREATE_WORKER';
-export const CREATE_MANAGER = 'CREATE_MANAGER';
-export const M_CREATE_MANAGER = 'CREATE_MANAGER';
+export const CREATE_TEAM_MEMBER = 'CREATE_TEAM_MEMBER';
+export const M_CREATE_USER = 'M_CREATE_USER';
 export const UPDATE_STAFF = 'UPDATE_STAFF';
 export const M_UPDATE_STAFF = 'M_UPDATE_STAFF';
+export const M_RESET_RESTAURANT_STORE = 'M_RESET_RESTAURANT_STORE';
 
 export const loadStaff = () => ({
   type: GET_STAFF
 });
 
-export const createWorker = ({ payload }) => ({
-  type: CREATE_WORKER,
-  payload
-});
-
-export const createManager = ({ payload }) => ({
-  type: CREATE_MANAGER,
+export const createTeamMember = ({ payload }) => ({
+  type: CREATE_TEAM_MEMBER,
   payload
 });
 

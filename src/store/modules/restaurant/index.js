@@ -1,8 +1,8 @@
 import {
   M_SET_STAFF,
-  M_CREATE_WORKER,
-  M_CREATE_MANAGER,
-  M_UPDATE_STAFF
+  M_CREATE_USER,
+  M_UPDATE_STAFF,
+  M_RESET_RESTAURANT_STORE
 } from './actions';
 import update from 'immutability-helper';
 
@@ -18,13 +18,7 @@ export default function reducer(state = initialState, action) {
           $set: action.res
         }
       });
-    case M_CREATE_WORKER:
-      return update(state, {
-        staff: {
-          $push: [action.res]
-        }
-      });
-    case M_CREATE_MANAGER:
+    case M_CREATE_USER:
       return update(state, {
         staff: {
           $push: [action.res]
@@ -41,6 +35,9 @@ export default function reducer(state = initialState, action) {
           }
         }
       });
+    }
+    case M_RESET_RESTAURANT_STORE: {
+      return initialState;
     }
     default:
       return state;

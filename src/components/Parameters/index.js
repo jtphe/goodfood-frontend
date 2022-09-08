@@ -1,13 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getStaff } from 'store/modules/restaurant/selectors';
 import { createSelector } from 'reselect';
 import { connect, useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
-import Button from '../utilities/Button';
-import { useEffect } from 'react';
 import { loadStaff } from 'store/modules/restaurant/actions';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import Button from '../utilities/Button';
 
 const mapStateToProps = createSelector([getStaff], (staff) => {
   return { staff };
@@ -59,7 +58,7 @@ function Parameters({ staff }) {
           }}
         />
       </div>
-      <div className="flex flex-row justify-between pb-4 border-b-2 pad mr-12 mt-8">
+      <div className="flex flex-row justify-between pb-4 pad mr-12 mt-8">
         <table className="border-collapse text-gray-600 table-fixed min-w-full">
           <thead>
             <tr className="border-b-2 mb-2">

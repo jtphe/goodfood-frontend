@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { connect, useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { capitalizeFirstLetter } from 'components/utilities/utilitaryFunctions';
-import { useState, useEffect } from 'react';
 import Button from '../utilities/Button';
 import { createSelector } from 'reselect';
 import { getError } from 'store/modules/error/selectors';

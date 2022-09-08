@@ -9,6 +9,7 @@ import { M_RESET_ERROR_STORE } from '../error/actions';
 import { M_RESET_ORDER_STORE } from '../order/actions';
 import { M_RESET_PRODUCT_STORE } from '../product/actions';
 import { M_RESET_SUPPLIER_STORE } from '../supplier/actions';
+import { M_RESET_RESTAURANT_STORE } from '../restaurant/actions';
 import fetchService from 'api/fetchService';
 
 function* logout() {
@@ -19,6 +20,7 @@ function* logout() {
     yield put({ type: M_RESET_ORDER_STORE });
     yield put({ type: M_RESET_PRODUCT_STORE });
     yield put({ type: M_RESET_SUPPLIER_STORE });
+    yield put({ type: M_RESET_RESTAURANT_STORE });
   } catch (e) {
     console.log('Error while logging out => ', e);
   }

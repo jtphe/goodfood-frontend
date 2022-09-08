@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { connect, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -6,12 +6,11 @@ import {
   capitalizeFirstLetter,
   checkPassword
 } from 'components/utilities/utilitaryFunctions';
-import { useState, useEffect } from 'react';
-import Button from '../utilities/Button';
-import { createManager, createWorker } from 'store/modules/restaurant/actions';
+import { createTeamMember } from 'store/modules/restaurant/actions';
 import { createSelector } from 'reselect';
 import { getError } from 'store/modules/error/selectors';
 import { resetErrorState } from 'store/modules/error/actions';
+import Button from '../utilities/Button';
 
 const mapStateToProps = createSelector([getError], (error) => ({ error }));
 
@@ -26,8 +25,19 @@ function AddStaff({ error }) {
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [errorPassword, setErrorPassword] = useState(false);
   const [errorEmail, setErrorMail] = useState(false);
+  const [role, setRole] = useState('worker');
 
-  const _createStaff = async (event) => {
+  useEffect(() => {
+    if (error === 'An account with this email is already recorded') {
+      setErrorMail(true);
+    }
+
+    dispatch(resetErrorState());
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [error]);
+
+  const _createStaff = (event) => {
     dispatch(resetErrorState());
     event.preventDefault();
     const passwordVerification = checkPassword(password, passwordConfirmation);
@@ -35,28 +45,17 @@ function AddStaff({ error }) {
       setErrorPassword(true);
       return;
     }
-    if (event.target.role.value === 'worker') {
-      const payload = {
-        firstname: firstName,
-        lastname: lastName,
-        email: email,
-        password: password,
-        role: 'worker',
-        navigate: navigate,
-        messageSuccess: 'worker has been created'
-      };
-      dispatch(createWorker({ payload }));
-    } else if (event.target.role.value === 'manager') {
-      const payload = {
-        firstname: firstName,
-        lastname: lastName,
-        email: email,
-        password: password,
-        role: 'manager',
-        navigate: navigate
-      };
-      dispatch(createManager({ payload }));
-    }
+    const payload = {
+      firstname: firstName,
+      lastname: lastName,
+      email,
+      password,
+      role,
+      navigate,
+      messageSuccess: t('parametersPage.addStaff.userCreated'),
+      messageError: t('parametersPage.addStaff.errorUserCreation')
+    };
+    dispatch(createTeamMember({ payload }));
   };
 
   function _handleInputChange(inputName, event) {
@@ -82,15 +81,9 @@ function AddStaff({ error }) {
     }
   }
 
-  useEffect(() => {
-    if (error === 'An account with this email is already recorded') {
-      setErrorMail(true);
-    }
-
-    dispatch(resetErrorState());
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [error]);
+  const handleUserRole = (event) => {
+    setRole(event.target.value);
+  };
 
   return (
     <>
@@ -160,7 +153,7 @@ function AddStaff({ error }) {
               <label htmlFor="statut" className="mb-1">
                 {t('parametersPage.addStaff.status')}
               </label>
-              <select name="role" id="role">
+              <select name="role" id="role" onChange={handleUserRole}>
                 <option value="worker">
                   {t('parametersPage.addStaff.worker')}
                 </option>

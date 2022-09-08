@@ -141,10 +141,12 @@
       "status": "Role",
       "password": "Password",
       "passwordConfirmation": "Password confirmation",
-      "worker": "worker",
-      "manager": "manager",
+      "worker": "Worker",
+      "manager": "Manager",
       "errorPasswordMatch": "The passwords do not match",
-      "errorEmail": "This email is already used"
+      "errorEmail": "This email is already used",
+      "userCreated": "The new user has been successfully created!",
+      "errorUserCreation": "An error has occurred..."
     },
     "editStaff": {
       "toastSuccess": "The staff has been updated",

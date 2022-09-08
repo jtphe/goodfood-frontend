@@ -142,10 +142,12 @@
       "status": "Rôle",
       "password": "Mot de Passe",
       "passwordConfirmation": "Confirmation du mot de passe",
-      "worker": "worker",
-      "manager": "manager",
+      "worker": "Travailleur",
+      "manager": "Manager",
       "errorPasswordMatch": "Les mots de passe ne correspondent pas",
-      "errorEmail": "Cette adresse mail est déjà utilisée"
+      "errorEmail": "Cette adresse mail est déjà utilisée",
+      "userCreated": "Le nouvel utilisateur a bien été créé !",
+      "errorUserCreation": "Une erreur est apparue..."
     },
     "editStaff": {
       "toastSuccess": "Le staff a bien été modifié",
