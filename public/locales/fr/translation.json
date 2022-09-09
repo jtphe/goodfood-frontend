@@ -150,8 +150,8 @@
       "errorUserCreation": "Une erreur est apparue..."
     },
     "editStaff": {
-      "toastSuccess": "Le staff a bien été modifié",
-      "toastError": "Une erreur est survenue"
+      "toastSuccess": "L'utilisateur a bien été modifié!",
+      "toastError": "Une erreur est apparue..."
     }
   }
 }

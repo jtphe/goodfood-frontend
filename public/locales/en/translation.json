@@ -149,8 +149,8 @@
       "errorUserCreation": "An error has occurred..."
     },
     "editStaff": {
-      "toastSuccess": "The staff has been updated",
-      "toastError": "An error occured"
+      "toastSuccess": "The user has been updated!",
+      "toastError": "An error has occured..."
     }
   }
 }

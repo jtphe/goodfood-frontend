@@ -3,11 +3,11 @@ import { useTranslation } from 'react-i18next';
 import { connect, useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { capitalizeFirstLetter } from 'components/utilities/utilitaryFunctions';
-import Button from '../utilities/Button';
 import { createSelector } from 'reselect';
 import { getError } from 'store/modules/error/selectors';
 import { resetErrorState } from 'store/modules/error/actions';
 import { updateStaff } from 'store/modules/restaurant/actions';
+import Button from '../utilities/Button';
 
 const mapStateToProps = createSelector([getError], (error) => ({ error }));
 
@@ -16,19 +16,28 @@ function EditStaff({ error }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
-  const [firstName, setFirstName] = useState(location.state.firstname);
-  const [lastName, setLastName] = useState(location.state.lastname);
-  const [email, setEmail] = useState(location.state.email);
+  const { firstname, lastname, email, id } = location.state;
+  const [firstName, setFirstName] = useState(firstname);
+  const [lastName, setLastName] = useState(lastname);
+  const [userEmail, setEmail] = useState(email);
   const [errorEmail, setErrorMail] = useState(false);
+
+  useEffect(() => {
+    if (error === 'An account with this email is already recorded') {
+      setErrorMail(true);
+    }
+    dispatch(resetErrorState());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [error]);
 
   const _updateStaff = async (event) => {
     dispatch(resetErrorState());
     event.preventDefault();
     const payload = {
-      id: location.state.id,
+      id,
       firstname: firstName,
       lastname: lastName,
-      email: email,
+      email: userEmail,
       navigate: navigate,
       messageSuccess: `${t('parametersPage.editStaff.toastSuccess')}`,
       messageError: `${t('parametersPage.editStaff.toastError')}`
@@ -52,16 +61,6 @@ function EditStaff({ error }) {
         return null;
     }
   }
-
-  useEffect(() => {
-    if (error === 'An account with this email is already recorded') {
-      setErrorMail(true);
-    }
-
-    dispatch(resetErrorState());
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [error]);
 
   return (
     <>
@@ -120,7 +119,7 @@ function EditStaff({ error }) {
                 type="text"
                 name="email"
                 id="email"
-                value={email}
+                value={userEmail}
                 onChange={(e) => _handleInputChange('email', e)}
               />
             </div>
