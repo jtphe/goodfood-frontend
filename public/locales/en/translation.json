@@ -24,9 +24,11 @@
       "delivered": "delivered",
       "edit": "edit",
       "addProduct": "add a new product",
+      "add": "add",
       "next": "go to the next step",
       "refresh": "Refresh the list",
-      "add": "add"
+      "update": "mettre à jour",
+      "addStaff": "add"
     },
     "return": "Go back"
   },
@@ -139,18 +141,23 @@
       "firstName": "First Name",
       "email": "Mail",
       "status": "Role",
-      "password": "Password",
-      "passwordConfirmation": "Password confirmation",
       "worker": "Worker",
       "manager": "Manager",
-      "errorPasswordMatch": "The passwords do not match",
       "errorEmail": "This email is already used",
+      "errorEmailFormat": "This email format is invalid",
       "userCreated": "The new user has been successfully created!",
       "errorUserCreation": "An error has occurred..."
     },
     "editStaff": {
+      "title": "Edit profile",
       "toastSuccess": "The user has been updated!",
-      "toastError": "An error has occured..."
+      "toastError": "An error has occured...",
+      "oldPassword": "Old Password",
+      "password": "Password",
+      "passwordConfirmation": "Password confirmation",
+      "errorPasswordMatch": "The passwords do not match",
+      "errorPasswordLength": "The password is too short",
+      "errorOldPassowrd": "The old password is wrong"
     }
   }
 }

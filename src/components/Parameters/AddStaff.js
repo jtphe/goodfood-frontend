@@ -2,15 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { connect, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import {
-  capitalizeFirstLetter,
-  checkPassword
-} from 'components/utilities/utilitaryFunctions';
+import { capitalizeFirstLetter } from 'components/utilities/utilitaryFunctions';
 import { createTeamMember } from 'store/modules/restaurant/actions';
 import { createSelector } from 'reselect';
 import { getError } from 'store/modules/error/selectors';
 import { resetErrorState } from 'store/modules/error/actions';
 import Button from '../utilities/Button';
+import { emailChecker } from 'helpers/emailChecker';
 
 const mapStateToProps = createSelector([getError], (error) => ({ error }));
 
@@ -21,10 +19,8 @@ function AddStaff({ error }) {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordConfirmation, setPasswordConfirmation] = useState('');
-  const [errorPassword, setErrorPassword] = useState(false);
   const [errorEmail, setErrorMail] = useState(false);
+  const [errorEmailFormat, setErrorMailFormat] = useState(false);
   const [role, setRole] = useState('worker');
 
   useEffect(() => {
@@ -40,16 +36,14 @@ function AddStaff({ error }) {
   const _createStaff = (event) => {
     dispatch(resetErrorState());
     event.preventDefault();
-    const passwordVerification = checkPassword(password, passwordConfirmation);
-    if (!passwordVerification) {
-      setErrorPassword(true);
+    if (!emailChecker(email)) {
+      setErrorMailFormat(true);
       return;
     }
     const payload = {
       firstname: firstName,
       lastname: lastName,
       email,
-      password,
       role,
       navigate,
       messageSuccess: t('parametersPage.addStaff.userCreated'),
@@ -69,12 +63,6 @@ function AddStaff({ error }) {
         break;
       case 'email':
         setEmail(inputValue);
-        break;
-      case 'password':
-        setPassword(inputValue);
-        break;
-      case 'passwordConfirmation':
-        setPasswordConfirmation(inputValue);
         break;
       default:
         return null;
@@ -138,6 +126,11 @@ function AddStaff({ error }) {
                   {t('parametersPage.addStaff.errorEmail')}
                 </p>
               )}
+              {errorEmailFormat && (
+                <p className="mt-2 text-goodFoodRed-500 text-sm">
+                  {t('parametersPage.addStaff.errorEmailFormat')}
+                </p>
+              )}
               <input
                 className="border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500"
                 placeholder="ex: JohnDoe@mail.com"
@@ -153,7 +146,12 @@ function AddStaff({ error }) {
               <label htmlFor="statut" className="mb-1">
                 {t('parametersPage.addStaff.status')}
               </label>
-              <select name="role" id="role" onChange={handleUserRole}>
+              <select
+                className="border py-2 px-3 rounded-md focus:outline-none"
+                name="role"
+                id="role"
+                onChange={handleUserRole}
+              >
                 <option value="worker">
                   {t('parametersPage.addStaff.worker')}
                 </option>
@@ -162,43 +160,8 @@ function AddStaff({ error }) {
                 </option>
               </select>
             </div>
-            <div className="flex flex-col w-3/6 my-3">
-              <label htmlFor="password" className="mb-1">
-                {t('parametersPage.addStaff.password')}
-              </label>
-              {errorPassword && (
-                <p className="mt-2 text-goodFoodRed-500 text-sm">
-                  {t('parametersPage.addStaff.errorPasswordMatch')}
-                </p>
-              )}
-              <input
-                className="border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500"
-                placeholder="ex: JohnDoe@mail.com"
-                required="required"
-                type="password"
-                name="password"
-                id="password"
-                value={password}
-                onChange={(e) => _handleInputChange('password', e)}
-              />
-            </div>
-            <div className="flex flex-col w-3/6 my-3">
-              <label htmlFor="passwordConfirmation" className="mb-1">
-                {t('parametersPage.addStaff.passwordConfirmation')}
-              </label>
-              <input
-                className="border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500"
-                placeholder="ex: JohnDoe@mail.com"
-                required="required"
-                type="password"
-                name="passwordConfirmation"
-                id="passwordConfirmation"
-                value={passwordConfirmation}
-                onChange={(e) => _handleInputChange('passwordConfirmation', e)}
-              />
-            </div>
           </div>
-          <Button className={'mt-12'} type="add"></Button>
+          <Button className={'mt-12'} type="addStaff"></Button>
         </form>
       </div>
     </>

@@ -11,6 +11,7 @@ import { M_SET_ERROR } from '../error/actions';
 import { getToken, getUserRestaurant } from 'store/modules/user/selectors';
 import { toast } from 'react-toastify';
 import fetchService from 'api/fetchService';
+import { errorHandler } from 'helpers/errorHandler';
 
 function* loadStaff() {
   try {
@@ -37,7 +38,6 @@ function* createTeamMember({ payload }) {
       lastname,
       email,
       role,
-      password,
       navigate,
       messageSuccess,
       messageError
@@ -50,13 +50,13 @@ function* createTeamMember({ payload }) {
         firstname,
         lastname,
         email,
-        password,
         role
       },
       headers: { token }
     };
 
     const res = yield call(fetchService.request, query);
+
     if (res.statusCode === 200) {
       yield put({ type: M_CREATE_USER, res });
       toast.success(messageSuccess);
@@ -85,6 +85,23 @@ function* updateStaff({ payload }) {
       },
       headers: { token }
     };
+
+    if (payload.password && payload.password !== '' && payload.oldPassword) {
+      const queryPassword = {
+        method: 'put',
+        url: `http://localhost:8000/changepassword`,
+        data: {
+          oldPassword: payload.oldPassword,
+          newPassword: payload.newPassword
+        },
+        headers: { token }
+      };
+      const res = yield call(fetchService.request, queryPassword);
+      if (res.message === 'Wrong old password') {
+        const error = errorHandler(res.message);
+        yield put({ type: M_SET_ERROR, error });
+      }
+    }
 
     const res = yield call(fetchService.request, query);
 

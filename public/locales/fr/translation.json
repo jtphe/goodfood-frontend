@@ -27,7 +27,8 @@
       "add": "ajouter",
       "next": "passer a l'étape suivante",
       "refresh": "Rafraichir la liste",
-      "update": "mettre à jour"
+      "update": "mettre à jour",
+      "addStaff": "ajouter"
     },
     "return": "Retour"
   },
@@ -140,18 +141,23 @@
       "firstName": "Prénom",
       "email": "Mail",
       "status": "Rôle",
-      "password": "Mot de Passe",
-      "passwordConfirmation": "Confirmation du mot de passe",
       "worker": "Travailleur",
       "manager": "Manager",
-      "errorPasswordMatch": "Les mots de passe ne correspondent pas",
       "errorEmail": "Cette adresse mail est déjà utilisée",
+      "errorEmailFormat": "Le format de l'email est invalide",
       "userCreated": "Le nouvel utilisateur a bien été créé !",
       "errorUserCreation": "Une erreur est apparue..."
     },
     "editStaff": {
+      "title": "Éditer le profil",
       "toastSuccess": "L'utilisateur a bien été modifié!",
-      "toastError": "Une erreur est apparue..."
+      "toastError": "Une erreur est apparue...",
+      "oldPassword": "Ancien mot de passe",
+      "password": "Mot de Passe",
+      "passwordConfirmation": "Confirmation du mot de passe",
+      "errorPasswordMatch": "Les mots de passes ne correspondent pas",
+      "errorPasswordLength": "Le mot de passe est trop court",
+      "errorOldPassowrd": "L'ancien mot de passe est incorrect"
     }
   }
 }

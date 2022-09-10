@@ -17,7 +17,7 @@ i18n
     debug: true,
     fallbackLng: 'fr',
     detection: {
-      order: ['queryString', 'localStorage', 'navigator'],
+      order: ['navigator', 'queryString', 'localStorage'],
       cache: ['localStorage']
     },
     interpolation: {
