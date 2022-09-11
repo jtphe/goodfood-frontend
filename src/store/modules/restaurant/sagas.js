@@ -1,8 +1,10 @@
 import { call, takeLatest, select, put } from 'redux-saga/effects';
 import {
   CREATE_TEAM_MEMBER,
+  DELETE_STAFF,
   GET_STAFF,
   M_CREATE_USER,
+  M_DELETE_STAFF,
   M_SET_STAFF,
   M_UPDATE_STAFF,
   UPDATE_STAFF
@@ -114,8 +116,32 @@ function* updateStaff({ payload }) {
   }
 }
 
+function* deleteStaff({ payload }) {
+  try {
+    const token = yield select(getToken);
+    const query = {
+      method: 'delete',
+      url: `http://localhost:8000/users/${payload.id}`,
+      headers: { token }
+    };
+
+    const res = yield call(fetchService.request, query);
+
+    if (res.statusCode === 200) {
+      yield put({ type: M_DELETE_STAFF, user: payload.id });
+
+      toast.success(payload.messageSuccess);
+    }
+  } catch (e) {
+    if (e.response) {
+      console.log(e.response);
+    }
+  }
+}
+
 export default function* watchRestaurant() {
   yield takeLatest(GET_STAFF, loadStaff);
   yield takeLatest(CREATE_TEAM_MEMBER, createTeamMember);
   yield takeLatest(UPDATE_STAFF, updateStaff);
+  yield takeLatest(DELETE_STAFF, deleteStaff);
 }

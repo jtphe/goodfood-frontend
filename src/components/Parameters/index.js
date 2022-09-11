@@ -3,11 +3,12 @@ import { useTranslation } from 'react-i18next';
 import { getStaff } from 'store/modules/restaurant/selectors';
 import { createSelector } from 'reselect';
 import { connect, useDispatch } from 'react-redux';
-import { loadStaff } from 'store/modules/restaurant/actions';
+import { deleteStaff, loadStaff } from 'store/modules/restaurant/actions';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Button from '../utilities/Button';
 import { getUser } from 'store/modules/user/selectors';
+import { createElement } from 'react';
 
 const mapStateToProps = createSelector(
   [getStaff, getUser],
@@ -25,6 +26,15 @@ function Parameters({ staff, currentUser }) {
     dispatch(loadStaff());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const _deleteUser = (workerId) => {
+    const payload = {
+      id: workerId,
+      messageSuccess: t('parametersPage.deleteUserSuccess'),
+      messageError: t('parametersPage.deleteUserError')
+    };
+    dispatch(deleteStaff({ payload }));
+  };
 
   return (
     <div>
@@ -58,7 +68,7 @@ function Parameters({ staff, currentUser }) {
         {currentUser.roles === 'manager' ? (
           <Button
             type="add"
-            className={'mr-20'}
+            className={'mr-16'}
             onClick={() => {
               navigate('/parameters/addStaff');
             }}
@@ -108,6 +118,19 @@ function Parameters({ staff, currentUser }) {
                               email: worker.email
                             }
                           });
+                        }}
+                        className="rounded-3xl"
+                      />
+                    ) : (
+                      ''
+                    )}
+                  </td>
+                  <td className="py-6 px-4 text-left">
+                    {currentUser.roles === 'manager' ? (
+                      <Button
+                        type="delete"
+                        onClick={() => {
+                          _deleteUser(worker.id);
                         }}
                         className="rounded-3xl"
                       />

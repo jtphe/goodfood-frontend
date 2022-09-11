@@ -28,7 +28,8 @@
       "next": "go to the next step",
       "refresh": "Refresh the list",
       "update": "mettre à jour",
-      "addStaff": "add"
+      "addStaff": "add",
+      "delete": "delete"
     },
     "return": "Go back"
   },
@@ -135,6 +136,8 @@
     "firstName": "Firstname",
     "email": "Email",
     "status": "Status",
+    "deleteUserSuccess": "L'utilisateur a bien été supprimé",
+    "deleteUserError": "User was not deleted, error occured",
     "addStaff": {
       "title": "Add a new user",
       "lastName": "Last Name",

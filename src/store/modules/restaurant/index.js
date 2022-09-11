@@ -2,7 +2,8 @@ import {
   M_SET_STAFF,
   M_CREATE_USER,
   M_UPDATE_STAFF,
-  M_RESET_RESTAURANT_STORE
+  M_RESET_RESTAURANT_STORE,
+  M_DELETE_STAFF
 } from './actions';
 import update from 'immutability-helper';
 
@@ -28,11 +29,22 @@ export default function reducer(state = initialState, action) {
       const userIndex = state.staff.findIndex(
         (user) => user.id === action.user.id
       );
+      console.log('M_UPDATE_STAFF');
       return update(state, {
         staff: {
           [userIndex]: {
             $set: action.user
           }
+        }
+      });
+    }
+    case M_DELETE_STAFF: {
+      const userIndex = state.staff.findIndex(
+        (user) => user.id === action.user
+      );
+      return update(state, {
+        staff: {
+          $splice: [[userIndex, 1]]
         }
       });
     }
