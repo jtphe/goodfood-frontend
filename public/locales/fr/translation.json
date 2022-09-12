@@ -156,8 +156,8 @@
       "toastSuccess": "L'utilisateur a bien été modifié!",
       "toastError": "Une erreur est apparue...",
       "oldPassword": "Ancien mot de passe",
-      "password": "Mot de Passe",
-      "passwordConfirmation": "Confirmation du mot de passe",
+      "password": "Nouveau mot de Passe",
+      "passwordConfirmation": "Confirmation du nouveau mot de passe",
       "errorPasswordMatch": "Les mots de passes ne correspondent pas",
       "errorPasswordLength": "Le mot de passe est trop court",
       "errorOldPassowrd": "L'ancien mot de passe est incorrect"

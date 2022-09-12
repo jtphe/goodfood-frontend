@@ -13,7 +13,8 @@ function* signIn({ payload }) {
       url: `http://localhost:8000/signin`,
       data: {
         email: payload.email,
-        password: payload.password
+        password: payload.password,
+        device: 'web'
       }
     };
     const res = yield call(fetchService.request, query);

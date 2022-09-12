@@ -156,8 +156,8 @@
       "toastSuccess": "The user has been updated!",
       "toastError": "An error has occured...",
       "oldPassword": "Old Password",
-      "password": "Password",
-      "passwordConfirmation": "Password confirmation",
+      "password": "New password",
+      "passwordConfirmation": "New password confirmation",
       "errorPasswordMatch": "The passwords do not match",
       "errorPasswordLength": "The password is too short",
       "errorOldPassowrd": "The old password is wrong"
