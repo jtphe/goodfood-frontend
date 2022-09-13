@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { changeStatutOrder } from 'store/modules/order/actions';
+import { useNavigate } from 'react-router-dom';
+import {
+  changeStatutOrder,
+  updateCurrentOrderIsLoading
+} from 'store/modules/order/actions';
 import { useDispatch, connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import {
@@ -10,11 +13,10 @@ import {
 } from 'store/modules/order/selectors';
 import PropTypes from 'prop-types';
 import Button from 'components/utilities/Button';
-// import { GoArrowRight } from 'react-icons/go';
-// import Button from '../utilities/Button';
 import moment from 'moment';
 import ProgressBar from '@ramonak/react-progress-bar';
 import i18n from 'i18next';
+import Skeleton from '@mui/material/Skeleton';
 
 const mapStateToProps = createSelector(
   [getCurrentOrder, getCurrentOrderIsLoading],
@@ -28,21 +30,26 @@ function OrderDetails({ currentOrder, currentOrderIsLoading }) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const order = useLocation();
   const [statut, setStatut] = useState(currentOrder.statut);
 
+  useEffect(() => {
+    const payload = { value: false };
+    dispatch(updateCurrentOrderIsLoading({ payload }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const orderDateParser = () => {
-    if (i18n.language === 'fr') {
+    if (i18n.language === 'fr-FR' || i18n.language === 'fr') {
       moment.locale('fr', {
         months:
           'janvier_février_mars_avril_mai_juin_juillet_août_septembre_octobre_novembre_décembre'.split(
             '_'
           )
       });
-      return moment(order.createdAt).format('D MMMM YYYY');
+      return moment(currentOrder.createdAt).format('D MMMM YYYY');
     } else {
       moment.locale('en');
-      return moment(order.create).format('MMMM Do YYYY');
+      return moment(currentOrder.create).format('MMMM Do YYYY');
     }
   };
 
@@ -78,7 +85,11 @@ function OrderDetails({ currentOrder, currentOrderIsLoading }) {
             width="75%"
             height="40px"
             completed={100}
-            customLabel={t('ordersPage.orderDetails.status3')}
+            customLabel={
+              currentOrder.type === 1
+                ? t('ordersPage.orderDetails.status3')
+                : t('ordersPage.orderDetails.status4')
+            }
             barContainerClassName="rounded-2xl"
             labelClassName="pr-6 text-white"
             bgColor="#126454"
@@ -100,8 +111,14 @@ function OrderDetails({ currentOrder, currentOrderIsLoading }) {
 
   if (currentOrderIsLoading) {
     return (
-      <div>
-        <h1>Is Loading</h1>
+      <div className="mr-12 mt-10">
+        <Skeleton variant="text" sx={{ fontSize: '3rem' }} />
+        <Skeleton variant="text" sx={{ fontSize: '3rem' }} />
+        <Skeleton variant="text" sx={{ fontSize: '3rem' }} />
+        <Skeleton variant="text" sx={{ fontSize: '3rem' }} />
+        <Skeleton variant="text" sx={{ fontSize: '3rem' }} />
+        <Skeleton variant="rounded" height={200} />
+        <Skeleton variant="text" sx={{ fontSize: '3rem' }} />
       </div>
     );
   }
@@ -110,7 +127,11 @@ function OrderDetails({ currentOrder, currentOrderIsLoading }) {
     <>
       <button
         className="text-goodFoodRed-500 font-bold mb-8 text-left text-xl"
-        onClick={() => navigate(-1)}
+        onClick={() => {
+          const payload = { value: true };
+          dispatch(updateCurrentOrderIsLoading({ payload }));
+          navigate(-1);
+        }}
       >
         {'<'} {t('utilities.return')}
       </button>
@@ -150,10 +171,47 @@ function OrderDetails({ currentOrder, currentOrderIsLoading }) {
         <div className="mt-5">
           <table>
             <tbody>
+              {currentOrder.menus.length > 0 ? (
+                <h3 className="font-black text-lg">
+                  {t('ordersPage.orderDetails.menu')}
+                </h3>
+              ) : null}
+              {currentOrder.menus.map((menu) => {
+                return (
+                  <div key={menu.id} className="mb-3">
+                    <tr key={menu.food.id}>
+                      <td className="pr-40">- {menu.food.name}</td>
+                      <td className="text-right text-goodFoodMustard-500 font-bold">
+                        {menu.food.price}
+                      </td>
+                      <td className="text-goodFoodMustard-500 font-bold">€</td>
+                    </tr>
+                    <tr key={menu.snack.id}>
+                      <td className="pr-40">- {menu.snack.name}</td>
+                      <td className="text-right text-goodFoodMustard-500 font-bold">
+                        {menu.snack.price}
+                      </td>
+                      <td className="text-goodFoodMustard-500 font-bold">€</td>
+                    </tr>
+                    <tr key={menu.drink.id}>
+                      <td className="pr-40">- {menu.drink.name}</td>
+                      <td className="text-right text-goodFoodMustard-500 font-bold">
+                        {menu.drink.price}
+                      </td>
+                      <td className="text-goodFoodMustard-500 font-bold">€</td>
+                    </tr>
+                  </div>
+                );
+              })}
+              {currentOrder.products.length > 0 ? (
+                <h3 className="font-black text-lg">
+                  {t('ordersPage.orderDetails.products')}
+                </h3>
+              ) : null}
               {currentOrder.products.map((product) => {
                 return (
                   <tr key={product.id}>
-                    <td className="pr-40">{product.name}</td>
+                    <td className="pr-40">- {product.name}</td>
                     <td className="text-right text-goodFoodMustard-500 font-bold">
                       {product.price}
                     </td>

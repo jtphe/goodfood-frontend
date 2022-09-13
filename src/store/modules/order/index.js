@@ -3,7 +3,8 @@ import {
   M_SET_ORDERS,
   M_SET_CURRENT_ORDER,
   M_SET_ORDERS_IS_LOADING,
-  M_RESET_ORDER_STORE
+  M_RESET_ORDER_STORE,
+  M_UPDATE_CURRENT_ORDER_IS_LOADING
 } from './actions';
 import update from 'immutability-helper';
 
@@ -16,6 +17,13 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
+    case M_UPDATE_CURRENT_ORDER_IS_LOADING: {
+      return update(state, {
+        currentOrderIsLoading: {
+          $set: action.payload.value
+        }
+      });
+    }
     case M_SET_ORDERS_IS_LOADING:
       return update(state, {
         ordersIsLoading: {
@@ -28,7 +36,7 @@ export default function reducer(state = initialState, action) {
           $set: action.payload.order
         },
         currentOrderIsLoading: {
-          $set: false
+          $set: true
         }
       });
     case M_SET_ORDERS:

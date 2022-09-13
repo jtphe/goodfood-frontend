@@ -24,7 +24,10 @@ function* loadOrders({ payload }) {
     };
     const res = yield call(fetchService.request, query);
 
-    yield put({ type: M_SET_ORDERS, res });
+    yield put({
+      type: M_SET_ORDERS,
+      res: res.sort((a, b) => parseInt(a.id, 10) - parseInt(b.id, 10)).reverse()
+    });
     if (payload) {
       yield put({ type: M_SET_ORDERS_IS_LOADING, value: false });
     }

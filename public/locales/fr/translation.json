@@ -81,9 +81,12 @@
       "status1": "Préparation",
       "status2": "En cours de livraison",
       "status3": "Livrée",
+      "status4": "Prêt à être emporté",
       "nextStep": "Passer à l'étape suivante",
       "orderSumUp": "Récapitulatif de la commande",
-      "total": "Total"
+      "total": "Total",
+      "menu":"Menus",
+      "products": "Produits"
     }
   },
   "productsPage": {

@@ -81,9 +81,12 @@
       "status1": "Being prepared",
       "status2": "Being delivered",
       "status3": "Has been delivered",
+      "status4": "Ready to be taken away",
       "nextStep": "Go to next step",
       "orderSumUp": "Order sum up",
-      "total": "Total"
+      "total": "Total",
+      "menu":"Menus",
+      "products": "Products"
     }
   },
   "productsPage": {
