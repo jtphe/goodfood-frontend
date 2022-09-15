@@ -26,7 +26,11 @@ function* loadProducts({ payload }) {
       headers: { token }
     };
     const res = yield call(fetchService.request, query);
-    yield put({ type: M_SET_PRODUCTS, res });
+
+    yield put({
+      type: M_SET_PRODUCTS,
+      res: res.sort((a, b) => parseInt(a.id, 10) - parseInt(b.id, 10))
+    });
     if (payload) {
       yield put({ type: M_SET_PRODUCTS_IS_LOADING, value: false });
     }
