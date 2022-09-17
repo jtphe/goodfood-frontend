@@ -2,10 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { connect, useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
-import {
-  capitalizeFirstLetter,
-  checkPassword
-} from 'components/utilities/utilitaryFunctions';
+import { capitalizeFirstLetter } from 'components/utilities/utilitaryFunctions';
 import { createSelector } from 'reselect';
 import { getError } from 'store/modules/error/selectors';
 import { resetErrorState } from 'store/modules/error/actions';
@@ -15,6 +12,7 @@ import {
   checkPasswordLength,
   checkPasswordSame
 } from 'helpers/passwordManager';
+import { toast } from 'react-toastify';
 
 const mapStateToProps = createSelector([getError], (error) => ({ error }));
 
@@ -46,7 +44,7 @@ function EditStaff({ error }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [error]);
 
-  const _updateStaff = async (event) => {
+  function _updateStaff(event) {
     dispatch(resetErrorState());
     setErrorPasswordLength(false);
     setErrorPasswordMatch(false);
@@ -54,21 +52,36 @@ function EditStaff({ error }) {
     const passwordLength = checkPasswordLength(password, passwordConfirmation);
     const passwordSame = checkPasswordSame(password, passwordConfirmation);
     if (
-      firstName == firstname &&
-      lastName == lastname &&
-      userEmail == email &&
-      oldPassword == '' &&
-      password == '' &&
-      passwordConfirmation == ''
+      firstName === firstname &&
+      lastName === lastname &&
+      userEmail === email &&
+      oldPassword === '' &&
+      password === '' &&
+      passwordConfirmation === ''
     ) {
-      return;
-    }
-    if (!passwordLength && password !== '') {
+      toast.warn(t('error.nothingToUpdate'));
+    } else if (
+      (firstName !== firstname ||
+        lastName !== lastname ||
+        userEmail !== email) &&
+      oldPassword === '' &&
+      password === '' &&
+      passwordConfirmation === ''
+    ) {
+      const payload = {
+        id,
+        firstname: firstName,
+        lastname: lastName,
+        email: userEmail,
+        navigate: navigate,
+        messageSuccess: `${t('parametersPage.editStaff.toastSuccess')}`,
+        messageError: `${t('parametersPage.editStaff.toastError')}`
+      };
+      dispatch(updateStaff({ payload }));
+    } else if (!passwordLength && password !== '') {
       setErrorPasswordLength(true);
-      return;
     } else if (!passwordSame) {
       setErrorPasswordMatch(true);
-      return;
     } else {
       const payload = {
         id,
@@ -79,11 +92,12 @@ function EditStaff({ error }) {
         oldPassword: oldPassword,
         navigate: navigate,
         messageSuccess: `${t('parametersPage.editStaff.toastSuccess')}`,
-        messageError: `${t('parametersPage.editStaff.toastError')}`
+        messageError: `${t('parametersPage.editStaff.toastError')}`,
+        messageWrongOldPassword: `${t('error.wrongOldPassword')}`
       };
       dispatch(updateStaff({ payload }));
     }
-  };
+  }
 
   function _handleInputChange(inputName, event) {
     const inputValue = event.target.value;

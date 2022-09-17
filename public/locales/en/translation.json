@@ -15,7 +15,9 @@
     "english": "English"
   },
   "error": {
-    "pageNotFound": "Page not found..."
+    "pageNotFound": "Page not found...",
+    "wrongOldPassword": "Old password incorrect...",
+    "nothingToUpdate": "Nothing to update..."
   },
   "utilities": {
     "button": {
@@ -55,6 +57,7 @@
     "connection": "Sign In",
     "emailError": "Your email seems to be invalid",
     "passwordError": "Your password is invalid",
+    "accountError": "This account does not exist",
     "newPassword": "New password",
     "confirmNewPassword": "Confirm new password"
   },

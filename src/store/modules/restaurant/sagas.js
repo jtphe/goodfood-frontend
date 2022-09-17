@@ -13,7 +13,6 @@ import { M_SET_ERROR } from '../error/actions';
 import { getToken, getUserRestaurant } from 'store/modules/user/selectors';
 import { toast } from 'react-toastify';
 import fetchService from 'api/fetchService';
-import { errorHandler } from 'helpers/errorHandler';
 
 function* loadStaff() {
   try {
@@ -26,8 +25,10 @@ function* loadStaff() {
       headers: { token }
     };
     const res = yield call(fetchService.request, query);
-
-    yield put({ type: M_SET_STAFF, res });
+    yield put({
+      type: M_SET_STAFF,
+      res
+    });
   } catch (e) {
     console.log('Error while getting users => ', e);
   }
@@ -87,8 +88,10 @@ function* updateStaff({ payload }) {
       },
       headers: { token }
     };
+    const res = yield call(fetchService.request, query);
+    yield put({ type: M_UPDATE_STAFF, user: res });
 
-    if (payload.password && payload.password !== '' && payload.oldPassword) {
+    if (payload.password?.trim() !== '' && payload.oldPassword) {
       const queryPassword = {
         method: 'put',
         url: `http://localhost:8000/changepassword`,
@@ -98,21 +101,18 @@ function* updateStaff({ payload }) {
         },
         headers: { token }
       };
-      const res = yield call(fetchService.request, queryPassword);
-      if (res.message === 'Wrong old password') {
-        const error = errorHandler(res.message);
-        yield put({ type: M_SET_ERROR, error });
-      }
+      yield call(fetchService.request, queryPassword);
     }
-
-    const res = yield call(fetchService.request, query);
-
-    yield put({ type: M_UPDATE_STAFF, user: res });
 
     toast.success(payload.messageSuccess);
     payload.navigate('/parameters');
   } catch (e) {
-    toast.error(payload.messageError);
+    console.log('Error while updating staff member => ', e);
+    if (e.response.status === 400) {
+      toast.error(payload.messageWrongOldPassword);
+    } else {
+      toast.error(payload.messageError);
+    }
   }
 }
 

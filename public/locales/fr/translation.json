@@ -15,7 +15,9 @@
     "english": "Anglais"
   },
   "error": {
-    "pageNotFound": "Page introuvable..."
+    "pageNotFound": "Page introuvable...",
+    "wrongOldPassword": "Ancien mot de passe incorrect...",
+    "nothingToUpdate": "Il n'y a rien à modifier.."
   },
   "utilities": {
     "button": {
@@ -55,6 +57,7 @@
     "connection": "Connexion",
     "emailError": "Votre email semble invalide",
     "passwordError": "Votre mot de passe semble invalide",
+    "accountError": "Ce compte n'existe pas",
     "newPassword": "Nouveau mot de passe",
     "confirmNewPassword": "Confirmer le nouveau mot de passe"
   },
@@ -153,7 +156,7 @@
     },
     "editStaff": {
       "title": "Éditer le profil",
-      "toastSuccess": "L'utilisateur a bien été modifié!",
+      "toastSuccess": "L'utilisateur a bien été modifié !",
       "toastError": "Une erreur est apparue...",
       "oldPassword": "Ancien mot de passe",
       "password": "Nouveau mot de Passe",

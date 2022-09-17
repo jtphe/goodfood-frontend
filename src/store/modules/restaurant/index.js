@@ -29,7 +29,6 @@ export default function reducer(state = initialState, action) {
       const userIndex = state.staff.findIndex(
         (user) => user.id === action.user.id
       );
-      console.log('M_UPDATE_STAFF');
       return update(state, {
         staff: {
           [userIndex]: {

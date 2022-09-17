@@ -4,11 +4,10 @@ import { getStaff } from 'store/modules/restaurant/selectors';
 import { createSelector } from 'reselect';
 import { connect, useDispatch } from 'react-redux';
 import { deleteStaff, loadStaff } from 'store/modules/restaurant/actions';
+import { getUser } from 'store/modules/user/selectors';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Button from '../utilities/Button';
-import { getUser } from 'store/modules/user/selectors';
-import { createElement } from 'react';
 
 const mapStateToProps = createSelector(
   [getStaff, getUser],
