@@ -53,7 +53,14 @@ function EditStaff({ error }) {
     event.preventDefault();
     const passwordLength = checkPasswordLength(password, passwordConfirmation);
     const passwordSame = checkPasswordSame(password, passwordConfirmation);
-    if (firstName == firstname && lastName == lastname && userEmail == email) {
+    if (
+      firstName == firstname &&
+      lastName == lastname &&
+      userEmail == email &&
+      oldPassword == '' &&
+      password == '' &&
+      passwordConfirmation == ''
+    ) {
       return;
     }
     if (!passwordLength && password !== '') {
