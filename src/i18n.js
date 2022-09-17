@@ -15,9 +15,9 @@ i18n
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
     debug: true,
-    fallbackLng: 'fr',
+    fallbackLng: ['en'],
     detection: {
-      order: ['navigator', 'queryString', 'localStorage'],
+      order: ['localStorage', 'navigator', 'queryString'],
       cache: ['localStorage']
     },
     interpolation: {
