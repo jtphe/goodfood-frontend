@@ -56,9 +56,7 @@ function Parameters({ staff, currentUser }) {
           i18n.changeLanguage(e.target.value);
         }}
       >
-        <option selected value="fr">
-          {t('languages.french')}
-        </option>
+        <option value="fr">{t('languages.french')}</option>
         <option value="en">{t('languages.english')}</option>
       </select>
       <div className={'flex flex-row justify-between'}>
