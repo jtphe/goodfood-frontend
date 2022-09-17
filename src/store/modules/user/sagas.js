@@ -2,7 +2,6 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
 import { M_SET_USER, USER_LOGIN, U_UPDATE_FORGOTTEN_PASSWORD } from './actions';
 import { M_SET_ERROR } from '../error/actions';
-import { errorHandler } from 'helpers/errorHandler';
 import { toast } from 'react-toastify';
 import fetchService from 'api/fetchService';
 
@@ -14,6 +13,9 @@ function* signIn({ payload }) {
       data: {
         email: payload.email,
         password: payload.password
+      },
+      headers: {
+        device: 'web'
       }
     };
     const res = yield call(fetchService.request, query);
@@ -22,7 +24,7 @@ function* signIn({ payload }) {
     payload.navigate('/');
   } catch (e) {
     if (e.response) {
-      const error = errorHandler(e.response?.data.message);
+      const error = e.response?.data.message;
       yield put({ type: M_SET_ERROR, error });
     }
   }

@@ -5,6 +5,7 @@ import error from './error/index';
 import supplier from './supplier/index';
 import product from './product/index';
 import order from './order/index';
+import restaurant from './restaurant/index';
 import storage from 'redux-persist/lib/storage';
 
 const config = {
@@ -19,5 +20,6 @@ export default persistCombineReducers(config, {
   error,
   supplier,
   product,
-  order
+  order,
+  restaurant
 });

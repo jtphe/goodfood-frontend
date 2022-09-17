@@ -23,6 +23,7 @@ function Login({ error }) {
   const [password, setPassword] = useState('');
   const [errorMail, setErrorMail] = useState(false);
   const [errorPassword, setErrorPassword] = useState(false);
+  const [errorAccount, setErrorAccount] = useState(false);
 
   useEffect(() => {
     if (error === 'Bad Password') {
@@ -31,6 +32,10 @@ function Login({ error }) {
     } else if (error === 'Bad ID') {
       setErrorPassword(false);
       setErrorMail(true);
+    } else if (error === 'Reserved for worker') {
+      setErrorMail(false);
+      setErrorPassword(false);
+      setErrorAccount(true);
     }
 
     // when changing component
@@ -54,13 +59,16 @@ function Login({ error }) {
     } else if (!emailChecker(email)) {
       setErrorMail(true);
       setErrorPassword(false);
+      setErrorAccount(false);
     } else if (!checkPasswordLength(password)) {
       setErrorPassword(true);
       setErrorMail(false);
+      setErrorAccount(false);
     }
     if (emailChecker(email) && checkPasswordLength(password)) {
       setErrorPassword(false);
       setErrorMail(false);
+      setErrorAccount(false);
       return true;
     }
   };
@@ -148,6 +156,11 @@ function Login({ error }) {
             {errorPassword && (
               <p className="mt-2 text-goodFoodRed-500 text-sm">
                 {t('loginPage.passwordError')}
+              </p>
+            )}
+            {errorAccount && (
+              <p className="mt-2 text-goodFoodRed-500 text-sm">
+                {t('loginPage.accountError')}
               </p>
             )}
           </div>

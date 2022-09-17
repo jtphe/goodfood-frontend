@@ -21,6 +21,12 @@ function Button({ type, onClick, className }) {
       return 'bg-goodFoodGreen-100 hover:bg-goodFoodGreen-500 text-white';
     } else if (type === 'next') {
       return 'bg-goodFoodBlue-500 text-white';
+    } else if (type === 'update') {
+      return 'bg-goodFoodGreen-500 text-white';
+    } else if (type === 'addStaff') {
+      return 'bg-goodFoodGreen-500 text-white';
+    } else if (type === 'delete') {
+      return 'bg-goodFoodRed-500 text-white';
     }
   };
 

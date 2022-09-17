@@ -11,11 +11,13 @@
     "passwordTooShort": "Password must be at least 8 characters long"
   },
   "languages": {
-    "french": "french",
-    "english": "english"
+    "french": "French",
+    "english": "English"
   },
   "error": {
-    "pageNotFound": "Page not found..."
+    "pageNotFound": "Page not found...",
+    "wrongOldPassword": "Old password incorrect...",
+    "nothingToUpdate": "Nothing to update..."
   },
   "utilities": {
     "button": {
@@ -24,9 +26,12 @@
       "delivered": "delivered",
       "edit": "edit",
       "addProduct": "add a new product",
-      "add": "ajouter",
+      "add": "add",
       "next": "go to the next step",
-      "refresh": "Refresh the list"
+      "refresh": "Refresh the list",
+      "update": "mettre à jour",
+      "addStaff": "add",
+      "delete": "delete"
     },
     "return": "Go back"
   },
@@ -52,6 +57,7 @@
     "connection": "Sign In",
     "emailError": "Your email seems to be invalid",
     "passwordError": "Your password is invalid",
+    "accountError": "This account does not exist",
     "newPassword": "New password",
     "confirmNewPassword": "Confirm new password"
   },
@@ -128,6 +134,39 @@
     "unavailable": "Unavailable"
   },
   "parametersPage": {
-    "title": "Parameters"
+    "title": "Parameters",
+    "description": "In this section you will be able to set up your interface and manage the members of the franchise.",
+    "languages": "Languages",
+    "membersList": "Members list",
+    "lastName": "Name",
+    "firstName": "Firstname",
+    "email": "Email",
+    "status": "Status",
+    "deleteUserSuccess": "L'utilisateur a bien été supprimé",
+    "deleteUserError": "User was not deleted, error occured",
+    "addStaff": {
+      "title": "Add a new user",
+      "lastName": "Last Name",
+      "firstName": "First Name",
+      "email": "Mail",
+      "status": "Role",
+      "worker": "Worker",
+      "manager": "Manager",
+      "errorEmail": "This email is already used",
+      "errorEmailFormat": "This email format is invalid",
+      "userCreated": "The new user has been successfully created!",
+      "errorUserCreation": "An error has occurred..."
+    },
+    "editStaff": {
+      "title": "Edit profile",
+      "toastSuccess": "The user has been updated!",
+      "toastError": "An error has occured...",
+      "oldPassword": "Old Password",
+      "password": "New password",
+      "passwordConfirmation": "New password confirmation",
+      "errorPasswordMatch": "The passwords do not match",
+      "errorPasswordLength": "The password is too short",
+      "errorOldPassowrd": "The old password is wrong"
+    }
   }
 }

@@ -11,11 +11,13 @@
     "passwordTooShort": "Le mot de passe doivent faire au minimum 8 charactères"
   },
   "languages": {
-    "french": "français",
-    "english": "anglais"
+    "french": "Français",
+    "english": "Anglais"
   },
   "error": {
-    "pageNotFound": "Page introuvable..."
+    "pageNotFound": "Page introuvable...",
+    "wrongOldPassword": "Ancien mot de passe incorrect...",
+    "nothingToUpdate": "Il n'y a rien à modifier.."
   },
   "utilities": {
     "button": {
@@ -26,7 +28,10 @@
       "addProduct": "ajouter un produit",
       "add": "ajouter",
       "next": "passer a l'étape suivante",
-      "refresh": "Rafraichir la liste"
+      "refresh": "Rafraichir la liste",
+      "update": "mettre à jour",
+      "addStaff": "ajouter",
+      "delete": "delete"
     },
     "return": "Retour"
   },
@@ -52,6 +57,7 @@
     "connection": "Connexion",
     "emailError": "Votre email semble invalide",
     "passwordError": "Votre mot de passe semble invalide",
+    "accountError": "Ce compte n'existe pas",
     "newPassword": "Nouveau mot de passe",
     "confirmNewPassword": "Confirmer le nouveau mot de passe"
   },
@@ -128,6 +134,39 @@
     "unavailable": "Indisponible"
   },
   "parametersPage": {
-    "title": "Paramètres"
+    "title": "Paramètres",
+    "description": "Dans cette section vous pourrez paramétrer votre interface ainsi que gérer les membres de la franchise.",
+    "languages": "Langues",
+    "membersList": "Liste des membres",
+    "lastName": "Nom",
+    "firstName": "Prénom",
+    "email": "Mail",
+    "status": "statut",
+    "deleteUserSuccess": "L'utilisateur a bien été supprimé",
+    "deleteUserError": "L'utilisateur n'a pas été supprimé, une erreur a eu lieu",
+    "addStaff": {
+      "title": "Créer un nouvel utilisateur",
+      "lastName": "Nom",
+      "firstName": "Prénom",
+      "email": "Mail",
+      "status": "Rôle",
+      "worker": "Travailleur",
+      "manager": "Manager",
+      "errorEmail": "Cette adresse mail est déjà utilisée",
+      "errorEmailFormat": "Le format de l'email est invalide",
+      "userCreated": "Le nouvel utilisateur a bien été créé !",
+      "errorUserCreation": "Une erreur est apparue..."
+    },
+    "editStaff": {
+      "title": "Éditer le profil",
+      "toastSuccess": "L'utilisateur a bien été modifié !",
+      "toastError": "Une erreur est apparue...",
+      "oldPassword": "Ancien mot de passe",
+      "password": "Nouveau mot de Passe",
+      "passwordConfirmation": "Confirmation du nouveau mot de passe",
+      "errorPasswordMatch": "Les mots de passes ne correspondent pas",
+      "errorPasswordLength": "Le mot de passe est trop court",
+      "errorOldPassowrd": "L'ancien mot de passe est incorrect"
+    }
   }
 }

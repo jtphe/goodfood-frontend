@@ -8,9 +8,8 @@ import {
 } from './actions';
 import { M_SET_ERROR } from '../error/actions';
 import { getToken, getUserRestaurant } from 'store/modules/user/selectors';
-import { errorHandler } from 'helpers/errorHandler';
-import fetchService from 'api/fetchService';
 import { toast } from 'react-toastify';
+import fetchService from 'api/fetchService';
 
 function* loadProducts({ payload }) {
   try {
@@ -67,7 +66,7 @@ function* createProduct({ payload }) {
     payload.navigate('/products');
   } catch (e) {
     if (e.response) {
-      const error = errorHandler(e.response?.data.message);
+      const error = e.response?.data.message;
       yield put({ type: M_SET_ERROR, error });
     }
     toast.error(payload.messageError);

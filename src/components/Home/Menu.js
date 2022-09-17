@@ -114,7 +114,7 @@ function Menu({ role }) {
                 }
                 to="login"
               >
-                <span className="mx-4 font-medium">
+                <span className="mr-4 font-medium">
                   {t('navigation.logout')}
                 </span>
                 <FaDoorOpen size={22} />

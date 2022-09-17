@@ -48,7 +48,6 @@ function* changeStatut({ payload }) {
       headers: { token }
     };
     const res = yield call(fetchService.request, query);
-    console.log('res :>> ', res);
 
     yield put({ type: M_CHANGE_STATUT_ORDER, order: res });
   } catch (e) {

@@ -4,6 +4,7 @@ import watchUser from '../store/modules/user/sagas';
 import watchSuppliers from '../store/modules/supplier/sagas';
 import watchProducts from './modules/product/sagas';
 import watchOrders from './modules/order/sagas';
+import watchRestaurant from './modules/restaurant/sagas';
 
 export default function* rootSaga() {
   yield all([
@@ -11,6 +12,7 @@ export default function* rootSaga() {
     fork(watchUser),
     fork(watchSuppliers),
     fork(watchProducts),
-    fork(watchOrders)
+    fork(watchOrders),
+    fork(watchRestaurant)
   ]);
 }
