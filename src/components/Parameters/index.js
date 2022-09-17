@@ -6,6 +6,7 @@ import { connect, useDispatch } from 'react-redux';
 import { deleteStaff, loadStaff } from 'store/modules/restaurant/actions';
 import { getUser } from 'store/modules/user/selectors';
 import { useNavigate } from 'react-router-dom';
+import { FaTrashAlt } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import Button from '../utilities/Button';
 
@@ -101,7 +102,7 @@ function Parameters({ staff, currentUser }) {
                   <td className="py-6 px-4 text-left">{worker.lastname}</td>
                   <td className="py-6 px-4 text-left">{worker.email}</td>
                   <td className="py-6 px-4 text-left">{worker.roles}</td>
-                  <td className="py-6 px-4 text-left">
+                  <td className="py-6 pl-3 text-left">
                     {currentUser.roles === 'manager' ||
                     currentUser.id === worker.id ? (
                       <Button
@@ -122,18 +123,20 @@ function Parameters({ staff, currentUser }) {
                       ''
                     )}
                   </td>
-                  <td className="py-6 px-4 text-left">
+                  <td className="py-6 text-left">
                     {currentUser.roles === 'manager' ? (
-                      <Button
-                        type="delete"
+                      <div
                         onClick={() => {
                           _deleteUser(worker.id);
                         }}
-                        className="rounded-3xl"
-                      />
-                    ) : (
-                      ''
-                    )}
+                      >
+                        <FaTrashAlt
+                          size={20}
+                          className="pt-1 mr-4"
+                          color="#D73427"
+                        />
+                      </div>
+                    ) : null}
                   </td>
                 </tr>
               );
