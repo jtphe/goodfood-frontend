@@ -26,7 +26,12 @@ function Home({ isLoggedIn, user }) {
 
   return (
     <div className="flex flex-row h-screen bg-goodFoodBeige-500">
-      <Menu role={user?.roles} />
+      <Menu
+        role={user?.roles}
+        firstname={user?.firstname}
+        lastname={user?.lastname}
+        restaurant={user?.restaurant}
+      />
       <div className="flex flex-col overflow-y-auto w-5/6 ml-12 py-10">
         <ToastContainer />
         <Outlet />

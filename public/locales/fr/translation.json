@@ -1,4 +1,7 @@
 {
+  "menu": {
+    "welcome": "Bienvenue {{firstname}} {{lastname}} !"
+  },
   "forgotPage": {
     "title": "Réinitialiser votre mot de passe",
     "reset": "Réinitialiser",

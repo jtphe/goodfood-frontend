@@ -9,7 +9,7 @@ import { FaUsers, FaDoorOpen } from 'react-icons/fa';
 import { ImSpoonKnife } from 'react-icons/im';
 import { IoMdSettings } from 'react-icons/io';
 
-function Menu({ role }) {
+function Menu({ role, firstname, lastname, restaurant }) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const isManager = useMemo(() => {
@@ -30,6 +30,14 @@ function Menu({ role }) {
         />
       </div>
       <aside className="mt-10">
+        <div className="ml-3 my-8">
+          <h1 className="text-xl text-goodFoodRed-500 font-bold">
+            {t('menu.welcome', { firstname, lastname })}
+          </h1>
+          <h1 className="mt-2 text-l text-goodFoodMustard-500 font-bold">
+            {restaurant.name}
+          </h1>
+        </div>
         <ul>
           <li>
             <NavLink
