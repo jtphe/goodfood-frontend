@@ -2,7 +2,8 @@ import {
   M_CREATE_PRODUCT,
   M_SET_PRODUCTS,
   M_SET_PRODUCTS_IS_LOADING,
-  M_RESET_PRODUCT_STORE
+  M_RESET_PRODUCT_STORE,
+  M_UPDATE_PRODUCT
 } from './actions';
 import update from 'immutability-helper';
 
@@ -31,6 +32,18 @@ export default function reducer(state = initialState, action) {
           $push: [action.res]
         }
       });
+    case M_UPDATE_PRODUCT: {
+      const productIndex = state.products.findIndex(
+        (product) => product.id === action.product.id
+      );
+      return update(state, {
+        products: {
+          [productIndex]: {
+            $set: action.product
+          }
+        }
+      });
+    }
     case M_RESET_PRODUCT_STORE:
       return initialState;
     default:
