@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import Login from './components/Login';
 import Suppliers from './components/Suppliers';
 import SupplierDetail from 'components/Suppliers/SupplierDetail';
+import SupplierEdit from 'components/Suppliers/SupplierEdit';
 import Orders from './components/Orders';
 import Products from './components/Products';
 import ProductEdit from 'components/Products/ProductEdit';
@@ -31,6 +32,7 @@ function App() {
         <Route path="products/add" element={<ProductAdd />} />
         <Route path="suppliers" element={<Suppliers />} />
         <Route path="suppliers/:id" element={<SupplierDetail />} />
+        <Route path="suppliers/edit/:id" element={<SupplierEdit />} />
         <Route path="management" element={<Management />} />
         <Route path="parameters" element={<Parameters />} />
         <Route path="parameters/addStaff" element={<AddStaff />} />

@@ -27,6 +27,8 @@ function Button({ type, onClick, className }) {
       return 'bg-goodFoodGreen-500 text-white';
     } else if (type === 'delete') {
       return 'bg-goodFoodRed-500 text-white';
+    } else if (type === 'details') {
+      return 'bg-goodFoodRed-500 text-white';
     }
   };
 

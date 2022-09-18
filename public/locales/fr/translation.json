@@ -34,14 +34,16 @@
       "refresh": "Rafraichir la liste",
       "update": "mettre à jour",
       "addStaff": "ajouter",
-      "delete": "delete"
+      "delete": "delete",
+      "details": "détails"
     },
     "return": "Retour"
   },
   "toastify": {
     "error": "Il y a eu une erreur",
     "productAdd": "Produit ajouté",
-    "productEdit": "Le produit a été édité avec succès"
+    "productEdit": "Le produit a été édité avec succès",
+    "supplierUpdate": "Fournisseur mis à jour avec succès"
   },
   "navigation": {
     "suppliers": "Fournisseurs",
@@ -73,6 +75,13 @@
       "deliveryAddress": "Adresse: {{address}}",
       "phoneNumber": "Numéro téléphone: {{phone}}",
       "manager": "Responsable: {{contact}}"
+    },
+    "supplierEdit": {
+      "name": "Nom",
+      "type": "Type",
+      "address": "Adresse",
+      "phone": "Téléphone",
+      "contact": "Contacte"
     }
   },
   "ordersPage": {
