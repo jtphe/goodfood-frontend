@@ -33,7 +33,6 @@ export default function reducer(state = initialState, action) {
         }
       });
     case M_UPDATE_PRODUCT: {
-      // console.log(state);
       const productIndex = state.products.findIndex(
         (product) => product.id === action.product.id
       );
