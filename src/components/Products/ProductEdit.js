@@ -117,7 +117,7 @@ function ProductEdit() {
                 {t('productsPage.editPage.editDescription')}
               </label>
               <textarea
-                rows="2"
+                rows="3"
                 className="border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500"
                 type="text"
                 name="description"
@@ -127,7 +127,7 @@ function ProductEdit() {
               />
             </div>
             <div className="flex flex-row mt-6 items-baseline text-right">
-              <label htmlFor="price" className="w-24 mr-3">
+              <label htmlFor="price" className="mr-3">
                 {t('productsPage.editPage.editPrice')}
               </label>
               <input
@@ -140,8 +140,8 @@ function ProductEdit() {
               />
               €
             </div>
-            <div className="flex flex-row  mt-6 items-baseline text-right">
-              <label htmlFor="discount" className="w-24 mr-3">
+            <div className="flex flex-row  mt-6 items-baseline">
+              <label htmlFor="discount" className="mr-3">
                 {t('productsPage.editPage.editDiscount')}
               </label>
               <input
