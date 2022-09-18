@@ -131,28 +131,28 @@ function ProductEdit() {
                 {t('productsPage.editPage.editPrice')}
               </label>
               <input
-                className="border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500"
+                className="border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500 mr-2"
                 type="number"
                 name="price"
                 id="price"
                 value={productPrice}
                 onChange={(e) => _handleInputChange('price', e)}
               />
-              €
+              <span>€</span>
             </div>
             <div className="flex flex-row  mt-6 items-baseline">
               <label htmlFor="discount" className="mr-3">
                 {t('productsPage.editPage.editDiscount')}
               </label>
               <input
-                className="border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500"
+                className="border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500 mr-2"
                 type="number"
                 name="discount"
                 id="discount"
                 value={productDiscount}
                 onChange={(e) => _handleInputChange('discount', e)}
               />
-              %
+              <span>%</span>
             </div>
             <div className="flex flex-row mt-5">
               <label htmlFor="image" className="mr-3">
