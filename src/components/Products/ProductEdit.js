@@ -98,7 +98,7 @@ function ProductEdit() {
           {t('productsPage.editPage.title')}: {name}
         </h1>
         <form className="mb-10" onSubmit={_updateProduct} method="POST">
-          <div className="flex flex-col mt-6">
+          <div className="flex flex-col mt-6 w-3/4">
             <div className="flex flex-col">
               <label htmlFor="name">
                 {t('productsPage.editPage.editName')}
@@ -116,7 +116,8 @@ function ProductEdit() {
               <label htmlFor="description">
                 {t('productsPage.editPage.editDescription')}
               </label>
-              <input
+              <textarea
+                rows="2"
                 className="border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500"
                 type="text"
                 name="description"
@@ -137,6 +138,7 @@ function ProductEdit() {
                 value={productPrice}
                 onChange={(e) => _handleInputChange('price', e)}
               />
+              €
             </div>
             <div className="flex flex-row  mt-6 items-baseline text-right">
               <label htmlFor="discount" className="w-24 mr-3">
@@ -150,6 +152,7 @@ function ProductEdit() {
                 value={productDiscount}
                 onChange={(e) => _handleInputChange('discount', e)}
               />
+              %
             </div>
             <div className="flex flex-row mt-5">
               <label htmlFor="image" className="mr-3">
