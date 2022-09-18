@@ -81,13 +81,13 @@ function SupplierEdit() {
       </button>
       <div>
         <h1 className="text-4xl text-goodFoodRed-500 font-bold mb-14">
-          {t('productsPage.editPage.title')}: {name}
+          {t('suppliersPage.supplierEdit.title')}: {name}
         </h1>
         <form className="mb-10" onSubmit={_updateSupplier} method="POST">
           <div className="flex flex-col mt-6 w-2/4">
             <div className="flex flex-col">
               <label htmlFor="name">
-                {t('productsPage.editPage.editName')}
+                {t('suppliersPage.supplierEdit.name')}
               </label>
               <input
                 className="border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500"
@@ -100,7 +100,7 @@ function SupplierEdit() {
             </div>
             <div className="flex flex-col mt-5">
               <label htmlFor="type">
-                {t('productsPage.editPage.editDescription')}
+                {t('suppliersPage.supplierEdit.type')}
               </label>
               <input
                 className="border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500"
@@ -113,7 +113,7 @@ function SupplierEdit() {
             </div>
             <div className="flex flex-col mt-5">
               <label htmlFor="address" className="w-24 mr-3">
-                {t('productsPage.editPage.editPrice')}
+                {t('suppliersPage.supplierEdit.address')}
               </label>
               <input
                 className="border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500"
@@ -126,7 +126,7 @@ function SupplierEdit() {
             </div>
             <div className="flex flex-col mt-5">
               <label htmlFor="phone" className="w-24 mr-3">
-                {t('productsPage.editPage.editDiscount')}
+                {t('suppliersPage.supplierEdit.phone')}
               </label>
               <input
                 className="border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500"
@@ -139,7 +139,7 @@ function SupplierEdit() {
             </div>
             <div className="flex flex-col mt-5">
               <label htmlFor="contact" className="w-24 mr-3">
-                {t('productsPage.editPage.editDiscount')}
+                {t('suppliersPage.supplierEdit.contact')}
               </label>
               <input
                 className="border py-2 px-3 rounded-md focus:outline-none focus:border-gray-500"

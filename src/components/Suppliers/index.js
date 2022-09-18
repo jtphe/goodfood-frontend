@@ -30,12 +30,12 @@ function Suppliers({ suppliers }) {
       <p className="text-goodFoodMustard-500 font-semibold mt-6">
         {t('suppliersPage.description')}
       </p>
-      <div className="flex flex-row mt-8">
+      <div className="flex flex-row mt-8 pl-4">
         {suppliers.map((supplier) => {
           return (
             <div
               key={supplier.id}
-              className="bg-white p-6 first:ml-0 m-4 w-60 flex flex-col items-center justify-center rounded-xl drop-shadow-xl"
+              className="bg-white p-6 first:ml-0 m-4 w-60 flex flex-col items-center justify-center rounded-xl drop-shadow-xl transition ease-in-out hover:-translate-y-1 hover:scale-105 duration-300"
             >
               <div
                 onClick={() => {
@@ -48,13 +48,6 @@ function Suppliers({ suppliers }) {
                 <h3 className="mt-2 font-black text-goodFoodRed-500 select-none">
                   {supplier.name}
                 </h3>
-                <Button
-                  className={'mt-4'}
-                  type="details"
-                  onClick={() => {
-                    navigate(`/suppliers/${supplier.id}`);
-                  }}
-                ></Button>
               </div>
               <Button
                 className={'mt-4'}
