@@ -4,7 +4,9 @@ import {
   M_SET_PRODUCTS,
   CREATE_PRODUCT,
   M_CREATE_PRODUCT,
-  M_SET_PRODUCTS_IS_LOADING
+  M_SET_PRODUCTS_IS_LOADING,
+  UPDATE_PRODUCT,
+  M_UPDATE_PRODUCT
 } from './actions';
 import { M_SET_ERROR } from '../error/actions';
 import { getToken, getUserRestaurant } from 'store/modules/user/selectors';
@@ -73,7 +75,34 @@ function* createProduct({ payload }) {
   }
 }
 
+function* updateProduct({ payload }) {
+  try {
+    const token = yield select(getToken);
+    const query = {
+      method: 'put',
+      url: `http://localhost:8000/products/${payload.id}`,
+      data: {
+        name: payload.name,
+        description: payload.description,
+        price: payload.price,
+        discount: payload.discount,
+        image: payload.image
+      },
+      headers: { token }
+    };
+    const res = yield call(fetchService.request, query);
+    yield put({ type: M_UPDATE_PRODUCT, product: res });
+
+    toast.success(payload.messageSuccess);
+    payload.navigate('/products');
+  } catch (e) {
+    console.log('Error while updating product => ', e);
+    toast.error(payload.messageError);
+  }
+}
+
 export default function* watchProducts() {
   yield takeLatest(GET_PRODUCTS, loadProducts);
   yield takeLatest(CREATE_PRODUCT, createProduct);
+  yield takeLatest(UPDATE_PRODUCT, updateProduct);
 }

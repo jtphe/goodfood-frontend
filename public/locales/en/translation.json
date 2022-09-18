@@ -40,7 +40,8 @@
   },
   "toastify": {
     "error": "There has been an error",
-    "productAdd": "Product added"
+    "productAdd": "Product added",
+    "productEdit": "Product has been updated"
   },
   "navigation": {
     "suppliers": "Suppliers",
@@ -128,7 +129,14 @@
       "editDescription": "Description",
       "editPrice": "Price",
       "editDiscount": "Discount",
-      "editImage": "Image"
+      "editImage": "Image",
+      "type": {
+        "burger": "Burger",
+        "tacos": "Tacos",
+        "pizza": "Pizza",
+        "drink": "Drink",
+        "snack": "Snack"
+      }
     }
   },
   "managementPage": {

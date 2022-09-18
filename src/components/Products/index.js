@@ -51,7 +51,17 @@ function Products({ products }) {
                   className={'mt-4'}
                   type="edit"
                   onClick={() => {
-                    navigate(`/products/edit/${product.id}`);
+                    navigate(`/products/edit/${product.id}`, {
+                      state: {
+                        id: product.id,
+                        name: product.name,
+                        description: product.description,
+                        price: product.price,
+                        discount: product.discount,
+                        type: product.productType,
+                        image: product.image
+                      }
+                    });
                   }}
                 ></Button>
               </div>
