@@ -92,7 +92,7 @@ function Forgot() {
       <div className="flex flex-col bg-white p-10 w-2/5 rounded-md shadow-md">
         <div
           className="flex justify-end"
-          onClick={() => navigate('/', { replace: true })}
+          onClick={() => navigate('/login', { replace: true })}
         >
           <IoClose size={24} color="#D73427" className="cursor-pointer" />
         </div>
